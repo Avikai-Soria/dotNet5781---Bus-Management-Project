@@ -20,7 +20,7 @@ namespace dotNet5781_00_6877_2459
         {
             Console.Write("Enter your name: ");
             string a = Console.ReadLine();
-            Console.WriteLine(a + ", welcome to my first console application");
+            Console.WriteLine("{0}, welcome to my first console application" ,a);
         }
     }
 }
