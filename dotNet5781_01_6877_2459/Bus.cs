@@ -21,13 +21,11 @@ namespace dotNet5781_01_6877_2459
             fuel = fuelg;
             currentMileage = currentMileageg;
         }
-        public Bus(string idg, DateTime creationDateg)
+        public override String ToString ()
         {
-            id = idg;
-            creationDate = creationDateg;
-            overallMileage = 0;     // Empty Mileage
-            fuel = 1200;            // Full tank
-            currentMileage = 0;     // Empty Mileage
+            String to_return = "Bus id: " + id + "\n" + "Activation date: " + creationDate + "\n" + "The bus's overall mileage is: "
+                + overallMileage + "\n" + "Current fuel is: " + fuel + "\n" + "The bus's current mileage is: " + currentMileage + "\n" +"\n";
+            return (to_return);
         }
         // funcs to make: 
     }
