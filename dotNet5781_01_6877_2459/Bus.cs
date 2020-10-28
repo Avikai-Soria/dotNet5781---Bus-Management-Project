@@ -21,5 +21,14 @@ namespace dotNet5781_01_6877_2459
             fuel = fuelg;
             currentMileage = currentMileageg;
         }
+        public Bus(string idg, DateTime creationDateg)
+        {
+            id = idg;
+            creationDate = creationDateg;
+            overallMileage = 0;     // Empty Mileage
+            fuel = 1200;            // Full tank
+            currentMileage = 0;     // Empty Mileage
+        }
+        // funcs to make: 
     }
 }
