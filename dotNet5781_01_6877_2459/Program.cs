@@ -104,20 +104,10 @@ namespace dotNet5781_01_6877_2459
                             fuel = 1200;
                         }
                         int currentMileage;         // IMPORTANT
-                        Console.WriteLine("If you want to insert overall Mileage, insert a number. Otherwise insert anything else. Default value is 0.");
-                        if (!Int32.TryParse(Console.ReadLine(), out currentMileage))
+                        Console.WriteLine("If you want to insert overall Mileage, insert a number lower than or eqeual to " + overallMileage + ". Otherwise insert anything else. Default value is 0.");
+                        if (!Int32.TryParse(Console.ReadLine(), out currentMileage) || currentMileage>=overallMileage)
                         {
                             currentMileage = 0;
-                        }
-                        flag = true; // assuming the current millage isn't bigger than overall
-                        if (currentMileage>overallMileage) 
-                           {
-                                flag = false;   // id already exists
-                           }
-                        if (!flag)
-                        {
-                            Console.WriteLine("ERROR! Current millage may not be bigger than overall milalge.");
-                            break;
                         }
                         Bus current_bus = new Bus(id, date, overallMileage, fuel, currentMileage);
                         Console.WriteLine(current_bus);
