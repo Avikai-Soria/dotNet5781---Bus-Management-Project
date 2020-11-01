@@ -109,6 +109,16 @@ namespace dotNet5781_01_6877_2459
                         {
                             currentMileage = 0;
                         }
+                        flag = true; // assuming the current millage isn't bigger than overall
+                        if (currentMileage>overallMileage) 
+                           {
+                                flag = false;   // id already exists
+                           }
+                        if (!flag)
+                        {
+                            Console.WriteLine("ERROR! Current millage may not be bigger than overall milalge.");
+                            break;
+                        }
                         Bus current_bus = new Bus(id, date, overallMileage, fuel, currentMileage);
                         Console.WriteLine(current_bus);
                         list_of_buses.Add(current_bus);
@@ -176,7 +186,7 @@ namespace dotNet5781_01_6877_2459
                         Console.WriteLine("The bus was found! What action would you like to perform?");
                         Console.WriteLine("Insert 1 if you want to perform refueling.");
                         Console.WriteLine("Insert 2 if you want to perform maintenance");
-                        while (!Int32.TryParse(Console.ReadLine(), out sub_choice) || ((choice < 1) || (choice > 2)))
+                        while (!Int32.TryParse(Console.ReadLine(), out sub_choice) || ((sub_choice < 1) || (sub_choice > 2)))
                         {
                             Console.WriteLine("Invalid input was entered, please insert either 1 or 2.");
                         }
