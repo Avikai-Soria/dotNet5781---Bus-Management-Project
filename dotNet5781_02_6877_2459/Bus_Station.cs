@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace dotNet5781_02_6877_2459
+{
+    class Bus_Station
+    {
+        int busStationKey; // must be value between 0 to 999999
+        double latitude;    // must be value between -90 to 90
+        double longitude;   // must be value between -180 to 180
+        string address;    // Optional
+
+        public int BusStationKey // Making sure range is all right
+        {
+            get => busStationKey;
+            set
+            {
+                if (value < 0 || value > 999999)
+                {
+                    throw new ArgumentOutOfRangeException("Bus station key may contain a maximun of 6 digits");
+                }
+                busStationKey = value;
+            }
+        }
+        public double Latitude // // Making sure range is all right
+        {
+            get => latitude;
+            set
+            {
+                if (value < -90 || value > 90)
+                {
+                    throw new ArgumentOutOfRangeException("Latitude value must be between -90 and 90");
+                }
+                latitude = value;
+            }
+        }
+        public double Longitude // // Making sure range is all right
+        {
+            get => longitude;
+            set
+            {
+                if (value < -180 || value > 180)
+                {
+                    throw new ArgumentOutOfRangeException("Longitude value must be between -180 and 180");
+                }
+                longitude = value;
+            }
+        }
+        public Bus_Station(int keyg, double latg, double longig, string addressg)  // Simple constructor
+        {
+            if (keyg < 0 || keyg > 999999)
+            {
+                throw new ArgumentOutOfRangeException("Bus station key may contain a maximun of 6 digits");
+            }
+            if (latg < -90 || latg > 90)
+            {
+                throw new ArgumentOutOfRangeException("Latitude value must be between -90 and 90");
+            }
+            if (longig < -180 || longig > 180)
+            {
+                throw new ArgumentOutOfRangeException("Longitude value must be between -180 and 180");
+            }
+
+            busStationKey = keyg;
+            latitude = latg;
+            longitude = longig;
+            address = addressg;
+        }
+        public override String ToString()                                       // Used for printing values of bus station
+        {
+            String to_return = "Bus Station Code: " + busStationKey + ",  " + latitude + "°N "+ longitude + "°E";
+            return (to_return);
+        }
+    }
+    
+    
+}

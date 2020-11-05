@@ -104,7 +104,7 @@ namespace dotNet5781_01_6877_2459
                             fuel = 1200;
                         }
                         int currentMileage;         // IMPORTANT
-                        Console.WriteLine("If you want to insert overall Mileage, insert a number lower than or eqeual to " + overallMileage + ". Otherwise insert anything else. Default value is 0.");
+                        Console.WriteLine("If you want to insert current Mileage, insert a number lower than or eqeual to " + overallMileage + ". Otherwise insert anything else. Default value is 0.");
                         if (!Int32.TryParse(Console.ReadLine(), out currentMileage) || currentMileage>=overallMileage)
                         {
                             currentMileage = 0;
