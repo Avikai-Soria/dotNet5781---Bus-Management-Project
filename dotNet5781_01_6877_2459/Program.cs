@@ -26,6 +26,7 @@ namespace dotNet5781_01_6877_2459
         static void Main(string[] args)
         {
             List<Bus> list_of_buses = new List<Bus>();
+            bool flag;                                          // Will serve case 1
             int choice;                                         // Will serve the switch case
             int sub_choice;                                     // Mostly for case 3
             Random r = new Random(DateTime.Now.Millisecond); // r will serve us through the whole program
@@ -47,7 +48,7 @@ namespace dotNet5781_01_6877_2459
                 switch (choice)
                 {
                     case 1:     // Insert a new bus to the line
-                        Console.WriteLine("Case 1");
+                     //   Console.WriteLine("Case 1");
                         Console.WriteLine("Please insert activation date in a form of dd/mm/yyyy.");
                         DateTime date;          // IMPORTANT
                         while (!DateTime.TryParse(Console.ReadLine(), out date))
@@ -79,7 +80,18 @@ namespace dotNet5781_01_6877_2459
                             id = fix_id(id);
                             Console.WriteLine(id);
                         }
-                        int overallMileage;         // IMPORTANT
+                        flag = true; // assuming the id doesn't exists
+                        foreach (Bus check in list_of_buses)
+                            if (check.Id == id)
+                            {
+                                flag = false;   // id already exists
+                            }
+                        if (!flag)
+                        {
+                            Console.WriteLine("ERROR! This license number already exist in the system.");
+                            break;
+                        }
+                        int overallMileage;    // IMPORTANT
                         Console.WriteLine("If you want to insert overall Mileage, insert a number. Otherwise insert anything else. Default value is 0.");
                         if (!Int32.TryParse(Console.ReadLine(), out overallMileage)) 
                         {
@@ -92,8 +104,8 @@ namespace dotNet5781_01_6877_2459
                             fuel = 1200;
                         }
                         int currentMileage;         // IMPORTANT
-                        Console.WriteLine("If you want to insert the current Mileage, insert a number. Otherwise insert anything else. Default value is 0.");
-                        if (!Int32.TryParse(Console.ReadLine(), out currentMileage))
+                        Console.WriteLine("If you want to insert overall Mileage, insert a number lower than or eqeual to " + overallMileage + ". Otherwise insert anything else. Default value is 0.");
+                        if (!Int32.TryParse(Console.ReadLine(), out currentMileage) || currentMileage>=overallMileage)
                         {
                             currentMileage = 0;
                         }
@@ -103,7 +115,7 @@ namespace dotNet5781_01_6877_2459
                         break;
 
                     case 2:     // Select bus for travel
-                        Console.WriteLine("Case 2");
+                        //Console.WriteLine("Case 2");
                         string search_id;
                         Console.WriteLine("Please insert the license number of the bus you would like to use.");
                         Console.WriteLine("Insert only 7 digits or 8 digits");
@@ -141,7 +153,7 @@ namespace dotNet5781_01_6877_2459
                         break;
 
                     case 3:     // Maintain a bus
-                        Console.WriteLine("Case 3");
+                       // Console.WriteLine("Case 3");
                         string to_fix_id;
                         Console.WriteLine("Please insert the license number of the bus you would like to use.");
                         Console.WriteLine("Insert only 7 digits or 8 digits");
@@ -164,7 +176,7 @@ namespace dotNet5781_01_6877_2459
                         Console.WriteLine("The bus was found! What action would you like to perform?");
                         Console.WriteLine("Insert 1 if you want to perform refueling.");
                         Console.WriteLine("Insert 2 if you want to perform maintenance");
-                        while (!Int32.TryParse(Console.ReadLine(), out sub_choice) || ((choice < 1) || (choice > 2)))
+                        while (!Int32.TryParse(Console.ReadLine(), out sub_choice) || ((sub_choice < 1) || (sub_choice > 2)))
                         {
                             Console.WriteLine("Invalid input was entered, please insert either 1 or 2.");
                         }
@@ -180,7 +192,7 @@ namespace dotNet5781_01_6877_2459
                         }
                         break;
                     case 4:     // Display mileage
-                        Console.WriteLine("Case 4");
+                      //  Console.WriteLine("Case 4");
                         foreach(Bus bus_to_print in list_of_buses)
                             Console.WriteLine(bus_to_print);
                         break;
