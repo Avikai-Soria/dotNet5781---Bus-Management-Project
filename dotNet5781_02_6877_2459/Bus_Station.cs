@@ -8,48 +8,48 @@ namespace dotNet5781_02_6877_2459
 {
     class Bus_Station
     {
-        int busStationKey; // must be value between 0 to 999999
-        double latitude;    // must be value between -90 to 90
-        double longitude;   // must be value between -180 to 180
-        string address;    // Optional
+        int m_busStationKey; // must be value between 0 to 999999
+        double m_latitude;    // must be value between -90 to 90
+        double m_longitude;   // must be value between -180 to 180
+        string m_address;    // Optional
 
         public int BusStationKey // Making sure range is all right
         {
-            get => busStationKey;
+            get => m_busStationKey;
             set
             {
                 if (value < 0 || value > 999999)
                 {
                     throw new ArgumentOutOfRangeException("Bus station key may contain a maximun of 6 digits");
                 }
-                busStationKey = value;
+                m_busStationKey = value;
             }
         }
         public double Latitude // // Making sure range is all right
         {
-            get => latitude;
+            get => m_latitude;
             set
             {
                 if (value < -90 || value > 90)
                 {
                     throw new ArgumentOutOfRangeException("Latitude value must be between -90 and 90");
                 }
-                latitude = value;
+                m_latitude = value;
             }
         }
         public double Longitude // // Making sure range is all right
         {
-            get => longitude;
+            get => m_longitude;
             set
             {
                 if (value < -180 || value > 180)
                 {
                     throw new ArgumentOutOfRangeException("Longitude value must be between -180 and 180");
                 }
-                longitude = value;
+                m_longitude = value;
             }
         }
-        public Bus_Station(int keyg, double latg, double longig, string addressg)  // Simple constructor
+        public Bus_Station(int keyg, double latg, double longig, string m_addressg)  // Simple constructor
         {
             if (keyg < 0 || keyg > 999999)
             {
@@ -64,14 +64,14 @@ namespace dotNet5781_02_6877_2459
                 throw new ArgumentOutOfRangeException("Longitude value must be between -180 and 180");
             }
 
-            busStationKey = keyg;
-            latitude = latg;
-            longitude = longig;
-            address = addressg;
+            m_busStationKey = keyg;
+            m_latitude = latg;
+            m_longitude = longig;
+            m_address = m_addressg;
         }
         public override String ToString()                                       // Used for printing values of bus station
         {
-            String to_return = "Bus Station Code: " + busStationKey + ",  " + latitude + "°N "+ longitude + "°E";
+            String to_return = "Bus Station Code: " + m_busStationKey + ",  " + m_latitude + "°N "+ m_longitude + "°E";
             return (to_return);
         }
     }
