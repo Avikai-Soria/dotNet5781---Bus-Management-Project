@@ -9,7 +9,7 @@ namespace dotNet5781_02_6877_2459
 {
     class BusLine_Station : Bus_Station
     {
-        int m_distance;          // Will count the distance from the previous station
+        int m_distance;             // Will count the distance from the previous station
         int m_duration;             // Will count the minutes it takes to travel from the previous station
         public BusLine_Station(int keyg, string addressg) 
             :base(keyg, addressg) // Simple constructor

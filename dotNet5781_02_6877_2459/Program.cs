@@ -29,19 +29,25 @@ namespace dotNet5781_02_6877_2459
                 cat.Add(a[i], i);
                 Console.WriteLine(a[i]);
             }
-
-         /*   Console.WriteLine(a);
-            List<int> cat = new List<int>();
-            cat.Insert(0, 0);
-            cat.Insert(1, 1);
-            cat.Insert(2, 2);
-            cat.Insert(3, 3);
-            cat.Insert(4, 4);
-            cat.Insert(5, 5);
-            Console.WriteLine(cat.Count());
+            BusLine_Station cattwo = new BusLine_Station(594, "abcd");
+            Console.WriteLine(cat.Check(cattwo));
+            Console.WriteLine(cat.Check(a[22]));
+            cat.Add(cattwo, 40);
+            Console.WriteLine(cat.Check(cattwo));
 
 
-          //  Console.WriteLine(cat.Count<>);*/
+            /*   Console.WriteLine(a);
+               List<int> cat = new List<int>();
+               cat.Insert(0, 0);
+               cat.Insert(1, 1);
+               cat.Insert(2, 2);
+               cat.Insert(3, 3);
+               cat.Insert(4, 4);
+               cat.Insert(5, 5);
+               Console.WriteLine(cat.Count());
+
+
+             //  Console.WriteLine(cat.Count<>);*/
             Console.ReadKey();
         }
     }

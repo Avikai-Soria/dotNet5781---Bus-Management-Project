@@ -19,7 +19,7 @@ namespace dotNet5781_02_6877_2459
         {
             Random r = new Random();
             m_busline = id;
-            m_area = (Area)r.Next(0, 8);
+            m_area = (Area)r.Next(0, 8);    //0<=value<8
             m_stations = new List<BusLine_Station>();
         }
         public override String ToString()                                       // Used for printing values of busline
@@ -38,14 +38,16 @@ namespace dotNet5781_02_6877_2459
         public void Add(BusLine_Station to_Add, int index)
         {
             m_stations.Insert(index, to_Add);
-            if (index==0)
+            m_first_Station = m_stations.First();       // Taking care in case the element is a new first element
+            m_last_Station = m_stations.Last();         // Taking care in case the element is a new last element
+           /*( if (index==0)
             {
                 m_first_Station = to_Add;
             }
             if(index==(m_stations.Count)-1)
             {
                 m_last_Station = to_Add;
-            }
+            }*/
         }
         /// <summary>
         /// This function removes a busline station from busline
@@ -61,15 +63,30 @@ namespace dotNet5781_02_6877_2459
                     break;
                 }
             }
+            m_first_Station = m_stations.First();       // Taking care in case the element is a new first element
+            m_last_Station = m_stations.Last();         // Taking care in case the element is a new last element
         }
-        public void Check(BusLine_Station check)
+        /// <summary>
+        /// This function checks whether a Busline Station is located in the BusLine or not
+        /// </summary>
+        /// <param name="check"></param> This is the bus we're checking, whether it's in the list or not
+        public bool Check(BusLine_Station check)
         {
-
+            foreach (BusLine_Station bus in m_stations)
+            {
+                if (bus.BusStationKey == check.BusStationKey)
+                {
+                    return true;    // The Busline Station was found! 
+                }
+            }
+            return false;           // Busline station was not found.
         }
-        public double Distance(BusLine_Station first, BusLine_Station second)
+        public int Distance(BusLine_Station first, BusLine_Station second)
         {
-            double distance = 2; // To make later
-            return distance;
+            if (!Check(first) || !Check(second))
+                throw new ArgumentException("One of the busline stations is not located in the BusLine");
+            // Need to understand how iterators works, and run from first found
+            return 2;
         }
         public int Duration(BusLine_Station first, BusLine_Station second)
         {
