@@ -32,22 +32,13 @@ namespace dotNet5781_02_6877_2459
             BusLine_Station cattwo = new BusLine_Station(594, "abcd");
             Console.WriteLine(cat.Check(cattwo));
             Console.WriteLine(cat.Check(a[22]));
-            cat.Add(cattwo, 40);
-            Console.WriteLine(cat.Check(cattwo));
-
-
-            /*   Console.WriteLine(a);
-               List<int> cat = new List<int>();
-               cat.Insert(0, 0);
-               cat.Insert(1, 1);
-               cat.Insert(2, 2);
-               cat.Insert(3, 3);
-               cat.Insert(4, 4);
-               cat.Insert(5, 5);
-               Console.WriteLine(cat.Count());
-
-
-             //  Console.WriteLine(cat.Count<>);*/
+            Console.WriteLine(cat);
+            Console.WriteLine(cat.Distance(a[35], a[5]));
+            Console.WriteLine(cat.Duration(a[35], a[5]));
+            Console.WriteLine(cat.subLine(a[35], a[5]));
+            Console.WriteLine(cat.CompareTo(cat.subLine(a[35], a[5]))); // Expected to be negative
+            Console.WriteLine(cat.subLine(a[35], a[5]).CompareTo(cat)); // Expected to be positive
+            Console.WriteLine(cat.CompareTo(cat));                      // Expected to be zero
             Console.ReadKey();
         }
     }
