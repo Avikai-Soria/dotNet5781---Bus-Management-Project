@@ -49,13 +49,14 @@ namespace dotNet5781_02_6877_2459
                 m_longitude = value;
             }
         }
-        public Bus_Station(int keyg, double latg, double longig, string m_addressg)  // Simple constructor
+        public Bus_Station(int keyg, string m_addressg)  // Simple constructor
         {
+            Random r = new Random(DateTime.Now.Millisecond);
             if (keyg < 0 || keyg > 999999)
             {
                 throw new ArgumentOutOfRangeException("Bus station key may contain a maximun of 6 digits");
             }
-            if (latg < -90 || latg > 90)
+            /*if (latg < -90 || latg > 90)
             {
                 throw new ArgumentOutOfRangeException("Latitude value must be between -90 and 90");
             }
@@ -63,15 +64,15 @@ namespace dotNet5781_02_6877_2459
             {
                 throw new ArgumentOutOfRangeException("Longitude value must be between -180 and 180");
             }
-
+            */
             m_busStationKey = keyg;
-            m_latitude = latg;
-            m_longitude = longig;
+            m_latitude = r.Next(31,34)+r.NextDouble();
+            m_longitude = r.Next(34, 36) + r.NextDouble();
             m_address = m_addressg;
         }
         public override String ToString()                                       // Used for printing values of bus station
         {
-            String to_return = "Bus Station Code: " + m_busStationKey + ",  " + m_latitude + "°N "+ m_longitude + "°E";
+            String to_return = "Bus Station Code: " + m_busStationKey + ",  " + m_latitude + "°N "+ m_longitude + "°E" + '\n';
             return (to_return);
         }
     }
