@@ -12,7 +12,7 @@ namespace dotNet5781_02_6877_2459
         double m_latitude;    // must be value between -90 to 90
         double m_longitude;   // must be value between -180 to 180
         string m_address;    // Optional
-
+        static Random r = new Random(DateTime.Now.Millisecond);
         public int BusStationKey // Making sure range is all right
         {
             get => m_busStationKey;
@@ -54,7 +54,6 @@ namespace dotNet5781_02_6877_2459
 
         public Bus_Station(int keyg, string m_addressg)  // Simple constructor
         {
-            Random r = new Random(DateTime.Now.Millisecond);
             if (keyg < 0 || keyg > 999999)
             {
                 throw new ArgumentOutOfRangeException("Bus station key may contain a maximun of 6 digits");
