@@ -49,6 +49,9 @@ namespace dotNet5781_02_6877_2459
                 m_longitude = value;
             }
         }
+
+        public string Address { get => m_address; set => m_address = value; }
+
         public Bus_Station(int keyg, string m_addressg)  // Simple constructor
         {
             Random r = new Random(DateTime.Now.Millisecond);
@@ -68,7 +71,7 @@ namespace dotNet5781_02_6877_2459
             m_busStationKey = keyg;
             m_latitude = r.Next(31,34)+r.NextDouble();
             m_longitude = r.Next(34, 36) + r.NextDouble();
-            m_address = m_addressg;
+            Address = m_addressg;
         }
         public override String ToString()                                       // Used for printing values of bus station
         {

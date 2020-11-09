@@ -10,11 +10,14 @@ namespace dotNet5781_02_6877_2459
     enum Area { General,North,South,Center,Jerusalem, Tel_Aviv, Haifa, Beer_Sheva }
     class BusLine : IComparable<BusLine>
     {
-        int m_busline;
+        int m_busLine_Id;
         BusLine_Station m_first_Station;
         BusLine_Station m_last_Station;
         Area m_area;
         List<BusLine_Station> m_stations;
+
+        public int BusLine_Id { get => m_busLine_Id; set => m_busLine_Id = value; }
+
         /// <summary>
         /// Normal constructor, recives id only
         /// </summary>
@@ -22,7 +25,7 @@ namespace dotNet5781_02_6877_2459
         public BusLine(int id)
         {
             Random r = new Random();
-            m_busline = id;
+            BusLine_Id = id;
             m_area = (Area)r.Next(0, 8);    //0<=value<8
             m_stations = new List<BusLine_Station>();
         }
@@ -32,15 +35,27 @@ namespace dotNet5781_02_6877_2459
         /// <param name="list"></param> The sub list
         public BusLine(List<BusLine_Station> list, Area area)
         {
-            m_busline = 0; // We didn't really recive any demands for id so this will do
+            BusLine_Id = 0; // We didn't really recive any demands for id so this will do
             m_stations = list;
             m_first_Station = list.First();
             m_last_Station = list.Last();
             m_area = area;
         }
+        /// <summary>
+        /// Implementing IComparable<BusLine>
+        /// </summary>
+        /// <param name="that"></param> The bus that is compared against
+        /// <returns></returns>
+        public int CompareTo(BusLine that)
+        {
+            // Wanna return positive number if current bus is better, a.k.a shorter
+            // return 0 in case they are basically the same
+            // return negative number in case other BusLine is more efficient
+            return (that.Duration(that.m_first_Station, that.m_last_Station) - Duration(m_first_Station, m_last_Station));    // Proud of myself for this one
+        }
         public override String ToString()                                       // Used for printing values of busline
         {
-            String to_return = "Busline number: " + m_busline + '\n' + "Area: " + m_area + '\n' + "Stations in this line: " + '\n';
+            String to_return = "Busline number: " + BusLine_Id + '\n' + "Area: " + m_area + '\n' + "Stations in this line: " + '\n';
             foreach (BusLine_Station check in m_stations)
                 to_return += check.ToString();
                 return (to_return);
@@ -89,6 +104,17 @@ namespace dotNet5781_02_6877_2459
             }
             return false;           // Busline station was not found.
         }
+        public bool Check_Id(int check)
+        {
+            foreach (BusLine_Station bus in m_stations)
+            {
+                if (bus.BusStationKey == check)
+                {
+                    return true;    // The Busline Station was found! 
+                }
+            }
+            return false;           // Busline station was not found.
+        }
         /// <summary>
         /// This function return the distance between 2 stations on this line
         /// </summary>
@@ -128,6 +154,7 @@ namespace dotNet5781_02_6877_2459
                 throw new ArgumentException("One of the busline stations is not located in the BusLine");
             int duration = 0;
             IEnumerator<BusLine_Station> a = m_stations.GetEnumerator();
+            a.MoveNext();
             while (a.Current != first && a.Current != second)
                 a.MoveNext();   // Will try to find the first element
             a.MoveNext();       // I want to start calculating the duration from the next station
@@ -138,6 +165,13 @@ namespace dotNet5781_02_6877_2459
             }
             duration += a.Current.Duration;         // Add duration of the last station
             return duration;
+        }
+        /// <summary>
+        /// Returns overall duration of the busline
+        /// </summary>
+        public int Overall_Duration()
+        {
+            return Duration(m_first_Station, m_last_Station);
         }
         /// <summary>
         /// This functions returns a bus that contains a subline of the current line
@@ -162,16 +196,15 @@ namespace dotNet5781_02_6877_2459
             return subBus;
         }
         /// <summary>
-        /// Implementing IComparable<BusLine>
+        /// Checking if 2 Busliens have opposite start and end stations
         /// </summary>
-        /// <param name="that"></param> The bus that is compared against
-        /// <returns></returns>
-        public int CompareTo(BusLine that)
+        /// <param name="check"></param> A bus to compare against
+        /// <returns></returns>         True if they're reversed, false otherwise
+        public bool Is_Reversed(BusLine check)
         {
-            // Wanna return positive number if current bus is better, a.k.a shorter
-            // return 0 in case they are basically the same
-            // return negative number in case other BusLine is more efficient
-            return (that.Duration(that.m_first_Station, that.m_last_Station) - Duration(m_first_Station, m_last_Station));    // Proud of myself for this one
+            if (m_stations.Count == 0 || check.m_stations.Count == 0)
+                return false;
+            return (m_first_Station == check.m_last_Station && m_last_Station == check.m_first_Station);
         }
     }
 

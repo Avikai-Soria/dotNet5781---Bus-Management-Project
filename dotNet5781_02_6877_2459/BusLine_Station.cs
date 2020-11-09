@@ -21,5 +21,19 @@ namespace dotNet5781_02_6877_2459
 
         public int Distance { get => m_distance; set => m_distance = value; }
         public int Duration { get => m_duration; set => m_duration = value; }
+
+        public static bool operator ==(BusLine_Station a, BusLine_Station b)
+        {
+            return (a.BusStationKey == b.BusStationKey &&
+                a.Latitude == b.Latitude &&
+                a.Longitude == b.Longitude &&
+                a.Distance == b.Distance &&
+                a.Duration == b.Duration &&
+                a.Address == b.Address);
+        }
+        public static bool operator !=(BusLine_Station a, BusLine_Station b)
+        {
+            return !(a == b);
+        }
     }
 }
