@@ -108,7 +108,8 @@ namespace dotNet5781_02_6877_2459
                                 input = Console.ReadLine();
                             }
                             BusLine to_add = new BusLine(bs_id, a[first], a[last]);
-                            collection.Add(to_add);
+                            try { collection.Add(to_add); }
+                            catch (ArgumentException e) { Console.WriteLine(e.Message); }
                         }
                         else
                         {
@@ -179,7 +180,9 @@ namespace dotNet5781_02_6877_2459
                                 Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
                                 input = Console.ReadLine();
                             }
-                            collection[removed_from].Remove(a[station_to_remove]);
+                            try { collection[removed_from].Remove(a[station_to_remove]); }
+                            catch (ArgumentOutOfRangeException e) { Console.WriteLine(e.Message); }
+
                         }
                         break;
 
