@@ -8,86 +8,19 @@ namespace dotNet5781_02_6877_2459
 {
     class Program
     {
-        /// <summary>
-        /// cat
-        /// </summary>
-        /// <param name="a"> a is cat number a</param>
-        /// <param name="b"> b is cat number cat</param>
-        /// <param name="cat">cat is cat number cat</param>
-        /// <returns> returns a cat </returns>
-       /* public string Cat(int a, int b, int cat)
-        {
-            return "cat";
-        }*/
         static void Main(string[] args)
         {
-            /*BusLine cat = new BusLine(123456);
-            BusLine oppositecat = new BusLine(123456);
-            BusLine mendoxai = new BusLine(123456);
-            BusLine zug_cat = new BusLine(321);
-            BusLine ez_cat = new BusLine(123);
-            BusLine_Station[] a = new BusLine_Station[40];
-            for (int i = 0; i < 40; i++)
-            { 
-                a[i] = new BusLine_Station(i, "a"+i); // todo create 40 more like this
-                cat.Add(a[i], i);
-                if (i % 2 == 0)
-                    zug_cat.Add(a[i], i / 2);
-                if (i % 2 == 1)
-                    ez_cat.Add(a[i], i / 2);
-                //Console.WriteLine(a[i]);
-            }
-            for (int i = 39; i > -1; i--)
-                oppositecat.Add(a[i], 39 - i);
-            BusLine_Station cattwo = new BusLine_Station(594, "abcd");
-            BusLine_Collection all = new BusLine_Collection();
-            all.Add(cat);  all.Add(oppositecat); all.Add(zug_cat); all.Add(ez_cat); // all.Add(Mendoxai) Add working
-            Console.WriteLine(all);
-            /*Console.WriteLine(all); Removes working
-            Console.WriteLine("Removing 312");
-            all.Remove(zug_cat);
-            Console.WriteLine(all);
-            Console.WriteLine("Removing 123456");
-            all.Remove(cat);
-            Console.WriteLine(all);
-            all.Remove(mendoxai);
-            Console.WriteLine(all);*/
-            //foreach (BusLine bus in all.GetLineByStation(3)) GetLine works
-            //      Console.WriteLine(bus); 
-            /*Console.WriteLine(cat.Overall_Duration());
-            Console.WriteLine(oppositecat.Overall_Duration());
-            Console.WriteLine(zug_cat.Overall_Duration());
-            Console.WriteLine(ez_cat.Overall_Duration());*/
-            /*
-             foreach (BusLine bus in all.SortCollection())
-                   Console.WriteLine(bus); */
-            //Console.WriteLine(all[3]);
-            //Console.WriteLine(cat.Check(cattwo));
-            //Console.WriteLine(cat.Check(a[22]));
-            //Console.WriteLine(cat);
-            //Console.WriteLine(oppositecat);
-            //Console.WriteLine(zug_cat);
-            //Console.WriteLine(cat.Is_Reversed(oppositecat));// Expected to be true
-            //Console.WriteLine(oppositecat.Is_Reversed(cat));// Expected to be true too
-            //Console.WriteLine(cat.Is_Reversed(zug_cat));    // Expected to be false
-            //Console.WriteLine(zug_cat.Is_Reversed(cat));    // Expected to be false too
-            /*Console.WriteLine(cat.Distance(a[35], a[5]));
-            Console.WriteLine(cat.Duration(a[35], a[5]));
-            Console.WriteLine(cat.subLine(a[35], a[5]));
-            Console.WriteLine(cat.CompareTo(cat.subLine(a[35], a[5]))); // Expected to be negative
-            Console.WriteLine(cat.subLine(a[35], a[5]).CompareTo(cat)); // Expected to be positive
-            Console.WriteLine(cat.CompareTo(cat));                      // Expected to be zero*/
-            BusLine line_1 = new BusLine(1);                            // This BusLine will have all 40 BusLine Station
-            BusLine line_1_reverse = new BusLine(1);                    // Reversed busline 1
-            BusLine line_2 = new BusLine(2);                            // This will recive only first and last station
-            BusLine line_3 = new BusLine(3);                            // This line will recive all even numbers of stations
-            BusLine line_4 = new BusLine(4);                            // This line will recive all odd numbers of stations
-            BusLine line_5 = new BusLine(5);                            // This line will recive all stations that divide by 5
-            BusLine line_6 = new BusLine(6);                            // This line will recive all stations that divide by 6
-            BusLine line_7 = new BusLine(7);                            // This line will recive all stations that divide by 7
-            BusLine line_8 = new BusLine(8);                            // This line will recive all stations that divide by 8
-            BusLine line_9 = new BusLine(9);                            // This line will recive all stations that divide by 9
-            BusLine line_10 = new BusLine(10);                          // This line will recive all stations that divide by 10
+            BusLine line_1 = new BusLine(0);                            // This BusLine will have all 40 BusLine Station
+            BusLine line_1_reverse = new BusLine(0);                    // Reversed busline 1
+            BusLine line_2 = new BusLine(1);                            // This will recive only first and last station
+            BusLine line_3 = new BusLine(2);                            // This line will recive all even numbers of stations
+            BusLine line_4 = new BusLine(3);                            // This line will recive all odd numbers of stations
+            BusLine line_5 = new BusLine(4);                            // This line will recive all stations that divide by 5
+            BusLine line_6 = new BusLine(5);                            // This line will recive all stations that divide by 6
+            BusLine line_7 = new BusLine(6);                            // This line will recive all stations that divide by 7
+            BusLine line_8 = new BusLine(7);                            // This line will recive all stations that divide by 8
+            BusLine line_9 = new BusLine(8);                            // This line will recive all stations that divide by 9
+            BusLine line_10 = new BusLine(9);                          // This line will recive all stations that divide by 10
             BusLine_Station[] a = new BusLine_Station[40];
             List<BusLine_Station> stations = new List<BusLine_Station>();
             for (int i = 0; i < 40; i++)
@@ -112,7 +45,6 @@ namespace dotNet5781_02_6877_2459
                     line_9.Add(a[i], i / 9);
                 if (i % 10 == 0)
                     line_10.Add(a[i], i / 10);
-                //Console.WriteLine(a[i]);
             }
             stations = a.ToList<BusLine_Station>();
             for (int i = 39; i >= 0; i--)
@@ -190,7 +122,7 @@ namespace dotNet5781_02_6877_2459
                                 Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
                                 input = Console.ReadLine();
                             }
-                            Console.WriteLine("Please insert bus number you would like to add the station to, between 0 to " + (collection.Count() - 1));
+                            Console.WriteLine("Please insert position of the bus in the list you would like to add the station to, between 0 to " + (collection.Count() - 1));
                             input = Console.ReadLine();
                             while (!Int32.TryParse(input, out added_to) || ((added_to < 0)) || (added_to > (collection.Count() - 1)))
                             {
@@ -219,11 +151,35 @@ namespace dotNet5781_02_6877_2459
                         }
                         if (sub_choice == 1)
                         {
-
+                            int station_to_remove;
+                            Console.WriteLine("Please insert position of the bus in the list you would like to remove, number between 0 to " + (collection.Count() - 1));
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out station_to_remove) || ((station_to_remove < 0)) || (station_to_remove > (collection.Count() - 1)))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
+                                input = Console.ReadLine();
+                            }
+                            collection.Remove(collection[station_to_remove]);
                         }
                         else
                         {
-
+                            int station_to_remove;
+                            int removed_from;
+                            Console.WriteLine("Please insert station ID you would like to add between 0 to " + (stations.Count - 1));
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out station_to_remove) || ((station_to_remove < 0)) || (station_to_remove > (stations.Count - 1)))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
+                                input = Console.ReadLine();
+                            }
+                            Console.WriteLine("Please insert position of the bus in the list you would like to add the station to, between 0 to " + (collection.Count() - 1));
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out removed_from) || ((removed_from < 0)) || (removed_from > (collection.Count() - 1)))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
+                                input = Console.ReadLine();
+                            }
+                            collection[removed_from].Remove(a[station_to_remove]);
                         }
                         break;
 
@@ -238,11 +194,48 @@ namespace dotNet5781_02_6877_2459
                         }
                         if (sub_choice == 1)
                         {
-
+                            int station_id;
+                            Console.WriteLine("Please insert a station ID to look for");
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out station_id))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert again.");
+                                input = Console.ReadLine();
+                            }
+                            Console.WriteLine("The buslines who are passing this station are: ");
+                            foreach (BusLine busLine in collection)
+                            {
+                                if (busLine.Check_Id(station_id))
+                                    Console.WriteLine(busLine.BusLine_Id);
+                            }
                         }
                         else
                         {
-
+                            int first_id;
+                            int second_id;
+                            BusLine_Collection possible_lines = new BusLine_Collection();
+                            Console.WriteLine("Please insert the first station's ID, between 0 to " + (stations.Count - 1));
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out first_id) || ((first_id < 0)) || (first_id > (stations.Count - 1)))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
+                                input = Console.ReadLine();
+                            }
+                            Console.WriteLine("Please insert the second station's ID, between 0 to " + (stations.Count - 1));
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out second_id) || ((second_id < 0)) || (second_id > (stations.Count - 1)))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
+                                input = Console.ReadLine();
+                            }
+                            foreach (BusLine busLine in collection)
+                                if ((busLine.Check_Id(first_id)) && (busLine.Check_Id(second_id)))
+                                    possible_lines.Add(busLine); // At this point all the possible lines should be in the collection
+                            foreach(BusLine busLine1 in possible_lines.SortCollection())
+                            {
+                                Console.WriteLine("BusLine " + busLine1.BusLine_Id + " is available and will take " + busLine1.Duration(a[first_id], a[second_id]) 
+                                    + " minutes to complete the ride");
+                            }
                         }
                         break;
                     case 4:     // PRINT
@@ -261,11 +254,19 @@ namespace dotNet5781_02_6877_2459
                         }
                         else
                         {
-
+                            foreach (BusLine_Station busLine_Station in stations)
+                            {
+                                Console.WriteLine(busLine_Station);
+                                Console.WriteLine("The Buslines that are passing this station are: ");
+                                foreach (BusLine busLine in collection)
+                                {
+                                    if (busLine.Check(busLine_Station))
+                                        Console.WriteLine(busLine.BusLine_Id);
+                                }
+                            }
                         }
                         break;
                     case 5:     // End
-                        Console.WriteLine("Case 5");
                         Console.WriteLine("End of the program. Cya!");
                         break;
                 }
