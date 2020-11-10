@@ -78,7 +78,8 @@ namespace dotNet5781_02_6877_2459
             Console.WriteLine(cat.subLine(a[35], a[5]).CompareTo(cat)); // Expected to be positive
             Console.WriteLine(cat.CompareTo(cat));                      // Expected to be zero*/
             BusLine line_1 = new BusLine(1);                            // This BusLine will have all 40 BusLine Station
-            BusLine line_2 = new BusLine(1);                            // This will be the same, but reversed
+            BusLine line_1_reverse = new BusLine(1);                    // Reversed busline 1
+            BusLine line_2 = new BusLine(2);                            // This will recive only first and last station
             BusLine line_3 = new BusLine(3);                            // This line will recive all even numbers of stations
             BusLine line_4 = new BusLine(4);                            // This line will recive all odd numbers of stations
             BusLine line_5 = new BusLine(5);                            // This line will recive all stations that divide by 5
@@ -93,6 +94,8 @@ namespace dotNet5781_02_6877_2459
             {
                 a[i] = new BusLine_Station(i, "a" + i);                 // 40 random stations
                 line_1.Add(a[i], i);
+                if (i == 0 || i == 39)
+                    line_2.Add(a[i], i / 39);
                 if (i % 2 == 0)
                     line_3.Add(a[i], i / 2);
                 if (i % 2 == 1)
@@ -113,10 +116,11 @@ namespace dotNet5781_02_6877_2459
             }
             stations = a.ToList<BusLine_Station>();
             for (int i = 39; i >= 0; i--)
-                line_2.Add(stations[i], 39 - i);
+                line_1_reverse.Add(stations[i], 39 - i);
             BusLine_Collection collection = new BusLine_Collection();
-            collection.Add(line_1); collection.Add(line_2); collection.Add(line_3); collection.Add(line_4); collection.Add(line_5);
-            collection.Add(line_6); collection.Add(line_7); collection.Add(line_8); collection.Add(line_9); collection.Add(line_10);
+            collection.Add(line_1); collection.Add(line_2); collection.Add(line_3); collection.Add(line_4); 
+            collection.Add(line_5); collection.Add(line_6); collection.Add(line_7); collection.Add(line_8); collection.Add(line_9); collection.Add(line_10);
+            // collection.Add(line_1_reverse); don't want to add this now for the testing
             //Console.WriteLine(collection);            Up to this point, we created a collection that contains 10 BusLines and 40 Stations
             int choice = 0;
             int sub_choice = 0;
@@ -147,13 +151,62 @@ namespace dotNet5781_02_6877_2459
                         }
                         if (sub_choice==1)
                         {
-
+                            int bs_id;
+                            int first;
+                            int last;
+                            Console.WriteLine("Insert the new busline's ID");
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out bs_id) || ((bs_id < 0)))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert a number bigger than 0.");
+                                input = Console.ReadLine();
+                            }
+                            Console.WriteLine("Insert first station, can be a number between 0 to " + (stations.Count-1));
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out first) || ((first < 0)) || (first>(stations.Count-1)))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
+                                input = Console.ReadLine();
+                            }
+                            Console.WriteLine("Insert last station, can be a number between 0 to " + (stations.Count-1));
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out last) || ((last < 0)) || (last > (stations.Count-1)))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
+                                input = Console.ReadLine();
+                            }
+                            BusLine to_add = new BusLine(bs_id, a[first], a[last]);
+                            collection.Add(to_add);
                         }
                         else
                         {
-
+                            int station_to_add;
+                            int added_to;
+                            int where_to;
+                            Console.WriteLine("Please insert station ID you would like to add between 0 to " + (stations.Count - 1));
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out station_to_add) || ((station_to_add < 0)) || (station_to_add > (stations.Count - 1)))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
+                                input = Console.ReadLine();
+                            }
+                            Console.WriteLine("Please insert bus number you would like to add the station to, between 0 to " + (collection.Count() - 1));
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out added_to) || ((added_to < 0)) || (added_to > (collection.Count() - 1)))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
+                                input = Console.ReadLine();
+                            }
+                            Console.WriteLine("Please insert where would you want to insert the station, must be between 0 to "+collection[added_to].Count());
+                            input = Console.ReadLine();
+                            while (!Int32.TryParse(input, out where_to) || ((where_to < 0)) || (where_to > (collection[added_to].Count())))
+                            {
+                                Console.WriteLine("Invalid input was entered, please insert a number in the correct range.");
+                                input = Console.ReadLine();
+                            }
+                            collection[added_to].Add(a[station_to_add], where_to);
                         }
-                            break;
+                        break;
 
                     case 2:     // REMOVE
                         Console.WriteLine("Press 1 if you want to remove a BusLine from the collection.");

@@ -15,6 +15,8 @@ namespace dotNet5781_02_6877_2459
         BusLine_Station m_last_Station;
         Area m_area;
         List<BusLine_Station> m_stations;
+        static Random r = new Random(DateTime.Now.Millisecond);
+
 
         public int BusLine_Id { get => m_busLine_Id; set => m_busLine_Id = value; }
 
@@ -24,10 +26,19 @@ namespace dotNet5781_02_6877_2459
         /// <param name="id"></param> The id of the bus
         public BusLine(int id)
         {
-            Random r = new Random();
             BusLine_Id = id;
             m_area = (Area)r.Next(0, 8);    //0<=value<8
             m_stations = new List<BusLine_Station>();
+        }
+        public BusLine(int id, BusLine_Station first, BusLine_Station last)
+        {
+            BusLine_Id = id;
+            m_area = (Area)r.Next(0, 8);    //0<=value<8
+            m_stations = new List<BusLine_Station>();
+            m_stations.Add(first);
+            m_stations.Add(last);
+            m_first_Station = m_stations.First();
+            m_last_Station = m_stations.Last();
         }
         /// <summary>
         /// A very specific constructor for subline
@@ -60,6 +71,10 @@ namespace dotNet5781_02_6877_2459
                 to_return += check.ToString();
                 return (to_return);
         }
+        public int Count()
+        {
+            return m_stations.Count;
+        }
         /// <summary>
         /// This function can add a new Busline Station to the busline
         /// </summary>
@@ -86,6 +101,8 @@ namespace dotNet5781_02_6877_2459
                     break;
                 }
             }
+            if (m_stations.Count < 2)
+                throw new ArgumentOutOfRangeException("A bus must have at least 2 stations!");
             m_first_Station = m_stations.First();       // Taking care in case the element is a new first element
             m_last_Station = m_stations.Last();         // Taking care in case the element is a new last element
         }

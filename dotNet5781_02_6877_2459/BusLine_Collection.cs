@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace dotNet5781_02_6877_2459
@@ -17,6 +18,10 @@ namespace dotNet5781_02_6877_2459
         public BusLine_Collection()
         {
             m_list = new List<BusLine>();
+        }
+        public int Count()
+        {
+            return (m_list.Count);
         }
         public override string ToString()
         {
