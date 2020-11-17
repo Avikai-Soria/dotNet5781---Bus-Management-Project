@@ -5,21 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dotNet5781_02_6877_2459
+namespace dotNet5781_03A_6877_2459
 {
-    enum Area { General,North,South,Center,Jerusalem, Tel_Aviv, Haifa, Beer_Sheva }
+    enum Area_C { General,North,South,Center,Jerusalem, Tel_Aviv, Haifa, Beer_Sheva }
     class BusLine : IComparable<BusLine>
     {
         int m_busLine_Id;
         BusLine_Station m_first_Station;
         BusLine_Station m_last_Station;
-        Area m_area;
+        Area_C m_area;
         List<BusLine_Station> m_stations;
         static Random r = new Random(DateTime.Now.Millisecond);
 
 
         public int BusLine_Id { get => m_busLine_Id; set => m_busLine_Id = value; }
-        public List<BusLine_Station> Stations { get => m_stations; set => m_stations = value; }
+        internal List<BusLine_Station> Stations { get => m_stations; set => m_stations = value; }
+        internal Area_C Area { get => m_area; set => m_area = value; }
 
         /// <summary>
         /// Normal constructor, recives id only
@@ -28,13 +29,13 @@ namespace dotNet5781_02_6877_2459
         public BusLine(int id)
         {
             BusLine_Id = id;
-            m_area = (Area)r.Next(0, 8);    //0<=value<8
+            Area = (Area_C)r.Next(0, 8);    //0<=value<8
             Stations = new List<BusLine_Station>();
         }
         public BusLine(int id, BusLine_Station first, BusLine_Station last)
         {
             BusLine_Id = id;
-            m_area = (Area)r.Next(0, 8);    //0<=value<8
+            Area = (Area_C)r.Next(0, 8);    //0<=value<8
             Stations = new List<BusLine_Station>();
             Stations.Add(first);
             Stations.Add(last);
@@ -45,13 +46,13 @@ namespace dotNet5781_02_6877_2459
         /// A very specific constructor for subline
         /// </summary>
         /// <param name="list"></param> The sub list
-        public BusLine(List<BusLine_Station> list, Area area)
+        public BusLine(List<BusLine_Station> list, Area_C area)
         {
             BusLine_Id = 0; // We didn't really recive any demands for id so this will do
             Stations = list;
             m_first_Station = list.First();
             m_last_Station = list.Last();
-            m_area = area;
+            Area = area;
         }
         /// <summary>
         /// Implementing IComparable<BusLine>
@@ -67,7 +68,7 @@ namespace dotNet5781_02_6877_2459
         }
         public override String ToString()                                       // Used for printing values of busline
         {
-            String to_return = "Busline number: " + BusLine_Id + '\n' + "Area: " + m_area + '\n' + "Stations in this line: " + '\n';
+            String to_return = "Busline number: " + BusLine_Id + '\n' + "Area: " + Area + '\n' + "Stations in this line: " + '\n';
             foreach (BusLine_Station check in Stations)
                 to_return += check.ToString();
                 return (to_return);
@@ -210,7 +211,7 @@ namespace dotNet5781_02_6877_2459
                 second_index = temp;
             }
             List<BusLine_Station> sublist = new List<BusLine_Station>(Stations.GetRange(first_index, second_index-first_index+1));
-            BusLine subBus = new BusLine(sublist, m_area);    // to make later
+            BusLine subBus = new BusLine(sublist, Area);    // to make later
             return subBus;
         }
         /// <summary>

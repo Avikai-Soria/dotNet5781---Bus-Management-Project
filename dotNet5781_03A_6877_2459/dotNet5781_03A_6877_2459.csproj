@@ -63,6 +63,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BusLine.cs" />
+    <Compile Include="BusLine_Collection.cs" />
+    <Compile Include="BusLine_Station.cs" />
+    <Compile Include="Bus_Station.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -93,12 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\dotNet5781_02_6877_2459\dotNet5781_02_6877_2459.csproj">
-      <Project>{2f581cab-96ca-42a1-b073-7d4c67f1ca95}</Project>
-      <Name>dotNet5781_02_6877_2459</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

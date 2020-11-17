@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03A_6877_2459"
         mc:Ignorable="d"
-        Title="MainWindow" Height="640" Width="800">
+        Title="CatBoo" Height="640" Width="800"
+        Icon="https://ibb.co/sCytW0f"
+        >
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
@@ -20,17 +22,18 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions >
             <TextBox Name ="tbArea"
-                HorizontalAlignment= "Stretch"
-                VerticalAlignment="Stretch"
+                HorizontalAlignment= "Center"
+                VerticalAlignment="Center"
                 Grid.Column="3"
-                Text="{Binding Path=Area}" FontFamily="Guttman Yad" FontSize="48"/>
-            <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="52,26,0,0" VerticalAlignment="Top"/>
-            <Label Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="52,26,0,0" VerticalAlignment="Top"/>
+                Text="{}" FontFamily="Guttman Yad" FontSize="36"/>
+            <Label Content="Bus Line Number :" Grid.Column="0" HorizontalAlignment= "Stretch"
+                VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontFamily="Lucida Calligraphy"/>
+            <Label Content="Area :" Grid.Column="2"  VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  FontFamily="Bauhaus 93" FontSize="48"/>
             <ComboBox Name="cbBusLines"
-                HorizontalAlignment= "Stretch"
-                VerticalAlignment="Stretch"
-                Grid.Column="1"/>
+                HorizontalAlignment= "Center"
+                VerticalAlignment="Center"
+                Grid.Column="1" SelectionChanged="cbBusLines_SelectionChanged" FontSize="36"/>
         </Grid>
-        <ListBox Name="lbBusLineStations" Height="211" Grid.Row="1" VerticalAlignment="Top" Margin="0,0,10,0" ItemsSource="{Binding}"/>
+        <ListBox Name="lbBusLineStations" Height="211" Grid.Row="1" VerticalAlignment="Center" Margin="0,0,10,0" ItemsSource="{Binding}" HorizontalAlignment="Center" FontSize="22" FontFamily="SimSun-ExtB"/>
     </Grid>
 </Window>
