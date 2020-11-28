@@ -55,5 +55,9 @@ namespace dotNet5781_03B_6877_2459
         {
             list_of_buses.Add(bus);
         }
+        internal bool Id_Exists(string id)
+        {
+            return list_of_buses.Where(T => { return T.Id == id; }).Any();
+        }
     }
 }

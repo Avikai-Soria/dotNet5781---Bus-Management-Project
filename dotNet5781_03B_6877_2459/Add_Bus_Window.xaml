@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_6877_2459"
         mc:Ignorable="d"
-        Title="Add_Bus_Window" Height="160" Width="300">
+        Title="Add_Bus_Window" Height="400" Width="600">
     <StackPanel Orientation="Vertical">
-        <Label Content="Insert bus's ID number below" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox Name="Bus_ID_insert" Height="23" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" />
-        <Label Content="Insert Creation Date below" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <DatePicker Name="Bus_CD_insert" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" />
-        <CheckBox Content="Click here when you're done"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" Checked="CheckBox_Checked" Width="200"/>
+        <Label Content="Insert bus's ID number below (numbers only)" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" />
+        <TextBox Name="Bus_ID_insert" Height="35" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" FontSize="24" />
+        <Label Content="Insert Creation Date below" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+        <DatePicker Name="Bus_CD_insert" Height="36" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" FontSize="24"/>
+        <Button Content="Click here when you are done"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" Width="300" Click="Button_Click" FontSize="20"/>
+        <Label Name="ERROR_label" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+
 
 
 
