@@ -80,7 +80,7 @@ namespace dotNet5781_03A_6877_2459
 
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowBusLine((cbBusLines.SelectedValue as BusLine).BusLine_Id);
+           ShowBusLine((cbBusLines.SelectedValue as BusLine).BusLine_Id);
            tbArea.Text=((cbBusLines.SelectedValue as BusLine).Area).ToString();
         }
     }

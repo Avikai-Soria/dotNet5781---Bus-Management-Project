@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:dotNet5781_03A_6877_2459"
         mc:Ignorable="d"
         Title="CatBoo" Height="640" Width="800"
-        Icon="https://ibb.co/sCytW0f"
+        Icon="https://i.ibb.co/9hsGZFD/CatBoo.png"
         >
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
