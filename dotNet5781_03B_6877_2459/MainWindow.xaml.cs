@@ -21,7 +21,7 @@ namespace dotNet5781_03B_6877_2459
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Bus> list_of_buses = new ObservableCollection<Bus>();
+        ObservableCollection<Bus> list_of_busses = new ObservableCollection<Bus>();
         public MainWindow()
         {
             InitializeComponent();
@@ -35,17 +35,24 @@ namespace dotNet5781_03B_6877_2459
             Bus bus8 = new Bus("532-64-139", DateTime.Now.AddMonths(-3), 3000, 700, 3000);
             Bus bus9 = new Bus("73-834-12", DateTime.Now.AddYears(-4), 30000, 400, 7000);
             Bus bus10 = new Bus("921-43-213", DateTime.Now.AddDays(-123), 3000, 1000, 1000);
-            list_of_buses.Add(bus10); list_of_buses.Add(bus9); list_of_buses.Add(bus8); list_of_buses.Add(bus7);
-            list_of_buses.Add(bus6); list_of_buses.Add(bus5); list_of_buses.Add(bus4); list_of_buses.Add(bus3);
-            list_of_buses.Add(bus2); list_of_buses.Add(bus1);
-            Busses_View.ItemsSource = list_of_buses;
+            list_of_busses.Add(bus10); list_of_busses.Add(bus9); list_of_busses.Add(bus8); list_of_busses.Add(bus7);
+            list_of_busses.Add(bus6); list_of_busses.Add(bus5); list_of_busses.Add(bus4); list_of_busses.Add(bus3);
+            list_of_busses.Add(bus2); list_of_busses.Add(bus1);
+            Busses_View.ItemsSource = list_of_busses;
         }
 
-        private void Busses_View_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /*private void Busses_View_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Bus_Information_Window info_window = new Bus_Information_Window(sender as Bus);
-        }
+            info_window.ShowDialog();
+        }*/
 
+        private void Busses_View_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Bus item = (sender as ListView).SelectedItem as Bus;
+            Bus_Information_Window info_window = new Bus_Information_Window(item);
+            info_window.Show();
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Add_Bus_Window add_window = new Add_Bus_Window(this);
@@ -53,11 +60,16 @@ namespace dotNet5781_03B_6877_2459
         }
         internal void Add_Bus(Bus bus)
         {
-            list_of_buses.Add(bus);
+            list_of_busses.Add(bus);
         }
         internal bool Id_Exists(string id)
         {
-            return list_of_buses.Where(T => { return T.Id == id; }).Any();
+            return list_of_busses.Where(T => { return T.Id == id; }).Any();
+        }
+
+        private void MainWindow_Closed(object sender, EventArgs e) 
+        { 
+            Environment.Exit(Environment.ExitCode); 
         }
     }
 }

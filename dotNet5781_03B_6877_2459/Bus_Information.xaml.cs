@@ -20,12 +20,28 @@ namespace dotNet5781_03B_6877_2459
     public partial class Bus_Information_Window : Window
     {
         Bus m_bus;
+
         internal Bus_Information_Window(Bus bus)
         {
             InitializeComponent();
             m_bus = bus;
-            Information_Label.Content = m_bus;
+            Information_Label.Content = m_bus.ToString();
         }
 
+        private void Refuel_Buttom_Click(object sender, RoutedEventArgs e)
+        {
+            if (m_bus.Status == State.Ready)
+            {
+                m_bus.PerformRefueling();   // TODO change status of bus
+            }
+        }
+
+        private void Maintain_Buttom_Click(object sender, RoutedEventArgs e)
+        {
+            if (m_bus.Status == State.Ready)
+            {
+                m_bus.PerformMaintenance(); // TODO same as above
+            }
+        }
     }
 }

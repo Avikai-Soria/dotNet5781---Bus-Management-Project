@@ -21,12 +21,13 @@ namespace dotNet5781_03B_6877_2459
         int overallMileage; // kilometraj
         int fuel;           // 1200 fuel is full
         int currentMileage; // May not pass 20000
-        State Status = State.Ready;
+        State status = State.Ready;
         public string Id
         {
             get => id;
             set => id = value;
         }
+        internal State Status { get => status; set => status = value; }
 
         public Bus(string idg, DateTime creationDateg, int overallMileageg, int fuelg, int currentMileageg)
         {
@@ -39,7 +40,7 @@ namespace dotNet5781_03B_6877_2459
         }
         public override String ToString()
         {
-            String to_return = "Bus id: " + id + "\n" + "Activation date: " + creationDate + "\n" + "The bus's overall mileage is: "
+            String to_return = "Bus id: " + id + "\n" + "Activation date: " + creationDate.ToShortDateString() + "\n" + "Last Maintenance date: " + lastMaintenance.ToShortDateString() + "\nThe bus's overall mileage is: "
                 + overallMileage + "\n" + "Current fuel is: " + fuel + "\n" + "The bus's current mileage is: " + currentMileage + "\n" +
                 "The bus's status is: " + Status + "\n";
             return (to_return);
