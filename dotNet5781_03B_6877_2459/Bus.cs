@@ -10,8 +10,8 @@ namespace dotNet5781_03B_6877_2459
     {
         Ready,
         Busy,
-        On_Refueling,
-        On_Maintenance
+        Refueling,
+        Maintenance
     }
     class Bus
     {
@@ -27,7 +27,7 @@ namespace dotNet5781_03B_6877_2459
             get => id;
             set => id = value;
         }
-        internal State Status { get => status; set => status = value; }
+        public State Status { get => status; set => status = value; }
 
         public Bus(string idg, DateTime creationDateg, int overallMileageg, int fuelg, int currentMileageg)
         {

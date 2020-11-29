@@ -35,7 +35,9 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="{Binding Id}" Grid.Column="0"/>
                             <StackPanel Orientation="Horizontal" Grid.Column="3">
-                                <Button Name="Maintain_Buttom" Content="Maintain Bus" Margin="0,0,5,0">
+                                <Label Name="Status_Label" Content="{Binding Status}">
+                                </Label>
+                                <Button Name="Maintain_Buttom" Content="Maintain Bus" Margin="0,0,15,0">
                                 </Button>
                                 <Button Name="Travel_Buttom" Content="Send bus">
                                 </Button>

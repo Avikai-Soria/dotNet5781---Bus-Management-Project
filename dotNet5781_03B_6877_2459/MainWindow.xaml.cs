@@ -21,7 +21,7 @@ namespace dotNet5781_03B_6877_2459
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Bus> list_of_busses = new ObservableCollection<Bus>();
+        internal ObservableCollection<Bus> list_of_busses = new ObservableCollection<Bus>();
         public MainWindow()
         {
             InitializeComponent();
@@ -40,17 +40,10 @@ namespace dotNet5781_03B_6877_2459
             list_of_busses.Add(bus2); list_of_busses.Add(bus1);
             Busses_View.ItemsSource = list_of_busses;
         }
-
-        /*private void Busses_View_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Bus_Information_Window info_window = new Bus_Information_Window(sender as Bus);
-            info_window.ShowDialog();
-        }*/
-
         private void Busses_View_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Bus item = (sender as ListView).SelectedItem as Bus;
-            Bus_Information_Window info_window = new Bus_Information_Window(item);
+            Bus_Information_Window info_window = new Bus_Information_Window(this, item);
             info_window.Show();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -66,10 +59,14 @@ namespace dotNet5781_03B_6877_2459
         {
             return list_of_busses.Where(T => { return T.Id == id; }).Any();
         }
-
+        internal void Update_List()
+        {
+            
+        }
         private void MainWindow_Closed(object sender, EventArgs e) 
         { 
             Environment.Exit(Environment.ExitCode); 
         }
+        
     }
 }
