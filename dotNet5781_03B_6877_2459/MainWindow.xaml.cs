@@ -43,7 +43,7 @@ namespace dotNet5781_03B_6877_2459
 
         private void Busses_View_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Bus_Information_Window info_window = new Bus_Information_Window(sender as Bus);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -40,7 +40,8 @@ namespace dotNet5781_03B_6877_2459
         public override String ToString()
         {
             String to_return = "Bus id: " + id + "\n" + "Activation date: " + creationDate + "\n" + "The bus's overall mileage is: "
-                + overallMileage + "\n" + "Current fuel is: " + fuel + "\n" + "The bus's current mileage is: " + currentMileage + "\n" + "\n";
+                + overallMileage + "\n" + "Current fuel is: " + fuel + "\n" + "The bus's current mileage is: " + currentMileage + "\n" +
+                "The bus's status is: " + Status + "\n";
             return (to_return);
         }
         public bool IsQualified()

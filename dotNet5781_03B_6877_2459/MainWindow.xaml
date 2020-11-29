@@ -21,8 +21,8 @@
                 <ColumnDefinition Width="193*"/>
             </Grid.ColumnDefinitions >
             <ListView Name="Busses_View" HorizontalAlignment="Left" Grid.Column="0" VerticalAlignment="Top"
-                      Height="372" Width="599" SelectionChanged="Busses_View_SelectionChanged"
-                      ItemsSource="{Binding}" FontSize="36"
+                      Height="372" Width="599" SelectionMode="Single" SelectionChanged="Busses_View_SelectionChanged"
+                      ItemsSource="{Binding}" FontSize="36"  
                       >
                 <ListView.ItemTemplate>
                     <DataTemplate>
