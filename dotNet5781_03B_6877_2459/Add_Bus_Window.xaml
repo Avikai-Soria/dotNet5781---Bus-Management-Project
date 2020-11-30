@@ -13,11 +13,5 @@
         <DatePicker Name="Bus_CD_insert" Height="36" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" FontSize="24"/>
         <Button Content="Click here when you are done"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" Width="300" Click="Button_Click" FontSize="20"/>
         <Label Name="ERROR_label" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-
-
-
-
-
-
     </StackPanel>
 </Window>

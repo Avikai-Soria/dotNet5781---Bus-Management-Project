@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +23,7 @@ namespace dotNet5781_03B_6877_2459
     /// </summary>
     public partial class MainWindow : Window
     {
-        internal ObservableCollection<Bus> list_of_busses = new ObservableCollection<Bus>();
+        internal BusObservableCollection list_of_busses = new BusObservableCollection();
         public MainWindow()
         {
             InitializeComponent();
@@ -38,15 +40,23 @@ namespace dotNet5781_03B_6877_2459
             list_of_busses.Add(bus10); list_of_busses.Add(bus9); list_of_busses.Add(bus8); list_of_busses.Add(bus7);
             list_of_busses.Add(bus6); list_of_busses.Add(bus5); list_of_busses.Add(bus4); list_of_busses.Add(bus3);
             list_of_busses.Add(bus2); list_of_busses.Add(bus1);
+            foreach (Bus bus in list_of_busses)
+                bus.ValueChange += Bus_ValueChange;
             Busses_View.ItemsSource = list_of_busses;
         }
+
+        private void Bus_ValueChange(object sender, EventArgs e)
+        {
+            list_of_busses.ItemChange();
+        }
+
         private void Busses_View_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Bus item = (sender as ListView).SelectedItem as Bus;
             Bus_Information_Window info_window = new Bus_Information_Window(this, item);
             info_window.Show();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
             Add_Bus_Window add_window = new Add_Bus_Window(this);
             add_window.ShowDialog();
@@ -59,14 +69,33 @@ namespace dotNet5781_03B_6877_2459
         {
             return list_of_busses.Where(T => { return T.Id == id; }).Any();
         }
-        internal void Update_List()
+        private void Travel_Buttom_Click(object sender, RoutedEventArgs e)
         {
-            
+            var elem = sender as FrameworkElement;
+            Bus item = elem.DataContext as Bus;
+            Travel_Window travel_Window = new Travel_Window(this, item);
+            travel_Window.ShowDialog();
+        }
+
+        private void Refueling_Buttom_Click(object sender, RoutedEventArgs e)
+        {
+            var elem = sender as FrameworkElement;
+            Bus item = elem.DataContext as Bus;                              // This doesn't work, need to actually select the item
+            Bus_Information_Window info_window = new Bus_Information_Window(this, item);
+            info_window.Refuel_Buttom_Click(sender, e);
+        }
+        internal void Unavailable_Bus(Bus bus)
+        {
+            if (bus.Status==State.Busy)
+                MessageBox.Show("Actions can't be done on this bus right now since it's on a travel");
+            if (bus.Status == State.Refueling)
+                MessageBox.Show("Actions can't be done on this bus right now since it's refueling");
+            if (bus.Status == State.Maintained)
+                MessageBox.Show("Actions can't be done on this bus right now since it's maintained");
         }
         private void MainWindow_Closed(object sender, EventArgs e) 
         { 
             Environment.Exit(Environment.ExitCode); 
         }
-        
     }
 }

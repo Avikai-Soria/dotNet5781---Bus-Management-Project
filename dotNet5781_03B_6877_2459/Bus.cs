@@ -11,9 +11,9 @@ namespace dotNet5781_03B_6877_2459
         Ready,
         Busy,
         Refueling,
-        Maintenance
+        Maintained
     }
-    class Bus
+    class Bus 
     {
         string id;
         DateTime creationDate;
@@ -21,13 +21,24 @@ namespace dotNet5781_03B_6877_2459
         int overallMileage; // kilometraj
         int fuel;           // 1200 fuel is full
         int currentMileage; // May not pass 20000
+        string timer;
+        string print;
         State status = State.Ready;
+        public event EventHandler ValueChange;
+        public void Bus_ValueChange()
+        {
+            if (ValueChange != null)
+                ValueChange(this, null);
+        }
         public string Id
         {
             get => id;
             set => id = value;
         }
-        public State Status { get => status; set => status = value; }
+        public State Status { get => status; set { status = value; Bus_ValueChange(); } }
+        public string Timer { get => timer; set { timer = value; Bus_ValueChange(); } }
+
+        public string Print { get => print; set { print = value; Bus_ValueChange(); } }
 
         public Bus(string idg, DateTime creationDateg, int overallMileageg, int fuelg, int currentMileageg)
         {
@@ -37,6 +48,7 @@ namespace dotNet5781_03B_6877_2459
             overallMileage = overallMileageg;
             fuel = fuelg;
             currentMileage = currentMileageg;
+            print = this.ToString();
         }
         public override String ToString()
         {

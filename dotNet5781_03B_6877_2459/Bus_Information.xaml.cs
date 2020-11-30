@@ -24,16 +24,24 @@ namespace dotNet5781_03B_6877_2459
         Bus m_bus;
         MainWindow main;
         BackgroundWorker refuel_worker;
+        BackgroundWorker maintain_worker;
         
         internal Bus_Information_Window(MainWindow main_g , Bus bus)
         {
             InitializeComponent();
             main = main_g;
             m_bus = bus;
-            Information_Label.Content = m_bus.ToString();
+            MainGrid.DataContext = bus;
+            bus.ValueChange += Bus_ValueChange;
         }
 
-        private void Refuel_Buttom_Click(object sender, RoutedEventArgs e)
+        private void Bus_ValueChange(object sender, EventArgs e)
+        {
+            Timer_label.GetBindingExpression(Label.ContentProperty).UpdateTarget();
+            Information_Label.GetBindingExpression(Label.ContentProperty).UpdateTarget();
+        }
+
+        internal void Refuel_Buttom_Click(object sender, RoutedEventArgs e)
         {
             if (m_bus.Status == State.Ready)
             {
@@ -45,6 +53,8 @@ namespace dotNet5781_03B_6877_2459
                 refuel_worker.WorkerReportsProgress = true;
                 refuel_worker.RunWorkerAsync();
             }
+            else
+                main.Unavailable_Bus(m_bus);
         }
         private void Refuel_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -59,24 +69,54 @@ namespace dotNet5781_03B_6877_2459
         private void Refuel_ProgressChanged(object sender, ProgressChangedEventArgs s)
         {
             TimeSpan t = TimeSpan.FromSeconds(s.ProgressPercentage * 10 * 60);
-            Information_Label.Content = m_bus.ToString();
-            Timer_label.Content = string.Format("{0:D2}h:{1:D2}m", t.Hours, t.Minutes);
+            m_bus.Timer = string.Format("{0:D2}h:{1:D2}m", t.Hours + t.Days * 24, t.Minutes);
+            m_bus.Print = m_bus.ToString();
         }
         private void Refuel_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            Timer_label.Content = "Finish!";
+            m_bus.Timer = "";
             m_bus.PerformRefueling();
             m_bus.Status = State.Ready;
-            Information_Label.Content = m_bus.ToString();
-
+            m_bus.Print = m_bus.ToString();
         }
 
         private void Maintain_Buttom_Click(object sender, RoutedEventArgs e)
         {
             if (m_bus.Status == State.Ready)
             {
-                m_bus.PerformMaintenance(); // TODO same as above
+                m_bus.Status = State.Maintained;
+                maintain_worker = new BackgroundWorker();
+                maintain_worker.DoWork += Maintain_DoWork;
+                maintain_worker.ProgressChanged += Maintain_ProgressChanged;
+                maintain_worker.RunWorkerCompleted += Maintain_RunWorkerCompleted;
+                maintain_worker.WorkerReportsProgress = true;
+                maintain_worker.RunWorkerAsync();
             }
+            else
+                main.Unavailable_Bus(m_bus);
+        }
+        private void Maintain_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            while (stopwatch.ElapsedMilliseconds < 144000)
+            {
+                maintain_worker.ReportProgress((int)(144000 - stopwatch.ElapsedMilliseconds) / 1000);
+                System.Threading.Thread.Sleep(1000);
+            }
+        }
+        private void Maintain_ProgressChanged(object sender, ProgressChangedEventArgs s)
+        {
+            TimeSpan t = TimeSpan.FromSeconds(s.ProgressPercentage * 10 * 60);
+            m_bus.Timer = string.Format("{0:D2}h:{1:D2}m", t.Hours + t.Days * 24, t.Minutes);
+            m_bus.Print = m_bus.ToString();
+        }
+        private void Maintain_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            m_bus.Timer = "";
+            m_bus.PerformMaintenance();
+            m_bus.Status = State.Ready;
+            m_bus.Print = m_bus.ToString();
         }
     }
 }

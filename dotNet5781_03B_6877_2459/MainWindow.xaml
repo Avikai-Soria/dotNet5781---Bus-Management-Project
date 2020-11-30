@@ -35,11 +35,13 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="{Binding Id}" Grid.Column="0"/>
                             <StackPanel Orientation="Horizontal" Grid.Column="3">
+                                <Label Name="Timer_Label" Content="{Binding Timer}">
+                                </Label>
                                 <Label Name="Status_Label" Content="{Binding Status}">
                                 </Label>
-                                <Button Name="Maintain_Buttom" Content="Maintain Bus" Margin="0,0,15,0">
+                                <Button Name="Refueling_Buttom" Content="Refuel Bus" Margin="0,0,15,0" Click="Refueling_Buttom_Click">
                                 </Button>
-                                <Button Name="Travel_Buttom" Content="Send bus">
+                                <Button Name="Travel_Buttom" Content="Send bus" Click="Travel_Buttom_Click">
                                 </Button>
                             </StackPanel>
                         </Grid>
@@ -51,8 +53,8 @@
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
-            <Button Content="Add bus" VerticalAlignment="Top" Width="193"
-                             Grid.Column="1" Height="80" FontSize="36" Click="Button_Click"/>
+            <Button Name="Add_Buttom" Content="Add bus" VerticalAlignment="Top" Width="193"
+                             Grid.Column="1" Height="80" FontSize="36" Click="Add_Button_Click"/>
             
         </Grid>
     </Grid>
