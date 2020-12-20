@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdonisUI;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -21,12 +22,13 @@ namespace dotNet5781_03B_6877_2459
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow :  Window
     {
         internal BusObservableCollection list_of_busses = new BusObservableCollection();
         public MainWindow()
         {
             InitializeComponent();
+            AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.DarkColorScheme);
             Bus bus1 = new Bus("123-45-678", DateTime.Now, 0, 1200, 0);                     // Brand new bus
             Bus bus2 = new Bus("12-345-67", DateTime.Now.AddYears(-3), 40000, 1200, 0);     // Old bus, needs maintenance
             Bus bus3 = new Bus("321-54-876", DateTime.Now.AddYears(-1), 5000, 100, 3000);   // Low on fuel bus

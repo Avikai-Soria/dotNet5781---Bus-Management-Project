@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdonisUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -29,6 +30,7 @@ namespace dotNet5781_03B_6877_2459
         internal Travel_Window(MainWindow main_g, Bus bus)
         {
             InitializeComponent();
+            AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.DarkColorScheme);
             main = main_g;
             m_bus = bus;
         }
@@ -48,8 +50,8 @@ namespace dotNet5781_03B_6877_2459
                 }
                 bus.Status = State.Busy;
                 Random r = new Random();
-                int speed = r.Next(30, 51);
-                m_duration = ((length / speed) * 6);  // length - km, speed - km/h duration - hours 
+                int speed = r.Next(20, 51);
+                m_duration = (int) (((double)length / speed) * 6);  // length - km, speed - km/h duration - hours 
 
                 travel_worker = new BackgroundWorker();
                 travel_worker.DoWork += Travel_DoWork;
@@ -98,7 +100,6 @@ namespace dotNet5781_03B_6877_2459
                     Close();
                     Travel_Bus(m_bus, m_length);
                 }
-
             }
         }
     }

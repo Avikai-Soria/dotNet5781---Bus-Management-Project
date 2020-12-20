@@ -55,7 +55,10 @@
             </ListView>
             <Button Name="Add_Buttom" Content="Add bus" VerticalAlignment="Top" Width="193"
                              Grid.Column="1" Height="80" FontSize="36" Click="Add_Button_Click"/>
-            
         </Grid>
     </Grid>
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
 </Window>
+

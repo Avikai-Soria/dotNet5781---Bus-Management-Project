@@ -10,4 +10,7 @@
         <Label Content="Insert the length of the travel in kilometers below (integer numbers only)" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" />
         <TextBox Name="Lenght_insert" Height="35" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" FontSize="24" KeyDown="Lenght_insert_KeyDown"/>
     </StackPanel>
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
 </Window>

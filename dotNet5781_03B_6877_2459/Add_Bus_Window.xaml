@@ -14,4 +14,8 @@
         <Button Content="Click here when you are done"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" Width="300" Click="Button_Click" FontSize="20"/>
         <Label Name="ERROR_label" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
     </StackPanel>
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
 </Window>
+

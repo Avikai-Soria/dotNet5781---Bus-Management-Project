@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdonisUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace dotNet5781_03B_6877_2459
         public Add_Bus_Window(MainWindow main_g)
         {
             InitializeComponent();
+            AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.DarkColorScheme);
             main = main_g;
         }
         static string fix_id(string id)

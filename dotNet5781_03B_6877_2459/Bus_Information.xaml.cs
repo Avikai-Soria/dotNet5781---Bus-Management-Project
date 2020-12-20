@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdonisUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -29,6 +30,7 @@ namespace dotNet5781_03B_6877_2459
         internal Bus_Information_Window(MainWindow main_g , Bus bus)
         {
             InitializeComponent();
+            AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.DarkColorScheme);
             main = main_g;
             m_bus = bus;
             MainGrid.DataContext = bus;
