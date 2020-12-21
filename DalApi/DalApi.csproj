@@ -44,6 +44,7 @@
     <Compile Include="AdjacentStations.cs" />
     <Compile Include="Bus.cs" />
     <Compile Include="BusOnTrip.cs" />
+    <Compile Include="DalConfig.cs" />
     <Compile Include="DalFactory.cs" />
     <Compile Include="IDAL.cs" />
     <Compile Include="Line.cs" />

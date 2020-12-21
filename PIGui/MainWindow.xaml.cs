@@ -32,7 +32,9 @@ namespace PIGui
 
         private void Admin_Access_Click(object sender, RoutedEventArgs e)
         {
-
+            Admin_Window add_window = new Admin_Window(this);
+            this.Close();
+            add_window.ShowDialog();
         }
     }
 }
