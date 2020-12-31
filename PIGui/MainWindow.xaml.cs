@@ -34,7 +34,7 @@ namespace PIGui
         {
             Admin_Window add_window = new Admin_Window(this);
             this.Close();
-            add_window.ShowDialog();
+            add_window.Show();
         }
     }
 }

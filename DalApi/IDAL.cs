@@ -8,6 +8,8 @@ namespace DalApi
 {
     public interface IDAL
     {
-
+        #region Busses
+        IEnumerable<DO.Bus> GetBuses();
+        #endregion
     }
 }

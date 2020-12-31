@@ -33,7 +33,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Label Content="{Binding Id}" Grid.Column="0"/>
+                            <Label Content="{Binding LicenseNum}" Grid.Column="0"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

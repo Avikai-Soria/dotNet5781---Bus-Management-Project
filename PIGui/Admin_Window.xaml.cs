@@ -24,6 +24,7 @@ namespace PIGui
         {
             InitializeComponent();
             m_main = main;
+
         }
         private void Busses_view_Click(object sender, RoutedEventArgs e)
         {

@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLFactory.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="BLImp.cs" />
+    <Compile Include="Bus.cs" />
+    <Compile Include="DeepCopyUtilities.cs" />
     <Compile Include="IBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
