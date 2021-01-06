@@ -10,7 +10,7 @@ namespace DO
 
     public class Line
     {
-        public int Id { get; set; }
+        public int Id { get; set; } = GenerateSequenceNumber.GetLineId();
         public int Code { get; set; }
         public Areas Area { get; set; }
         public int FirstStation { get; set; }

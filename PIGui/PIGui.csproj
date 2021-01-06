@@ -55,11 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Admin_Busses_View.xaml">
+    <Page Include="Admin_Windows\Admin_Busses_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Admin_Window.xaml">
+    <Page Include="Admin_Windows\Admin_Station_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Windows\Admin_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -67,10 +71,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Admin_Busses_View.xaml.cs">
+    <Compile Include="Admin_Windows\Admin_Busses_View.xaml.cs">
       <DependentUpon>Admin_Busses_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Admin_Window.xaml.cs">
+    <Compile Include="Admin_Windows\Admin_Station_View.xaml.cs">
+      <DependentUpon>Admin_Station_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Windows\Admin_Window.xaml.cs">
       <DependentUpon>Admin_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">

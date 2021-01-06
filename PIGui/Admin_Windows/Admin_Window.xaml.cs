@@ -30,7 +30,6 @@ namespace PIGui
         {
             Admin_Busses_View add_window = new Admin_Busses_View(this);
             add_window.ShowDialog();
-
         }
 
         private void Lines_View_Click(object sender, RoutedEventArgs e)
@@ -40,7 +39,8 @@ namespace PIGui
 
         private void Stations_View_Click(object sender, RoutedEventArgs e)
         {
-
+            Admin_Station_View admin_Station_View = new Admin_Station_View(this);
+            admin_Station_View.ShowDialog();
         }
     }
 }

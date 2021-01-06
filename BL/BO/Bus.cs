@@ -20,5 +20,6 @@ namespace BO
         public double TotalTrip { get; set; }
         public double FuelRemain { get; set; }
         public BusStatus Status { get; set; }
+        public string Print { get; set; }
     }
 }

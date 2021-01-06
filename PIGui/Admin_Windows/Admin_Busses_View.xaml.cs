@@ -35,16 +35,17 @@ namespace PIGui
                 m_buses.Add(bus);
             Busses_View.ItemsSource = m_buses;
         }
-        private void Busses_View_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Busses_View_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Bus item = (sender as ListView).SelectedItem as Bus;
-            //Bus_Information_Window info_window = new Bus_Information_Window(this, item);
-            //info_window.Show();
+            Bus item = (sender as ListView).SelectedItem as Bus;
+            MainGrid.DataContext = item;
         }
 
         private void Update_Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+        
     }
 }

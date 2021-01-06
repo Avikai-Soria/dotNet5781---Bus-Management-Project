@@ -10,5 +10,6 @@ namespace BLApi
     public interface IBL
     {
         IEnumerable<Bus> GetBuses();
+        IEnumerable<Station> GetStations();
     }
 }

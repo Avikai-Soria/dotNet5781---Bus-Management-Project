@@ -41,19 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdjacentStations.cs" />
-    <Compile Include="Bus.cs" />
-    <Compile Include="BusOnTrip.cs" />
+    <Compile Include="DO\AdjacentStations.cs" />
+    <Compile Include="DO\BadBusIdException.cs" />
+    <Compile Include="DO\Bus.cs" />
+    <Compile Include="DO\BusOnTrip.cs" />
     <Compile Include="DalConfig.cs" />
     <Compile Include="DalFactory.cs" />
+    <Compile Include="DO\GenerateSequenceNumber.cs" />
     <Compile Include="IDAL.cs" />
-    <Compile Include="Line.cs" />
-    <Compile Include="LineStation.cs" />
-    <Compile Include="LineTrip.cs" />
+    <Compile Include="DO\Line.cs" />
+    <Compile Include="DO\LineStation.cs" />
+    <Compile Include="DO\LineTrip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Station.cs" />
-    <Compile Include="Trip.cs" />
-    <Compile Include="Users.cs" />
+    <Compile Include="DO\Station.cs" />
+    <Compile Include="DO\Trip.cs" />
+    <Compile Include="DO\Users.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
