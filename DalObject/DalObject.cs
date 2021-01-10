@@ -53,6 +53,7 @@ namespace Dal
             DataSource.s_buses.Remove(bus); // Need to change bus state later to "removed" if I have time.
         }
         #endregion
+
         #region Station CRUD implementations
         public void AddStation(Station station)
         {
@@ -61,7 +62,12 @@ namespace Dal
 
         public Station GetStation(int code)
         {
-            throw new NotImplementedException();
+            Station station = DataSource.s_stations.Find(p => p.Code == code);
+
+            if (station != null)
+                return station.Clone();
+            else
+                throw new DO.BadStationIdException(code, $"bad station code: {code}");
         }
 
         public IEnumerable<Station> GetStations()
@@ -79,6 +85,49 @@ namespace Dal
         {
             throw new NotImplementedException();
         }
+
         #endregion
+
+        #region Line CRUD implementations
+        public IEnumerable<Line> GetLines()
+        {
+            return from line in DataSource.s_lines
+                   select line.Clone();
+        }
+        //public IEnumerable<Line> GetLinesByStation(int code)
+        //{
+        //    return from line in DataSource.s_lines
+        //           where line.
+        //           select line.Clone();
+        //}
+        #endregion
+
+        #region LineStation CRUD implementations
+        public IEnumerable<LineStation> GetLineStations()
+        {
+            return from lineStations in DataSource.s_lineStations
+                   select lineStations.Clone();
+        }
+
+
+        #endregion
+
+        #region AdjacentStations CRUD implementations
+        public AdjacentStations GetAdjStation(int? currStation, int? nextStation)
+        {
+            if (currStation == null || nextStation == null) 
+            {
+                return null; // There's no such adj station between no stations
+            }
+            AdjacentStations adjacent = (from adjstation in DataSource.s_adjacentStations
+                                         where adjstation.Station1 == currStation && adjstation.Station2 == nextStation
+                                         select adjstation).FirstOrDefault(); // Get the adj station between the 2 stations recived
+            if (adjacent != null)
+                return adjacent.Clone();
+            else
+                throw new BadAdjStationsException(currStation, nextStation, $"No such adj exists between: {currStation} and {nextStation}");
+        }
+        #endregion
+
     }
 }

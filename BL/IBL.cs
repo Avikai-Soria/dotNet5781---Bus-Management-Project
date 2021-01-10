@@ -11,5 +11,6 @@ namespace BLApi
     {
         IEnumerable<Bus> GetBuses();
         IEnumerable<Station> GetStations();
+        IEnumerable<Line> GetLines();
     }
 }

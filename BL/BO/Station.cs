@@ -12,6 +12,7 @@ namespace BO
         public string Name { get; set; }
         public double Longitude { get; set; }
         public double Lattitude { get; set; }
+        public List<Line> Lines { get; set; }   // This are all the lines that go through this bus
         public string Print { get; set; }
 
     }

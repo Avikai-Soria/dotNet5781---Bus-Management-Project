@@ -34,12 +34,14 @@ namespace PIGui
             foreach (BO.Station station in bL.GetStations())
                 m_stations.Add(station);
             Stations_View.ItemsSource = m_stations;
+
+            Station_Info.DataContext = m_stations[0];
         }
 
         private void Stations_View_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Station item = (sender as ListView).SelectedItem as Station;
-            MainGrid.DataContext = item;
+            Station_Info.DataContext = item;
         }
 
         private void Add_Buttom_Click(object sender, RoutedEventArgs e)

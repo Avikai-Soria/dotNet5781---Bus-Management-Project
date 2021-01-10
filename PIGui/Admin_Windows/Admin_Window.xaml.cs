@@ -28,13 +28,14 @@ namespace PIGui
         }
         private void Busses_view_Click(object sender, RoutedEventArgs e)
         {
-            Admin_Busses_View add_window = new Admin_Busses_View(this);
-            add_window.ShowDialog();
+            Admin_Busses_View admin_Busses_View = new Admin_Busses_View(this);
+            admin_Busses_View.ShowDialog();
         }
 
         private void Lines_View_Click(object sender, RoutedEventArgs e)
         {
-
+            Admin_Lines_View admin_Lines_View = new Admin_Lines_View(this);
+            admin_Lines_View.ShowDialog();
         }
 
         private void Stations_View_Click(object sender, RoutedEventArgs e)

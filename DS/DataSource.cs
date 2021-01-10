@@ -96,14 +96,14 @@ namespace DS
                                       }).ToList();
                 for(int j=0; j<randomLineStations.Count-1; j++)                 // Initializing prev and next station in each linestation
                 {
-                    if (i > 0) // Can't add prev station to the first station
-                        randomLineStations[i].PrevStation = randomLineStations[i - 1].Station;
+                    if (j > 0) // Can't add prev station to the first station
+                        randomLineStations[j].PrevStation = randomLineStations[j - 1].Station;
                     else
-                        randomLineStations[i].PrevStation = null;
-                    if (i < randomLineStations.Count - 1) // Can't add next station to the last station
-                        randomLineStations[i].NextStation = randomLineStations[i + 1].Station;
+                        randomLineStations[j].PrevStation = null;
+                    if (j < randomLineStations.Count - 1) // Can't add next station to the last station
+                        randomLineStations[j].NextStation = randomLineStations[j + 1].Station;
                     else
-                        randomLineStations[i].NextStation = null;
+                        randomLineStations[j].NextStation = null;
                 }
                 s_lineStations.AddRange(randomLineStations);
                 #endregion
@@ -117,8 +117,8 @@ namespace DS
                         {
                             Station1 = randomStations[j].Code,
                             Station2 = randomStations[j + 1].Code,
-                            Distance = r.Next(50, 250),             // Distance between 50km to 250km
-                            Time = new TimeSpan(r.Next(1, 6), 0, 0) // Time between 1-6 hours
+                            Distance = r.Next(50, 150),             // Distance between 50km to 250km
+                            Time = new TimeSpan(r.Next(1, 2), r.Next(0,60), 0) // Time between 1-2 hours
                         });
                     }
                 }

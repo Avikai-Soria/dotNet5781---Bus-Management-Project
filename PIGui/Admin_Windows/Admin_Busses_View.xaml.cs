@@ -34,11 +34,13 @@ namespace PIGui
             foreach (BO.Bus bus in bL.GetBuses()) 
                 m_buses.Add(bus);
             Busses_View.ItemsSource = m_buses;
+
+            Bus_Info.DataContext = m_buses[0];
         }
         private void Busses_View_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Bus item = (sender as ListView).SelectedItem as Bus;
-            MainGrid.DataContext = item;
+            Bus_Info.DataContext = item;
         }
 
         private void Update_Button_Click(object sender, RoutedEventArgs e)
