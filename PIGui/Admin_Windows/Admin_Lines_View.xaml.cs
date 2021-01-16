@@ -1,4 +1,5 @@
-﻿using BLApi;
+﻿using AdonisUI.Controls;
+using BLApi;
 using BO;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace PIGui
     /// <summary>
     /// Interaction logic for Admin_Lines_View.xaml
     /// </summary>
-    public partial class Admin_Lines_View : Window
+    public partial class Admin_Lines_View : AdonisWindow
     {
         readonly IBL bL = BLFactory.GetBI();
         Admin_Window m_main;
@@ -28,24 +29,19 @@ namespace PIGui
         {
             InitializeComponent();
             m_main = main;
-
             m_lines = new ObservableCollection<Line>();
-            foreach (BO.Line line in bL.GetLines())
-                m_lines.Add(line);
-            Lines_View.ItemsSource = m_lines;
+            Refresh_lines();
 
-            LineStation_View.ItemsSource = m_lines[0].Stations;
-            Lines_Info.DataContext = m_lines[0];
-            LineStation_Info.DataContext = m_lines[0].Stations[0];
         }
-
-        private void Lines_View_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cbLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Line item = (sender as ListView).SelectedItem as Line;
-            Lines_Info.DataContext = item;
-            LineStation_View.ItemsSource = item.Stations;
+            if(m_lines.Count()!=0)
+            {
+                Line item = cbLines.SelectedValue as Line;
+                Lines_Info.DataContext = item;
+                LineStation_View.ItemsSource = item.Stations;
+            }   
         }
-
         private void LineStation_Changed(object sender, SelectionChangedEventArgs e)
         {
             LineStation item = (sender as ListView).SelectedItem as LineStation;
@@ -53,7 +49,59 @@ namespace PIGui
         }
         private void Add_Buttom_Click(object sender, RoutedEventArgs e)
         {
+            Add_Update_Line add_Line = new Add_Update_Line();
+            add_Line.ShowDialog();
+            Refresh_lines();
+        }
+        private void Edit_Buttom_Click(object sender, RoutedEventArgs e)
+        {
+            Line item = cbLines.SelectedValue as Line;
+            Add_Update_Line update_Line = new Add_Update_Line(item);
+            update_Line.ShowDialog();
+            Refresh_lines();
+        }
+        private void Remove_Buttom_Click(object sender, RoutedEventArgs e)
+        {
+            AdonisUI.Controls.MessageBoxResult result = AdonisUI.Controls.MessageBox.Show("Are you sure you want to delete this station?", "Confirmation",
+                                          AdonisUI.Controls.MessageBoxButton.YesNo,
+                                          AdonisUI.Controls.MessageBoxImage.Question);
+            if (result == AdonisUI.Controls.MessageBoxResult.No)
+            {
+                return;
+            }
+            else
+            {
+                Line item = cbLines.SelectedValue as Line;
+                try
+                {
+                    bL.DeleteLine(item);
+                }
+                catch (BadLineIdException ex)
+                {
+                    AdonisUI.Controls.MessageBox.Show(ex.error_msg, "ERROR");
+                    return;
+                }
+                catch (BadLineStationIdException ex)
+                {
+                    AdonisUI.Controls.MessageBox.Show(ex.error_msg, "ERROR");
+                    return;
+                }
+                AdonisUI.Controls.MessageBox.Show("The line was removed successfully!", "Success");
+                Refresh_lines();
+            }
+        }
+        private void Refresh_lines()
+        {
+            m_lines.Clear();
+            foreach (BO.Line line in bL.GetLines())
+                m_lines.Add(line);
+            cbLines.ItemsSource = m_lines;
+            cbLines.DisplayMemberPath = "LineNumber";
+            cbLines.SelectedIndex = 0;
 
+            LineStation_View.ItemsSource = m_lines[0].Stations;
+            Lines_Info.DataContext = m_lines[0];
+            LineStation_Info.DataContext = m_lines[0].Stations[0];
         }
     }
 }

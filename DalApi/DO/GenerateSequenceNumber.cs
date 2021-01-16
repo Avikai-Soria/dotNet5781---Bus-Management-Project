@@ -11,17 +11,22 @@ namespace DO
         private static int s_lineId = 1;
         private static int s_stationCode = 1;
         private static int s_busOnTripId = 1;
-        public static int GetLineId()
+        public static Guid GetLineId()
         {
-            return s_lineId++;
+            //return s_lineId++;
+            return Guid.NewGuid();
+        }
+        public static Guid GetStationID()
+        {
+            return Guid.NewGuid();
         }
         public static int GetStationCode()
         {
             return s_stationCode++;
         }
-        public static int GetBusOnTripId()
+        public static Guid GetBusOnTripId()
         {
-            return s_busOnTripId++;
+            return Guid.NewGuid();
         }
     }
     

@@ -8,10 +8,10 @@ namespace DO
 {
     public class LineStation
     {
-        public int LineId { get; set; }
-        public int Station { get; set; }
+        public Guid LineId { get; set; }
+        public Guid Station { get; set; }
         public int LineStationIndex { get; set; }
-        public int? PrevStation { get; set; }
-        public int? NextStation { get; set; }
+        public Guid? PrevStation { get; set; }
+        public Guid? NextStation { get; set; }
     }
 }

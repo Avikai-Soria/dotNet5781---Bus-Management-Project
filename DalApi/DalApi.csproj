@@ -44,6 +44,8 @@
     <Compile Include="DO\AdjacentStations.cs" />
     <Compile Include="DO\BadAdjStationsException.cs" />
     <Compile Include="DO\BadBusIdException.cs" />
+    <Compile Include="DO\BadLineIdException.cs" />
+    <Compile Include="DO\BadLineStationIdException.cs" />
     <Compile Include="DO\BadStationIdException.cs" />
     <Compile Include="DO\Bus.cs" />
     <Compile Include="DO\BusOnTrip.cs" />

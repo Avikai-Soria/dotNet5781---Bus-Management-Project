@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdonisUI.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace PIGui
     /// <summary>
     /// Interaction logic for Admin_Window.xaml
     /// </summary>
-    public partial class Admin_Window : Window
+    public partial class Admin_Window : AdonisWindow
     {
         MainWindow m_main;
         public Admin_Window(MainWindow main)
@@ -42,6 +43,13 @@ namespace PIGui
         {
             Admin_Station_View admin_Station_View = new Admin_Station_View(this);
             admin_Station_View.ShowDialog();
+        }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

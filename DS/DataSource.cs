@@ -81,7 +81,7 @@ namespace DS
             for(int i=0; i<10; i++)
             {
                 Line line = new Line();
-                line.Code = i + 1;
+                line.LineNumber = i + 1;
                 line.Area = (Areas)r.Next(0, 7);
                 List<Station> randomStations = RandomizeStations();
                 #region LineStation Initializing
@@ -90,11 +90,11 @@ namespace DS
                 randomLineStations = (from station in randomStations            // Initializing only those 3 properties in linestation, the other 2 later
                                       select new LineStation()
                                       {
-                                          LineId = line.Code,
-                                          Station=station.Code,
+                                          LineId = line.Id,
+                                          Station=station.StationID,
                                           LineStationIndex=index++,
                                       }).ToList();
-                for(int j=0; j<randomLineStations.Count-1; j++)                 // Initializing prev and next station in each linestation
+                for(int j=0; j<randomLineStations.Count; j++)                 // Initializing prev and next station in each linestation
                 {
                     if (j > 0) // Can't add prev station to the first station
                         randomLineStations[j].PrevStation = randomLineStations[j - 1].Station;
@@ -111,20 +111,20 @@ namespace DS
                 for(int j=0; j<randomStations.Count-1; j++)
                 {
                     // Checking in case the adj station object already exists
-                    if (s_adjacentStations.Find(adj => adj.Station1 == randomStations[j].Code && adj.Station2 == randomStations[j + 1].Code) == null)
+                    if (s_adjacentStations.Find(adj => adj.Station1 == randomStations[j].StationID && adj.Station2 == randomStations[j + 1].StationID) == null)
                     {
                         s_adjacentStations.Add(new AdjacentStations()
                         {
-                            Station1 = randomStations[j].Code,
-                            Station2 = randomStations[j + 1].Code,
+                            Station1 = randomStations[j].StationID,
+                            Station2 = randomStations[j + 1].StationID,
                             Distance = r.Next(50, 150),             // Distance between 50km to 250km
                             Time = new TimeSpan(r.Next(1, 2), r.Next(0,60), 0) // Time between 1-2 hours
                         });
                     }
                 }
                 #endregion
-                line.FirstStation = randomStations.First().Code;
-                line.LastStation = randomStations.Last().Code;
+                line.FirstStation = randomStations.First().StationID;
+                line.LastStation = randomStations.Last().StationID;
                 s_lines.Add(line);
             }
         }

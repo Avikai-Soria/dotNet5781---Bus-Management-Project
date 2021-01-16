@@ -1,4 +1,5 @@
-﻿using BLApi;
+﻿using AdonisUI.Controls;
+using BLApi;
 using BO;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace PIGui
     /// <summary>
     /// Interaction logic for Admin_Busses_View.xaml
     /// </summary>
-    public partial class Admin_Busses_View : Window
+    public partial class Admin_Busses_View : AdonisWindow
     {
         readonly IBL bL = BLFactory.GetBI();
         Admin_Window m_main;
@@ -45,9 +46,17 @@ namespace PIGui
 
         private void Update_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            AdonisUI.Controls.MessageBox.Show("Work on Bus is canceled for now." , "Work in progress");
         }
 
-        
+        private void Button_Remove_Click(object sender, RoutedEventArgs e)
+        {
+            AdonisUI.Controls.MessageBox.Show("Work on Bus is canceled for now.", "Work in progress");
+        }
+
+        private void Button_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            AdonisUI.Controls.MessageBox.Show("Work on Bus is canceled for now.", "Work in progress");
+        }
     }
 }

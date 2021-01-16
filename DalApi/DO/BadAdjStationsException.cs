@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Dal
+namespace DO
 {
     [Serializable]
     public class BadAdjStationsException : Exception
     {
-        private int? currStation;
-        private int? nextStation;
-        private string v;
+        public Guid? currStation;
+        public Guid? nextStation;
+        public string v;
 
         public BadAdjStationsException()
         {
@@ -22,7 +22,7 @@ namespace Dal
         {
         }
 
-        public BadAdjStationsException(int? currStation, int? nextStation, string v)
+        public BadAdjStationsException(Guid? currStation, Guid? nextStation, string v)
         {
             this.currStation = currStation;
             this.nextStation = nextStation;

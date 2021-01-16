@@ -7,10 +7,27 @@ using System.Threading.Tasks;
 
 namespace BLApi
 {
+    //CRUD Logic:
+    // Create - add new instance
+    // Request - ask for an instance or for a collection
+    // Update - update properties of an instance
+    // Delete - delete an instance
     public interface IBL
     {
+        #region Busses
         IEnumerable<Bus> GetBuses();
+        #endregion
+        #region Stations
         IEnumerable<Station> GetStations();
+        void AddStation(Station station);
+        void UpdateStation(Station station);
+        void DeleteStation(Station station);
+        #endregion
+        #region Lines
+        void AddLine(Line line, List<Station> stations);
         IEnumerable<Line> GetLines();
+        void UpdateLine(Line line, List<Station> stations);
+        void DeleteLine(Line line);
+        #endregion
     }
 }

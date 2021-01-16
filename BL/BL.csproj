@@ -43,6 +43,10 @@
   <ItemGroup>
     <Compile Include="BLFactory.cs" />
     <Compile Include="BLImp.cs" />
+    <Compile Include="BO\BadAdjStationsException.cs" />
+    <Compile Include="BO\BadLineIdException.cs" />
+    <Compile Include="BO\BadLineStationIdException.cs" />
+    <Compile Include="BO\BadStationIdException.cs" />
     <Compile Include="BO\Bus.cs" />
     <Compile Include="BO\Line.cs" />
     <Compile Include="DeepCopyUtilities.cs" />
@@ -50,12 +54,23 @@
     <Compile Include="BO\LineStation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BO\Station.cs" />
+    <Compile Include="BO\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DalApi\DalApi.csproj">
       <Project>{514f839e-292b-45a6-9292-b40f5d6b50e4}</Project>
       <Name>DalApi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\BLApi.BLFactory.datasource" />
+    <None Include="Properties\DataSources\BLApi.IBL.datasource" />
+    <None Include="Properties\DataSources\BLImp.datasource" />
+    <None Include="Properties\DataSources\BO.Bus.datasource" />
+    <None Include="Properties\DataSources\BO.Line.datasource" />
+    <None Include="Properties\DataSources\BO.LineStation.datasource" />
+    <None Include="Properties\DataSources\BO.Station.datasource" />
+    <None Include="Properties\DataSources\DeepCopyUtilities.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

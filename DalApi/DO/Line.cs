@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    public enum Areas { General, North, South, Center, Jerusalem, Tel_Aviv, Haifa, Beer_Sheva }
+    public enum Areas { כללי, צפון, דרום, מרכז, ירושלים, תל_אביב, חיפה, באר_שבע }
 
     public class Line
     {
-        public int Id { get; set; } = GenerateSequenceNumber.GetLineId();
-        public int Code { get; set; }
+        public Guid Id { get; set; } = GenerateSequenceNumber.GetLineId();
+        public int LineNumber { get; set; }
         public Areas Area { get; set; }
-        public int FirstStation { get; set; }
-        public int LastStation { get; set; }
+        public Guid FirstStation { get; set; }
+        public Guid LastStation { get; set; }
 
     }
 }

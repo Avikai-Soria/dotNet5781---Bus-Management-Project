@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AdonisUI;
+using AdonisUI.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,16 +20,17 @@ namespace PIGui
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : AdonisWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+            AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.DarkColorScheme);
         }
 
         private void User_Access_Click(object sender, RoutedEventArgs e)
         {
-
+            AdonisUI.Controls.MessageBox.Show("This item is canceled. Press admin access instead.", "Work in progress");
         }
 
         private void Admin_Access_Click(object sender, RoutedEventArgs e)
@@ -35,6 +38,25 @@ namespace PIGui
             Admin_Window add_window = new Admin_Window(this);
             this.Close();
             add_window.Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonColor_Click(object sender, RoutedEventArgs e)
+        {
+            if (ButtonColor.Content.ToString() == "Click here to switch to light theme")
+            {
+                AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.LightColorScheme);
+                ButtonColor.Content = "Click here to switch to dark theme";
+            }
+            else
+            {
+                AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.DarkColorScheme);
+                ButtonColor.Content = "Click here to switch to light theme";
+            }
         }
     }
 }

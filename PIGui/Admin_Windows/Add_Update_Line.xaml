@@ -1,0 +1,71 @@
+﻿<controls:AdonisWindow
+    xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PIGui"
+        xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PIGui.Add_Update_Line"
+        mc:Ignorable="d"
+        Title="Add_Update_Line" Height="700" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="lineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Line}, CreateList=True}"/>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Resources>
+
+    <StackPanel>
+        <WrapPanel HorizontalAlignment="Center">
+            <Label VerticalAlignment="Center" Margin="10" HorizontalAlignment="Left" Content="Line number:" FontSize="25"/>
+            <TextBox x:Name="lineNumberTextBox" Width="80" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Left" FontSize="20" HorizontalContentAlignment="Center"/>
+            <Label VerticalAlignment="Center" Grid.Row="1" Margin="10" HorizontalAlignment="Left" Content="Area:" FontSize="25"/>
+            <ComboBox x:Name="cbArea" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Margin="10" ItemsSource="{Binding}" FontSize="20" HorizontalContentAlignment="Center"/>
+            </WrapPanel>
+        <Grid x:Name="Stations_viewer" Margin="20, 50, 20, 50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel x:Name="Source_stations" Grid.Column="0">
+                <Label Content="Stations to add" FontSize="22" HorizontalAlignment="Center" Margin="0,0,0,20"></Label>
+                <ListView x:Name="SourceListView" FlowDirection="RightToLeft"
+                      Height="300" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Name}" FontSize="20"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <Button x:Name="ButtonAddStation" Content="Add station" FontSize="20" Margin="0,20,0,0" Click="ButtonAddStation_Click" Background="Green"/>
+            </StackPanel>
+
+            <StackPanel x:Name="Destination_stations" Grid.Column="1" >
+                <Label Content="Stations in line" FontSize="22" HorizontalAlignment="Center" Margin="0,0,0,20"></Label>
+                <ListView x:Name="DestinationListView" FlowDirection="RightToLeft"
+                      Height="300" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Name}" FontSize="20"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <Button x:Name="ButtonRemoveStation" Content="Remove station" FontSize="20" Margin="0,20,0,0" Click="ButtonRemoveStation_Click" Background="DarkRed"/>
+            </StackPanel>
+            
+        </Grid>
+        <Button x:Name="ButtonAdd" Content="Add line" HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Margin="40,10,0,-62" Height="52" FontSize="24" Click="ButtonAdd_Click" Background="Green"/>
+        <Button x:Name="ButtonUpdate" Grid.Row="5" Content="Update line" HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Margin="40,10,0,-62" Height="52" FontSize="24" Click="ButtonUpdate_Click" Background="DarkGoldenrod"/>
+    </StackPanel>
+    
+
+</controls:AdonisWindow>

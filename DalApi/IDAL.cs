@@ -25,25 +25,32 @@ namespace DalApi
 
         #region Stations
         void AddStation(Station station);
-        Station GetStation(int code);
+        Station GetStation(Guid code);
         IEnumerable<Station> GetStations();
         void UpdateStation(Station station);
-        void DeleteStation(int code);
+        void DeleteStation(Guid code);
         #endregion
 
         #region Line
+        void AddLine(Line lineDO);
         IEnumerable<Line> GetLines();
         //IEnumerable<Line> GetLinesByStation(int code); Will probably not use this
+        void UpdateLine(Line lineDO);
+        void DeleteLine(Guid id);
+
         #endregion
 
         #region LineStation
+        void AddLineStation(LineStation linestation);
         IEnumerable<LineStation> GetLineStations();
+        void DeleteLineStation(LineStation lineStation);
 
         #endregion
 
         #region AdjacentStations
-        AdjacentStations GetAdjStation(int? currStation, int? nextStation);
-
+        void AddAdjStations(AdjacentStations adjacentStations);
+        AdjacentStations GetAdjStation(Guid? currStation, Guid? nextStation);
+        IEnumerable<AdjacentStations> GetAdjStations();
         #endregion
     }
 }

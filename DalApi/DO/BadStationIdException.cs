@@ -6,8 +6,8 @@ namespace DO
     [Serializable]
     public class BadStationIdException : Exception
     {
-        private int code;
-        private string v;
+        public Guid code;
+        public string text;
 
         public BadStationIdException()
         {
@@ -17,10 +17,10 @@ namespace DO
         {
         }
 
-        public BadStationIdException(int code, string v)
+        public BadStationIdException(Guid code, string v)
         {
             this.code = code;
-            this.v = v;
+            this.text = v;
         }
 
         public BadStationIdException(string message, Exception innerException) : base(message, innerException)
