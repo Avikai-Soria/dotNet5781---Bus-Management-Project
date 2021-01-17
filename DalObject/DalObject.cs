@@ -187,9 +187,16 @@ namespace Dal
                    select adjacentstation.Clone();
         }
 
-        
-
-
+        public void UpdateAdjacentStations(AdjacentStations adjStations)
+        {
+            AdjacentStations adjacent = (from adjstation in DataSource.s_adjacentStations
+                                         where adjstation.Station1 == adjStations.Station1 && adjstation.Station2 == adjStations.Station2
+                                         select adjstation).FirstOrDefault(); // Get the adj station between the 2 stations recived
+            if (adjacent == null)
+                throw new DO.BadAdjStationsException(adjacent.Station1, adjacent.Station2, $"No such adj exists between: {adjacent.Station1} and {adjacent.Station2}");
+            adjacent.Distance = adjStations.Distance;
+            adjacent.Time = adjStations.Time;
+        }
         #endregion
 
     }

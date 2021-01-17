@@ -61,6 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Admin_Windows\Add_Update_LineStation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin_Windows\Add_Update_Line.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,6 +93,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Admin_Windows\Add_Update_LineStation.xaml.cs">
+      <DependentUpon>Add_Update_LineStation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin_Windows\Add_Update_Line.xaml.cs">
       <DependentUpon>Add_Update_Line.xaml</DependentUpon>
     </Compile>

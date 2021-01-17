@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PIGui"
         mc:Ignorable="d"
-        Title="Admin_Lines_View" Height="600" Width="1150">
+        Title="Admin_Lines_View" Height="600" Width="1250">
     <Window.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
     </Window.Style>
@@ -39,27 +39,6 @@
                              Grid.Column="0" Height="80" FontSize="22" Click="Remove_Buttom_Click" Margin="20"/>
             </StackPanel>
 
-            <!--<ListView Name="Lines_View"  Grid.Column="0" SelectionMode="Single" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                      ItemsSource="{Binding}" FontSize="24" SelectionChanged="Lines_View_SelectionChanged" FlowDirection="RightToLeft">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Label Content="{Binding LineNumber}" Grid.Column="0"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    </Style>
-                </ListView.ItemContainerStyle>
-            </ListView>-->
-            
             <StackPanel Name="Middle_Stack" Orientation="Vertical" Grid.Column="1" Margin="40,0,20,0">
                 <Label Name="Lines_Info_title" Content="Line's detailed information" VerticalAlignment="Top" FontSize="24" HorizontalAlignment="Left"></Label>
                 <Label Name="Lines_Info" Content="{Binding Print}" VerticalAlignment="Stretch" FontSize="18" HorizontalAlignment="Left"></Label>
@@ -79,6 +58,10 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Label Content="{Binding StationName}" Grid.Column="0"/>
+                            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                                <Button Name="Button_Linestation_Edit" Content="Edit" Background="DarkGoldenrod" Click="Button_Linestation_Edit_Click">
+                                </Button>
+                            </StackPanel>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

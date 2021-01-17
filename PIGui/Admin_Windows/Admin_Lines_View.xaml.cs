@@ -90,6 +90,27 @@ namespace PIGui
                 Refresh_lines();
             }
         }
+        private void Button_Linestation_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            var elem = sender as FrameworkElement;
+            LineStation item = elem.DataContext as LineStation;
+            Line line = cbLines.SelectedValue as Line;
+            //Lines_Info.DataContext = item;
+            //LineStation_View.ItemsSource = item.Stations;
+
+            if (item!= line.Stations.Last())
+            {
+                Add_Update_LineStation add_Update_LineStation = new Add_Update_LineStation(item);
+                add_Update_LineStation.ShowDialog();
+                Refresh_lines();
+            }
+            else
+            {
+                AdonisUI.Controls.MessageBox.Show("You can't insert distance nor duration in the last linestation.", "Invalid button");
+                return;
+            }
+            
+        }
         private void Refresh_lines()
         {
             m_lines.Clear();

@@ -1,0 +1,36 @@
+﻿<controls:AdonisWindow  xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PIGui"
+        xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PIGui.Add_Update_LineStation"
+        mc:Ignorable="d"
+        Title="Add_Update_LineStation" Height="180" Width="260" Loaded="AdonisWindow_Loaded_1">
+    <controls:AdonisWindow.Resources>
+        <CollectionViewSource x:Key="lineStationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:LineStation}, CreateList=True}"/>
+    </controls:AdonisWindow.Resources>
+    <controls:AdonisWindow.Style>
+        <Style TargetType="{x:Type Window}" BasedOn="{StaticResource {x:Type Window}}"/>
+    </controls:AdonisWindow.Style>
+    <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Distance:" FontSize="24"/>
+        <TextBox x:Name="distanceTextBox" Width="120" VerticalAlignment="Center" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Duration:" FontSize="24"/>
+        <TextBox x:Name="durationTextBox" Width="120" VerticalAlignment="Center" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+        <Button x:Name="ButtonUpdate" Grid.Row="5" Content="Update values" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Margin="40,10,0,-62" Grid.RowSpan="2" Grid.ColumnSpan="2" Height="52" Click="ButtonUpdate_Click" FontSize="24" Background="DarkGoldenrod"/>
+    </Grid>
+</controls:AdonisWindow>

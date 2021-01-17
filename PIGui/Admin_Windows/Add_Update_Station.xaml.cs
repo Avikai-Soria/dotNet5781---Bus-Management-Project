@@ -62,7 +62,7 @@ namespace PIGui
             }
             if (!Int32.TryParse(codeTextBox.Text, out int code))
             {
-                AdonisUI.Controls.MessageBox.Show("Code must be a number", "Invalid value");
+                AdonisUI.Controls.MessageBox.Show("Code must be an integer number", "Invalid value");
                 return;
             }
             if (!Double.TryParse(lattitudeTextBox.Text, out double lattitude))

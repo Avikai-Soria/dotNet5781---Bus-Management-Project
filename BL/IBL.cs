@@ -29,5 +29,9 @@ namespace BLApi
         void UpdateLine(Line line, List<Station> stations);
         void DeleteLine(Line line);
         #endregion
+        #region LineStation
+        void UpdateLineStation(LineStation lineStation);
+        #endregion
+
     }
 }

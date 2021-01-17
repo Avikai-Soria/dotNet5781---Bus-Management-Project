@@ -250,7 +250,15 @@ namespace BL
             Line lineBO = new Line();
             lineDO.CopyPropertiesTo(lineBO);
             lineBO.Stations = getLineStations(lineBO.Id);
-            lineBO.Print = "Line number: " + lineBO.LineNumber + "\nArea: " + lineBO.Area;
+            lineBO.OverallDistance = 0;
+            lineBO.OverallDuration = new TimeSpan(0, 0, 0);
+            for(int i=0; i<lineBO.Stations.Count-1; i++)
+            {
+                lineBO.OverallDistance += (double) lineBO.Stations[i].Distance;
+                lineBO.OverallDuration += (TimeSpan)lineBO.Stations[i].Duration;
+            }
+            lineBO.Print = "Line number: " + lineBO.LineNumber + "\nArea: " + lineBO.Area + "\nOverall distance: " + lineBO.OverallDistance
+                + "\nOverall duration: " + lineBO.OverallDuration;
             return lineBO;
         }
         
@@ -284,6 +292,20 @@ namespace BL
                         adjStations?.Distance+"\nDuration from next station: "+adjStations?.Time
                     }
                     ).ToList(); 
+        }
+        public void UpdateLineStation(LineStation lineStation)
+        {
+            DO.AdjacentStations adjStations = dl.GetAdjStation(lineStation.Station, lineStation.NextStation);
+            adjStations.Distance = (double)lineStation.Distance;
+            adjStations.Time = (TimeSpan)lineStation.Duration;
+            try
+            {
+                dl.UpdateAdjacentStations(adjStations);
+            }
+            catch (DO.BadAdjStationsException ex)
+            {
+                throw new BO.BadAdjStationsException(ex.currStation, ex.nextStation, ex.v);
+            }
         }
         #endregion
 
@@ -359,7 +381,6 @@ namespace BL
             }
             return stations;
         }
-
         #endregion
 
     }

@@ -51,6 +51,7 @@ namespace DalApi
         void AddAdjStations(AdjacentStations adjacentStations);
         AdjacentStations GetAdjStation(Guid? currStation, Guid? nextStation);
         IEnumerable<AdjacentStations> GetAdjStations();
+        void UpdateAdjacentStations(AdjacentStations adjStations);
         #endregion
     }
 }

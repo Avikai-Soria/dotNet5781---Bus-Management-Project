@@ -56,7 +56,14 @@ namespace PIGui
             add_Update_Station.ShowDialog();
             Refresh_List();
         }
-
+        private void Button_Update_Click(object sender, RoutedEventArgs e)
+        {
+            var elem = sender as FrameworkElement;
+            Station item = elem.DataContext as Station;
+            Add_Update_Station add_Update_Station = new Add_Update_Station(item);
+            add_Update_Station.ShowDialog();
+            Refresh_List();
+        }
         private void Button_Remove_Click(object sender, RoutedEventArgs e)
         {
             AdonisUI.Controls.MessageBoxResult result = AdonisUI.Controls.MessageBox.Show("Are you sure you want to delete this station?", "Confirmation",
@@ -89,14 +96,7 @@ namespace PIGui
 
             }
         }
-        private void Button_Update_Click(object sender, RoutedEventArgs e)
-        {
-            var elem = sender as FrameworkElement;
-            Station item = elem.DataContext as Station;
-            Add_Update_Station add_Update_Station = new Add_Update_Station(item);
-            add_Update_Station.ShowDialog();
-            Refresh_List();
-        }
+        
         
     }
 }

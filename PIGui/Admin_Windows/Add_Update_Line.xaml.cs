@@ -99,7 +99,7 @@ namespace PIGui
              
             if (!Int32.TryParse(lineNumberTextBox.Text, out int num)) 
             {
-                AdonisUI.Controls.MessageBox.Show("Line number must be a number", "Invalid value");
+                AdonisUI.Controls.MessageBox.Show("Line number must be an integer number", "Invalid value");
                 return;
             }
             if (m_destinationStations.Count < 2) 
