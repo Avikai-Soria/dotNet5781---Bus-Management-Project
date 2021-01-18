@@ -78,7 +78,34 @@ namespace PIGui
                 AdonisUI.Controls.MessageBox.Show("You must select a station to add from the list to your left.", "ERROR");
             }    
         }
+        private void SourceListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Station station = SourceListView.SelectedItem as Station;
+            if (station != null)
+            {
+                m_sourceStations.Remove(station);
+                m_destinationStations.Add(station);
+            }
+            else
+            {
+                AdonisUI.Controls.MessageBox.Show("You must select a station to add from the list to your left.", "ERROR");
+            }
+        }
         private void ButtonRemoveStation_Click(object sender, RoutedEventArgs e)
+        {
+            Station station = DestinationListView.SelectedItem as Station;
+            if (station != null)
+            {
+                m_destinationStations.Remove(station);
+                m_sourceStations.Add(station);
+                RefreshLists();
+            }
+            else
+            {
+                AdonisUI.Controls.MessageBox.Show("You must select a station to remove from the list to your right.", "ERROR");
+            }
+        }
+        private void DestinationListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Station station = DestinationListView.SelectedItem as Station;
             if (station != null)
@@ -188,7 +215,5 @@ namespace PIGui
             // Load data by setting the CollectionViewSource.Source property:
             // lineViewSource.Source = [generic data source]
         }
-
-        
     }
 }

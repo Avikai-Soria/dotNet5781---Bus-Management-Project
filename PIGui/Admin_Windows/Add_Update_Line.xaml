@@ -29,7 +29,7 @@
             <StackPanel x:Name="Source_stations" Grid.Column="0">
                 <Label Content="Stations to add" FontSize="22" HorizontalAlignment="Center" Margin="0,0,0,20"></Label>
                 <ListView x:Name="SourceListView" FlowDirection="RightToLeft"
-                      Height="300" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                      Height="300" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDoubleClick="SourceListView_MouseDoubleClick">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Label Content="{Binding Name}" FontSize="20"/>
@@ -47,7 +47,7 @@
             <StackPanel x:Name="Destination_stations" Grid.Column="1" >
                 <Label Content="Stations in line" FontSize="22" HorizontalAlignment="Center" Margin="0,0,0,20"></Label>
                 <ListView x:Name="DestinationListView" FlowDirection="RightToLeft"
-                      Height="300" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                      Height="300" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDoubleClick="DestinationListView_MouseDoubleClick">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Label Content="{Binding Name}" FontSize="20"/>
