@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+<ArrayOfStation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Station>
+    <StationId>6646900f-c4ac-4bfe-abd0-5ce9dd7c441c</StationId>
+    <Latitude>30.94175661026582</Latitude>
+    <Longitude>30.54113244569913</Longitude>
+    <StationName>בית ספר בר לב/בן יהודה</StationName>
+    <StationNumber>100</StationNumber>
+  </Station>
+  <Station>
+    <StationId>3f7cce7a-c529-4eb3-a200-6b23ae00216b</StationId>
+    <Latitude>30.688024426199508</Latitude>
+    <Longitude>30.161295058280832</Longitude>
+    <StationName>הרצל/צומת בילו</StationName>
+    <StationNumber>101</StationNumber>
+  </Station>
+  <Station>
+    <StationId>e5c44523-c878-4760-96c8-7d6313e04b13</StationId>
+    <Latitude>30.019356700600756</Latitude>
+    <Longitude>30.022440291020292</Longitude>
+    <StationName>הנחשול/הדייגים</StationName>
+    <StationNumber>102</StationNumber>
+  </Station>
+  <Station>
+    <StationId>89398c7a-7f99-4ebe-b28c-c52721500228</StationId>
+    <Latitude>30.131378999041104</Latitude>
+    <Longitude>30.074610641726576</Longitude>
+    <StationName>פריד/ששת הימים</StationName>
+    <StationNumber>103</StationNumber>
+  </Station>
+  <Station>
+    <StationId>3c4d29eb-1a7e-4b96-a17a-dbc94bda247a</StationId>
+    <Latitude>30.292734025648205</Latitude>
+    <Longitude>30.203001880181489</Longitude>
+    <StationName>ת. מרכזית לוד/הורדה</StationName>
+    <StationNumber>104</StationNumber>
+  </Station>
+  <Station>
+    <StationId>f943d765-600e-4bf1-b2ec-2135ecc72b65</StationId>
+    <Latitude>30.083019592837907</Latitude>
+    <Longitude>30.92597653806488</Longitude>
+    <StationName>חנה אברך/וולקני</StationName>
+    <StationNumber>105</StationNumber>
+  </Station>
+  <Station>
+    <StationId>622f1c71-70bf-43c7-b222-2cd2c65753f5</StationId>
+    <Latitude>30.473829456825662</Latitude>
+    <Longitude>30.825206027750486</Longitude>
+    <StationName>הרצל/משה שרת</StationName>
+    <StationNumber>106</StationNumber>
+  </Station>
+  <Station>
+    <StationId>13f2f335-df2e-476b-a7f6-8237f90363a5</StationId>
+    <Latitude>30.99586995038943</Latitude>
+    <Longitude>30.121199534796737</Longitude>
+    <StationName>הבנים/אלי כהן</StationName>
+    <StationNumber>107</StationNumber>
+  </Station>
+  <Station>
+    <StationId>647fac06-5fb0-4dc9-9c73-e8a6a94c0585</StationId>
+    <Latitude>30.845925308692234</Latitude>
+    <Longitude>30.69401225712803</Longitude>
+    <StationName>ויצמן/הבנים</StationName>
+    <StationNumber>108</StationNumber>
+  </Station>
+  <Station>
+    <StationId>245e05ca-656d-44c4-b602-ddd51ae5281f</StationId>
+    <Latitude>30.912204496987258</Latitude>
+    <Longitude>30.054190147227697</Longitude>
+    <StationName>הכלנית/הנרקיס</StationName>
+    <StationNumber>109</StationNumber>
+  </Station>
+  <Station>
+    <StationId>28337ff7-2068-4b4d-9aa4-0d42675115f1</StationId>
+    <Latitude>30.318400396648048</Latitude>
+    <Longitude>30.202551674192097</Longitude>
+    <StationName>אלי כהן/לוחמי הגטאות</StationName>
+    <StationNumber>110</StationNumber>
+  </Station>
+  <Station>
+    <StationId>83a91e86-05ee-4faf-bd13-6a87c4014858</StationId>
+    <Latitude>30.744877420247011</Latitude>
+    <Longitude>30.17931030000528</Longitude>
+    <StationName>שבזי/שבת אחים</StationName>
+    <StationNumber>111</StationNumber>
+  </Station>
+  <Station>
+    <StationId>5b661cc4-f57a-4c10-a2c8-5c4721a7ab36</StationId>
+    <Latitude>30.083599942309597</Latitude>
+    <Longitude>30.680919723436666</Longitude>
+    <StationName>שבזי/ויצמן</StationName>
+    <StationNumber>112</StationNumber>
+  </Station>
+  <Station>
+    <StationId>c062d47a-4f6d-4328-9e57-be49d99e7c6a</StationId>
+    <Latitude>30.636301544791227</Latitude>
+    <Longitude>30.237732642440932</Longitude>
+    <StationName>חיים בר לב/שדרות יצחק רבין</StationName>
+    <StationNumber>113</StationNumber>
+  </Station>
+  <Station>
+    <StationId>d4a93542-1419-4ae1-ae73-d315f423fa5e</StationId>
+    <Latitude>30.030375751680868</Latitude>
+    <Longitude>30.568169227134515</Longitude>
+    <StationName>מרכז לבריאות הנפש לב השרון</StationName>
+    <StationNumber>114</StationNumber>
+  </Station>
+  <Station>
+    <StationId>168360ff-fec4-4db3-b2bd-63fc8ccd93c2</StationId>
+    <Latitude>30.241823608168318</Latitude>
+    <Longitude>30.221672977889735</Longitude>
+    <StationName>הולצמן/המדע</StationName>
+    <StationNumber>115</StationNumber>
+  </Station>
+  <Station>
+    <StationId>d2f1fcab-69f0-43d9-a746-af008ea53d39</StationId>
+    <Latitude>30.621727496209427</Latitude>
+    <Longitude>30.601184034068687</Longitude>
+    <StationName>מחנה צריפין/מועדון</StationName>
+    <StationNumber>116</StationNumber>
+  </Station>
+  <Station>
+    <StationId>9b31ab48-97a1-443b-9e9e-7faf3f98e427</StationId>
+    <Latitude>30.180674512023419</Latitude>
+    <Longitude>30.585539771050932</Longitude>
+    <StationName>הרצל/גולני</StationName>
+    <StationNumber>117</StationNumber>
+  </Station>
+  <Station>
+    <StationId>1414a4bc-cc69-479b-86b2-187b3cda30bd</StationId>
+    <Latitude>30.682861518432787</Latitude>
+    <Longitude>30.31368857310791</Longitude>
+    <StationName>הרותם/הדגניות</StationName>
+    <StationNumber>118</StationNumber>
+  </Station>
+  <Station>
+    <StationId>61597541-1a59-4ee0-a5c2-cbde26090b95</StationId>
+    <Latitude>30.349340534931674</Latitude>
+    <Longitude>30.534899531647049</Longitude>
+    <StationName>הערבה</StationName>
+    <StationNumber>119</StationNumber>
+  </Station>
+  <Station>
+    <StationId>10612b61-e3f9-43cd-9b9b-6105443355a1</StationId>
+    <Latitude>30.17464774808597</Latitude>
+    <Longitude>30.993863990527515</Longitude>
+    <StationName>מבוא הגפן/מורד התאנה</StationName>
+    <StationNumber>120</StationNumber>
+  </Station>
+  <Station>
+    <StationId>189c3ba3-66bc-4682-b28e-e5203704226b</StationId>
+    <Latitude>30.874860495270632</Latitude>
+    <Longitude>30.05972156723017</Longitude>
+    <StationName>מבוא הגפן/ההרחבה</StationName>
+    <StationNumber>121</StationNumber>
+  </Station>
+  <Station>
+    <StationId>7bdb19e1-ad37-471e-823c-be16f0e121e4</StationId>
+    <Latitude>30.35614141000255</Latitude>
+    <Longitude>30.8270195125728</Longitude>
+    <StationName>ההרחבה/הותיקים</StationName>
+    <StationNumber>122</StationNumber>
+  </Station>
+  <Station>
+    <StationId>5896a1fc-d341-4299-b1f4-f46ebc4f0d71</StationId>
+    <Latitude>30.701715633134224</Latitude>
+    <Longitude>30.31219642437631</Longitude>
+    <StationName>רשות שדות התעופה/העליה</StationName>
+    <StationNumber>123</StationNumber>
+  </Station>
+  <Station>
+    <StationId>29ae3c91-d44f-480c-abbb-45340e20f38f</StationId>
+    <Latitude>30.855244307245709</Latitude>
+    <Longitude>30.874766726454144</Longitude>
+    <StationName>כנף/ברוש</StationName>
+    <StationNumber>124</StationNumber>
+  </Station>
+  <Station>
+    <StationId>02461a76-6a15-4d12-abdf-076daaa615f8</StationId>
+    <Latitude>30.472164729829956</Latitude>
+    <Longitude>30.290133771621683</Longitude>
+    <StationName>החבורה/דב הוז</StationName>
+    <StationNumber>125</StationNumber>
+  </Station>
+  <Station>
+    <StationId>cfd15aca-05ba-49e0-b91d-ffb1cd78d020</StationId>
+    <Latitude>30.739085029223506</Latitude>
+    <Longitude>30.800389871373955</Longitude>
+    <StationName>בית הללויה</StationName>
+    <StationNumber>126</StationNumber>
+  </Station>
+  <Station>
+    <StationId>082b475e-3e3f-4c27-88ec-3db40cc179a2</StationId>
+    <Latitude>30.380877813967352</Latitude>
+    <Longitude>30.739204936073723</Longitude>
+    <StationName>הראשונים/כביש 5700</StationName>
+    <StationNumber>127</StationNumber>
+  </Station>
+  <Station>
+    <StationId>50080d66-26c5-44df-92ce-9e36a81e7cd0</StationId>
+    <Latitude>30.796255025452123</Latitude>
+    <Longitude>30.508714126194228</Longitude>
+    <StationName>הגאון בן איש חי/צאלון</StationName>
+    <StationNumber>128</StationNumber>
+  </Station>
+  <Station>
+    <StationId>73a971d2-9c17-4fb2-8312-bf091dd3c8f9</StationId>
+    <Latitude>30.077695115971238</Latitude>
+    <Longitude>30.338436977164093</Longitude>
+    <StationName>עוקשי/לוי אשכול</StationName>
+    <StationNumber>129</StationNumber>
+  </Station>
+  <Station>
+    <StationId>798be006-ab7a-4b09-bf9d-b6227992aab6</StationId>
+    <Latitude>30.386138746229065</Latitude>
+    <Longitude>30.893646356600172</Longitude>
+    <StationName>מנוחה ונחלה/יהודה גורודיסקי</StationName>
+    <StationNumber>130</StationNumber>
+  </Station>
+  <Station>
+    <StationId>13d9123e-d29e-46cd-a10f-9c4a4742c4bc</StationId>
+    <Latitude>30.044234890045708</Latitude>
+    <Longitude>30.72456479851369</Longitude>
+    <StationName>גורודסקי/יחיאל פלדי</StationName>
+    <StationNumber>131</StationNumber>
+  </Station>
+  <Station>
+    <StationId>792c3203-91d5-4020-a8c7-428c96773753</StationId>
+    <Latitude>30.961178272013171</Latitude>
+    <Longitude>30.861346614948168</Longitude>
+    <StationName>דרך מנחם בגין/יעקב חזן</StationName>
+    <StationNumber>132</StationNumber>
+  </Station>
+  <Station>
+    <StationId>9ea289b5-73ce-411e-947c-22f73678bc33</StationId>
+    <Latitude>30.304249041855453</Latitude>
+    <Longitude>30.872645422756971</Longitude>
+    <StationName>דרך הפארק/הרב נריה</StationName>
+    <StationNumber>133</StationNumber>
+  </Station>
+  <Station>
+    <StationId>9dec79ba-b2a5-41bc-94cf-709bfd0f6db2</StationId>
+    <Latitude>30.644531515727067</Latitude>
+    <Longitude>30.410330179338498</Longitude>
+    <StationName>התאנה/הגפן</StationName>
+    <StationNumber>134</StationNumber>
+  </Station>
+  <Station>
+    <StationId>1a4ba84d-0e50-4e7a-8d65-bc756d643204</StationId>
+    <Latitude>30.43833801636395</Latitude>
+    <Longitude>30.532236735584323</Longitude>
+    <StationName>התאנה/האלון</StationName>
+    <StationNumber>135</StationNumber>
+  </Station>
+  <Station>
+    <StationId>8cc2285d-10dd-40a8-863b-1ec34328ca36</StationId>
+    <Latitude>30.344671722196356</Latitude>
+    <Longitude>30.377304965340208</Longitude>
+    <StationName>דרך הפרחים/יסמין</StationName>
+    <StationNumber>136</StationNumber>
+  </Station>
+  <Station>
+    <StationId>64a73592-cfb7-4cbe-a976-0a7cdcdf8127</StationId>
+    <Latitude>30.879542399141723</Latitude>
+    <Longitude>30.324536406120536</Longitude>
+    <StationName>יצחק רבין/פנחס ספיר</StationName>
+    <StationNumber>137</StationNumber>
+  </Station>
+  <Station>
+    <StationId>5d0cd516-b969-4686-ba80-5c20b673d2a2</StationId>
+    <Latitude>30.327691178921466</Latitude>
+    <Longitude>30.685155853016841</Longitude>
+    <StationName>מנחם בגין/יצחק רבין</StationName>
+    <StationNumber>138</StationNumber>
+  </Station>
+  <Station>
+    <StationId>fc45b010-0273-485d-a389-84f9eb467cf1</StationId>
+    <Latitude>30.823168890002727</Latitude>
+    <Longitude>30.256580429736797</Longitude>
+    <StationName>חיים הרצוג/דולב</StationName>
+    <StationNumber>139</StationNumber>
+  </Station>
+  <Station>
+    <StationId>c923eef9-30de-4590-a9a0-7322c5e237a8</StationId>
+    <Latitude>30.979204090302439</Latitude>
+    <Longitude>30.324105120414917</Longitude>
+    <StationName>בית ספר גוונים/ארז</StationName>
+    <StationNumber>140</StationNumber>
+  </Station>
+  <Station>
+    <StationId>76253ab4-87d4-4c18-a38d-7e3db126ded0</StationId>
+    <Latitude>30.382488335195227</Latitude>
+    <Longitude>30.155609025226724</Longitude>
+    <StationName>דרך האילנות/אלון</StationName>
+    <StationNumber>141</StationNumber>
+  </Station>
+  <Station>
+    <StationId>53a98048-ae21-457e-86ad-100c547e0979</StationId>
+    <Latitude>30.096004497304563</Latitude>
+    <Longitude>30.951689836546635</Longitude>
+    <StationName>דרך האילנות/מנחם בגין</StationName>
+    <StationNumber>142</StationNumber>
+  </Station>
+  <Station>
+    <StationId>5ffd1588-842f-41e7-b21e-78eccd76d254</StationId>
+    <Latitude>30.482587948666229</Latitude>
+    <Longitude>30.821337624835472</Longitude>
+    <StationName>העצמאות/וייצמן</StationName>
+    <StationNumber>143</StationNumber>
+  </Station>
+  <Station>
+    <StationId>df701b14-e73b-4994-92df-6a7a7cb80646</StationId>
+    <Latitude>30.220306220101335</Latitude>
+    <Longitude>30.441469575949696</Longitude>
+    <StationName>וייצמן/מרבד הקסמים</StationName>
+    <StationNumber>144</StationNumber>
+  </Station>
+  <Station>
+    <StationId>639e4988-1da6-4500-af6d-5ee8fe5d13db</StationId>
+    <Latitude>30.78928474559881</Latitude>
+    <Longitude>30.174147392238559</Longitude>
+    <StationName>צאלה/אלמוג</StationName>
+    <StationNumber>145</StationNumber>
+  </Station>
+  <Station>
+    <StationId>e5ef1a4a-df1a-4f81-b615-90a2b39f75e2</StationId>
+    <Latitude>30.235993457136672</Latitude>
+    <Longitude>30.01090355776758</Longitude>
+    <StationName>גן חצב/צאלה</StationName>
+    <StationNumber>146</StationNumber>
+  </Station>
+  <Station>
+    <StationId>0155c463-158a-4157-a6a2-31d171075ede</StationId>
+    <Latitude>30.148760785417984</Latitude>
+    <Longitude>30.2810013914858</Longitude>
+    <StationName>פינס/לוינסון</StationName>
+    <StationNumber>147</StationNumber>
+  </Station>
+  <Station>
+    <StationId>7300ff99-360f-4142-966f-96670419ebbf</StationId>
+    <Latitude>30.949629100481808</Latitude>
+    <Longitude>30.150295696756942</Longitude>
+    <StationName>פיינברג/שכביץ</StationName>
+    <StationNumber>148</StationNumber>
+  </Station>
+  <Station>
+    <StationId>220d6aee-6539-4039-b6b6-0d548526d640</StationId>
+    <Latitude>30.098543295217</Latitude>
+    <Longitude>30.494794795054382</Longitude>
+    <StationName>הירדן/דן</StationName>
+    <StationNumber>149</StationNumber>
+  </Station>
+</ArrayOfStation>

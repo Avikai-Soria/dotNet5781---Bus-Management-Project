@@ -12,13 +12,15 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
         <Label Content="Admin mangement window" Grid.Row="0" HorizontalAlignment= "Stretch"
                 VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontFamily="Aharoni" Margin="0,40,0,0"/>
         <Label Content="Click the button of the element you would like to see" Grid.Row="0" HorizontalAlignment= "Stretch"
                 VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontFamily="Aharoni" Margin="0,120,0,0"/>
+        <Button x:Name="Simulator_Button" Content="Start simulaion!" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="150" Height="50" FontSize="18"
+                FontFamily="Tw Cen MT Condensed Extra Bold" Click="Simulator_Button_Click"/>
         <Button x:Name="ButtonBack" Content="Go back to main window" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200"
                 Height="50" FontSize="18" FontFamily="Tw Cen MT Condensed Extra Bold" Click="ButtonBack_Click"/>
 

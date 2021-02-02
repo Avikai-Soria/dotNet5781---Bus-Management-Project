@@ -120,9 +120,13 @@ namespace PIGui
             cbLines.DisplayMemberPath = "LineNumber";
             cbLines.SelectedIndex = 0;
 
-            LineStation_View.ItemsSource = m_lines[0].Stations;
-            Lines_Info.DataContext = m_lines[0];
-            LineStation_Info.DataContext = m_lines[0].Stations[0];
+            if(m_lines.Any())
+            {
+                LineStation_View.ItemsSource = m_lines[0].Stations;
+                Lines_Info.DataContext = m_lines[0];
+                LineStation_Info.DataContext = m_lines[0].Stations[0];
+            }
+
         }
     }
 }

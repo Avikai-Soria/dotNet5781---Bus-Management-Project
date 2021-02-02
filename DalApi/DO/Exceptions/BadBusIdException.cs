@@ -6,7 +6,7 @@ namespace DO
     [Serializable]
     public class BadBusIdException : Exception
     {
-        private int licenseNum;
+        private string licenseNum;
         private string v;
 
         public BadBusIdException()
@@ -17,7 +17,7 @@ namespace DO
         {
         }
 
-        public BadBusIdException(int licenseNum, string v)
+        public BadBusIdException(string licenseNum, string v)
         {
             this.licenseNum = licenseNum;
             this.v = v;

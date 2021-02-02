@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BO\BadLineTripIdException.cs" />
     <Compile Include="BLFactory.cs" />
     <Compile Include="BLImp.cs" />
     <Compile Include="BO\BadAdjStationsException.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="DeepCopyUtilities.cs" />
     <Compile Include="IBL.cs" />
     <Compile Include="BO\LineStation.cs" />
+    <Compile Include="BO\MyStopwatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BO\Station.cs" />
     <Compile Include="BO\User.cs" />

@@ -3,9 +3,12 @@ using DO;
 using DS;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace Dal
 {
@@ -26,7 +29,7 @@ namespace Dal
                 throw new DO.BadBusIdException(bus.LicenseNum, "Duplicate bus License Number");
             DataSource.s_buses.Add(bus.Clone());
         }
-        public Bus GetBus(int licensenum)
+        public Bus GetBus(string licensenum)
         {
             Bus bus = DataSource.s_buses.Find(p => p.LicenseNum == licensenum);
 
@@ -45,7 +48,7 @@ namespace Dal
         {
             throw new NotImplementedException();
         }
-        public void DeleteBus(int licensenum)
+        public void DeleteBus(string licensenum)
         {
             Bus bus = DataSource.s_buses.FirstOrDefault(p => p.LicenseNum == licensenum);
             if (bus == null)
@@ -197,7 +200,24 @@ namespace Dal
             adjacent.Distance = adjStations.Distance;
             adjacent.Time = adjStations.Time;
         }
-        #endregion
 
+
+        #endregion
+        #region TripLine CRUD implementations
+        public void AddLineTrip(LineTrip lineTrip)
+        {
+            DataSource.s_lineTrips.Add(lineTrip.Clone());
+        }
+        public IEnumerable<LineTrip> GetLineTrips()
+        {
+            return from lineTrip in DataSource.s_lineTrips
+                   select lineTrip.Clone();
+        }
+
+        public void DeleteLineTrip(Guid code)
+        {
+            DataSource.s_lineTrips.RemoveAll(i => i.LineId == code);
+        }
+        #endregion
     }
 }

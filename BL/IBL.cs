@@ -32,6 +32,10 @@ namespace BLApi
         #region LineStation
         void UpdateLineStation(LineStation lineStation);
         #endregion
+        #region Simulation
+        void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime);
+        void StopSimulator();
+        #endregion
 
     }
 }

@@ -16,6 +16,7 @@ namespace BO
         public Guid FirstStation { get; set; }
         public Guid LastStation { get; set; }
         public List<LineStation> Stations { get; set; }
+        public List<TimeSpan> StartAts { get; set; }
         public double OverallDistance { get; set; }
         public TimeSpan OverallDuration { get; set; }
         public string Print { get; set; }

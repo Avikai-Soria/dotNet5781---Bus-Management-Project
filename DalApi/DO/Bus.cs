@@ -15,7 +15,7 @@ namespace DO
     }
     public class Bus
     {
-        public int LicenseNum { get; set; }
+        public string LicenseNum { get; set; }
         public DateTime FromDate { get; set; }
         public double TotalTrip { get; set; }
         public double FuelRemain { get; set; }

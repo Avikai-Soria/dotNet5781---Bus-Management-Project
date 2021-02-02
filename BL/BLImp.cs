@@ -161,6 +161,18 @@ namespace BL
             {
                 throw new BO.BadAdjStationsException(ex.currStation, ex.nextStation, ex.v);
             }
+            List<DO.LineTrip> lineTripsDO = GenerateLineTrips(lineBO.Id);
+            try
+            {
+                foreach (DO.LineTrip lineTrip in lineTripsDO)
+                {
+                    dl.AddLineTrip(lineTrip);
+                }
+            }
+            catch (DO.BadLineTripIdException ex)
+            {
+                throw new BO.BadLineTripIdException(ex.lineId, ex.v);
+            }
 
         }
 
@@ -235,6 +247,7 @@ namespace BL
             {
                 throw new BO.BadLineStationIdException(ex.lineId, ex.stationId, ex.v);
             }
+            dl.DeleteLineTrip(line.Id);
             try
             {
                 dl.DeleteLine(line.Id);
@@ -250,6 +263,7 @@ namespace BL
             Line lineBO = new Line();
             lineDO.CopyPropertiesTo(lineBO);
             lineBO.Stations = getLineStations(lineBO.Id);
+            lineBO.StartAts = getStartTimes(lineBO.Id);
             lineBO.OverallDistance = 0;
             lineBO.OverallDuration = new TimeSpan(0, 0, 0);
             for(int i=0; i<lineBO.Stations.Count-1; i++)
@@ -258,41 +272,16 @@ namespace BL
                 lineBO.OverallDuration += (TimeSpan)lineBO.Stations[i].Duration;
             }
             lineBO.Print = "Line number: " + lineBO.LineNumber + "\nArea: " + lineBO.Area + "\nOverall distance: " + lineBO.OverallDistance
-                + "\nOverall duration: " + lineBO.OverallDuration;
+                + "\nOverall duration: " + lineBO.OverallDuration + "\nTaking off at: ";
+            foreach(TimeSpan time in lineBO.StartAts)
+            {
+                lineBO.Print +="\n" + time + " ";
+            }
             return lineBO;
         }
-        
         #endregion
 
         #region LineStations
-
-        /// <summary>
-        /// This method should mostly serve lineDoBoAdapter
-        /// </summary>
-        /// <param name="lineId"> The line's id which we want to take linestations of </param>
-        /// <returns></returns>
-        List<LineStation> getLineStations(Guid lineId)
-        {
-            return (from lineStation in dl.GetLineStations() // Every linestation exists
-                    where lineStation.LineId == lineId
-                    let station = dl.GetStation(lineStation.Station)  // The actual station that have this ID
-                    let adjStations = dl.GetAdjStation(lineStation.Station, lineStation.NextStation)
-                    select new LineStation()
-                    {
-                        LineId=lineStation.LineId,
-                        Station=lineStation.Station,
-                        StationName=station.Name,
-                        StationCode=station.Code,
-                        LineStationIndex=lineStation.LineStationIndex,
-                        PrevStation=lineStation.PrevStation,
-                        NextStation=lineStation.NextStation,
-                        Distance=adjStations?.Distance,
-                        Duration=adjStations?.Time,
-                        Print="Name: "+station.Name+"\nCode: "+ station.Code + "\nIndex: "+lineStation.LineStationIndex+"\nDistance from next station: " +
-                        adjStations?.Distance+"\nDuration from next station: "+adjStations?.Time
-                    }
-                    ).ToList(); 
-        }
         public void UpdateLineStation(LineStation lineStation)
         {
             DO.AdjacentStations adjStations = dl.GetAdjStation(lineStation.Station, lineStation.NextStation);
@@ -307,8 +296,46 @@ namespace BL
                 throw new BO.BadAdjStationsException(ex.currStation, ex.nextStation, ex.v);
             }
         }
+        /// <summary>
+        /// This method should mostly serve lineDoBoAdapter
+        /// </summary>
+        /// <param name="lineId"> The line's id which we want to take linestations of </param>
+        /// <returns></returns>
+        List<LineStation> getLineStations(Guid lineId)
+        {
+            return (from lineStation in dl.GetLineStations() // Every linestation exists
+                    where lineStation.LineId == lineId
+                    let station = dl.GetStation(lineStation.Station)  // The actual station that have this ID
+                    let adjStations = dl.GetAdjStation(lineStation.Station, lineStation.NextStation)
+                    select new LineStation()
+                    {
+                        LineId = lineStation.LineId,
+                        Station = lineStation.Station,
+                        StationName = station.Name,
+                        StationCode = station.Code,
+                        LineStationIndex = lineStation.LineStationIndex,
+                        PrevStation = lineStation.PrevStation,
+                        NextStation = lineStation.NextStation,
+                        Distance = adjStations?.Distance,
+                        Duration = adjStations?.Time,
+                        Print = "Name: " + station.Name + "\nCode: " + station.Code + "\nIndex: " + lineStation.LineStationIndex + "\nDistance from next station: " +
+                        adjStations?.Distance + "\nDuration from next station: " + adjStations?.Time
+                    }
+                    ).ToList();
+        }
         #endregion
+        #region Simulation
+        public void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime)
+        {
+            MyStopwatch.Instance.m_action += updateTime;
+            MyStopwatch.Instance.StartCouting(startTime, rate);
+        }
 
+        public void StopSimulator()
+        {
+            MyStopwatch.Instance.StopCounting();
+        }
+        #endregion
         #region Tool methods
         private List<Line> GetLinesByStation(Guid id)
         {
@@ -380,6 +407,24 @@ namespace BL
                 stations.Add(stationBO);
             }
             return stations;
+        }
+        private List<DO.LineTrip> GenerateLineTrips(Guid id)
+        {
+            Random r = new Random();
+            List<DO.LineTrip> lineTrips = new List<DO.LineTrip>();
+            for (int k = 0; k < 5; k++) 
+                lineTrips.Add(new DO.LineTrip()
+                {
+                    LineId = id,
+                    StartAt = new TimeSpan(10 + 2 * k, r.Next(0, 59), 0)
+                });
+            return lineTrips;
+        }
+        private List<TimeSpan> getStartTimes(Guid id)
+        {
+            return (from linetrip in dl.GetLineTrips()
+                    where linetrip.LineId == id
+                    select linetrip.StartAt).ToList();
         }
         #endregion
 

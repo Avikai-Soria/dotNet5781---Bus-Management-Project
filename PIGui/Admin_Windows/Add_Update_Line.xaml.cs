@@ -159,6 +159,11 @@ namespace PIGui
                 AdonisUI.Controls.MessageBox.Show(ex.error_msg, "ERROR");
                 return;
             }
+            catch (BO.BadLineTripIdException ex)
+            {
+                AdonisUI.Controls.MessageBox.Show(ex.error_msg, "ERROR");
+                return;
+            }
             AdonisUI.Controls.MessageBox.Show("The line was added successfully!", "Success");
             this.Close();
         }

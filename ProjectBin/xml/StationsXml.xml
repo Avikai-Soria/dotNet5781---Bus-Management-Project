@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+<ArrayOfStation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Station>
+    <StationID>1a6f630f-0486-4f6b-856a-52f837a5c25a</StationID>
+    <Code>1</Code>
+    <Name>קרית עקרון/כביש 411</Name>
+    <Longitude>30.046855521410169</Longitude>
+    <Lattitude>30.638998978603166</Lattitude>
+  </Station>
+  <Station>
+    <StationID>c98d1837-0405-4c66-8b76-833085777cdf</StationID>
+    <Code>2</Code>
+    <Name>צומת חולדה/כביש 411</Name>
+    <Longitude>30.214796912956423</Longitude>
+    <Lattitude>30.12083384586537</Lattitude>
+  </Station>
+  <Station>
+    <StationID>16fa099b-6732-40ec-a565-7d8f73b83e9b</StationID>
+    <Code>3</Code>
+    <Name>גרינשפן/יגאל אלון</Name>
+    <Longitude>30.311902805376754</Longitude>
+    <Lattitude>30.086153239517543</Lattitude>
+  </Station>
+  <Station>
+    <StationID>53eb2365-43d5-4457-bb99-0daa76819605</StationID>
+    <Code>4</Code>
+    <Name>השומר/האבות</Name>
+    <Longitude>30.306495729045242</Longitude>
+    <Lattitude>30.5487333133578</Lattitude>
+  </Station>
+  <Station>
+    <StationID>cf69ee6e-c7bc-47e7-a892-7550a1536f5c</StationID>
+    <Code>5</Code>
+    <Name>משה שרת/יעקב קנר</Name>
+    <Longitude>30.875821513997309</Longitude>
+    <Lattitude>30.997891051228109</Lattitude>
+  </Station>
+  <Station>
+    <StationID>9cbfefa2-a86b-4e13-acef-de4a0d487eb8</StationID>
+    <Code>6</Code>
+    <Name>הדייגים/הנחשול</Name>
+    <Longitude>30.220225899117171</Longitude>
+    <Lattitude>30.796144287938318</Lattitude>
+  </Station>
+  <Station>
+    <StationID>2fb19f4f-a61e-450a-99ad-701316fff3ef</StationID>
+    <Code>7</Code>
+    <Name>יוסף בורג/משואות יצחק</Name>
+    <Longitude>30.178993291304909</Longitude>
+    <Lattitude>30.100952654658329</Lattitude>
+  </Station>
+  <Station>
+    <StationID>ef86f92e-e154-40db-bbb5-15926d6a7787</StationID>
+    <Code>8</Code>
+    <Name>יוסף בורג/כתריאל רפפורט</Name>
+    <Longitude>30.955982096938406</Longitude>
+    <Lattitude>30.428971517099519</Lattitude>
+  </Station>
+  <Station>
+    <StationID>c0463b48-260e-4df6-becb-1ecb5acf9a8c</StationID>
+    <Code>9</Code>
+    <Name>וייצמן/דרך יצחק רבין</Name>
+    <Longitude>30.774291701509753</Longitude>
+    <Lattitude>30.402284052875956</Lattitude>
+  </Station>
+  <Station>
+    <StationID>7a11cdc4-2abf-4746-9a56-4c26b2381f26</StationID>
+    <Code>10</Code>
+    <Name>שדרות משה דיין/יוסף לישנסקי</Name>
+    <Longitude>30.122542167139493</Longitude>
+    <Lattitude>30.947637150039728</Lattitude>
+  </Station>
+  <Station>
+    <StationID>2bdfb5e7-a1e4-4ff7-bfa2-0261bb81470a</StationID>
+    <Code>11</Code>
+    <Name>השר חיים שפירא/יוסף ספיר</Name>
+    <Longitude>30.320908940080976</Longitude>
+    <Lattitude>30.492085479429033</Lattitude>
+  </Station>
+  <Station>
+    <StationID>d4096f2f-8367-491f-9a19-966bdbd01096</StationID>
+    <Code>12</Code>
+    <Name>השר חיים שפירא/הרב שלום ג'רופי</Name>
+    <Longitude>30.469544319654602</Longitude>
+    <Lattitude>30.062709492660456</Lattitude>
+  </Station>
+  <Station>
+    <StationID>b25153ce-1e58-4d8e-8a8e-7c44a27309e6</StationID>
+    <Code>13</Code>
+    <Name>שדרות יעקב/יוסף הנשיא</Name>
+    <Longitude>30.386875028902139</Longitude>
+    <Lattitude>30.360216894354771</Lattitude>
+  </Station>
+  <Station>
+    <StationID>a05ff29b-2fb1-48d9-80a2-5b1f2c7a0ba4</StationID>
+    <Code>14</Code>
+    <Name>שדרות יעקב/עזרא</Name>
+    <Longitude>30.007600867658667</Longitude>
+    <Lattitude>30.370146195110934</Lattitude>
+  </Station>
+  <Station>
+    <StationID>7f8662c4-bee2-4ee1-831e-a7a84d8a73b1</StationID>
+    <Code>15</Code>
+    <Name>לייב יוספזון/יעקב ברמן</Name>
+    <Longitude>30.836595992947274</Longitude>
+    <Lattitude>30.618471302845734</Lattitude>
+  </Station>
+  <Station>
+    <StationID>c952a095-af54-4d2a-9419-d23c05399f78</StationID>
+    <Code>16</Code>
+    <Name>הרב יעקב ברמן/הרב יהודה צבי מלצר</Name>
+    <Longitude>30.773703996918027</Longitude>
+    <Lattitude>30.856464813396553</Lattitude>
+  </Station>
+  <Station>
+    <StationID>3b47e11c-4266-43f3-ab4e-cb7f53ff5064</StationID>
+    <Code>17</Code>
+    <Name>ברמן/מלצר</Name>
+    <Longitude>30.026342012931753</Longitude>
+    <Lattitude>30.088846900076067</Lattitude>
+  </Station>
+  <Station>
+    <StationID>469d28f9-cd70-4790-bcff-d2212917a374</StationID>
+    <Code>18</Code>
+    <Name>הנשיא הראשון/מכון ויצמן</Name>
+    <Longitude>30.22596963691803</Longitude>
+    <Lattitude>30.886259265656705</Lattitude>
+  </Station>
+  <Station>
+    <StationID>df0dc6e1-23fb-41d4-8184-6a18847cba72</StationID>
+    <Code>19</Code>
+    <Name>הנשיא הראשון/קיפניס</Name>
+    <Longitude>30.476307514811079</Longitude>
+    <Lattitude>30.872962504100503</Lattitude>
+  </Station>
+  <Station>
+    <StationID>7043c808-f6d5-4279-8535-b1940c5b5a3f</StationID>
+    <Code>20</Code>
+    <Name>הירדן/הערבה</Name>
+    <Longitude>30.122431122289239</Longitude>
+    <Lattitude>30.300462244684091</Lattitude>
+  </Station>
+  <Station>
+    <StationID>f1893445-da78-4fa0-8be8-cf9dfd153a39</StationID>
+    <Code>21</Code>
+    <Name>הירדן/חרוד</Name>
+    <Longitude>30.370885944632295</Longitude>
+    <Lattitude>30.126672216750062</Lattitude>
+  </Station>
+  <Station>
+    <StationID>26176c89-76e8-4c1c-9fc4-339d517966dd</StationID>
+    <Code>22</Code>
+    <Name>האלונים/הדקל</Name>
+    <Longitude>30.36869723553243</Longitude>
+    <Lattitude>30.474983631388742</Lattitude>
+  </Station>
+  <Station>
+    <StationID>0b30fc97-f640-4434-8a24-67ad7bcb3507</StationID>
+    <Code>23</Code>
+    <Name>האלונים א/הדקל</Name>
+    <Longitude>30.306026747127078</Longitude>
+    <Lattitude>30.557339822667345</Lattitude>
+  </Station>
+  <Station>
+    <StationID>633d44a8-15e1-48bc-99e2-9e3a3bb5a099</StationID>
+    <Code>24</Code>
+    <Name>פארק תעשיות שילת</Name>
+    <Longitude>30.167594520918836</Longitude>
+    <Lattitude>30.068474632254091</Lattitude>
+  </Station>
+  <Station>
+    <StationID>da074b52-e8e6-4b03-9ebe-a8bfdda8907d</StationID>
+    <Code>25</Code>
+    <Name>עיריית מודיעין מכבים רעות</Name>
+    <Longitude>30.439161002840457</Longitude>
+    <Lattitude>30.262723447411659</Lattitude>
+  </Station>
+  <Station>
+    <StationID>9b5c300f-a5a0-4150-b7e2-03f9a5a7e466</StationID>
+    <Code>26</Code>
+    <Name>חיים ברלב/מרדכי מקלף</Name>
+    <Longitude>30.175545089959886</Longitude>
+    <Lattitude>30.75299605063768</Lattitude>
+  </Station>
+  <Station>
+    <StationID>f11d6c91-2268-471c-9a4f-e37ffdde6f99</StationID>
+    <Code>27</Code>
+    <Name>אלמוג סנטר/אפרים קישון</Name>
+    <Longitude>30.851114257635135</Longitude>
+    <Lattitude>30.1374024521268</Lattitude>
+  </Station>
+  <Station>
+    <StationID>3f22ee24-8242-4016-adb9-6dd95e4c643e</StationID>
+    <Code>28</Code>
+    <Name>גן חק''ל/רבאט</Name>
+    <Longitude>30.31809003852219</Longitude>
+    <Lattitude>30.995966261250882</Lattitude>
+  </Station>
+  <Station>
+    <StationID>8b1191fe-d74a-498b-9e37-30a0e6bda958</StationID>
+    <Code>29</Code>
+    <Name>קניון צ. רמלה לוד/דוכיפת</Name>
+    <Longitude>30.651289526210768</Longitude>
+    <Lattitude>30.984146028749713</Lattitude>
+  </Station>
+  <Station>
+    <StationID>d2c017c1-a64e-4d0e-8328-18c9cf24173f</StationID>
+    <Code>30</Code>
+    <Name>היצירה/התקווה</Name>
+    <Longitude>30.699278210615404</Longitude>
+    <Lattitude>30.854580018601652</Lattitude>
+  </Station>
+  <Station>
+    <StationID>ef051c32-4e1b-4c86-ae87-da1dd9b9c286</StationID>
+    <Code>31</Code>
+    <Name>עמל/היצירה</Name>
+    <Longitude>30.54113244569913</Longitude>
+    <Lattitude>30.94175661026582</Lattitude>
+  </Station>
+  <Station>
+    <StationID>e878391e-c8e7-42ab-a704-8275b5c50297</StationID>
+    <Code>32</Code>
+    <Name>פרנקל/ויתקין</Name>
+    <Longitude>30.161295058280832</Longitude>
+    <Lattitude>30.688024426199508</Lattitude>
+  </Station>
+  <Station>
+    <StationID>f4c620a3-2a09-474a-afd5-c703ec3f6cca</StationID>
+    <Code>33</Code>
+    <Name>ישראל פרנקל/דוב הוז</Name>
+    <Longitude>30.022440291020292</Longitude>
+    <Lattitude>30.019356700600756</Lattitude>
+  </Station>
+  <Station>
+    <StationID>9b59dcfb-4f39-4ebb-b528-41b99cd6ac95</StationID>
+    <Code>34</Code>
+    <Name>יוספטל/הדס</Name>
+    <Longitude>30.074610641726576</Longitude>
+    <Lattitude>30.131378999041104</Lattitude>
+  </Station>
+  <Station>
+    <StationID>7c758f06-d771-47a7-b992-9d9c06f20a62</StationID>
+    <Code>35</Code>
+    <Name>אהרון בוגנים/משה שרת</Name>
+    <Longitude>30.203001880181489</Longitude>
+    <Lattitude>30.292734025648205</Lattitude>
+  </Station>
+  <Station>
+    <StationID>8dc1e393-9204-4fe7-8a3c-076de1d97bff</StationID>
+    <Code>36</Code>
+    <Name>גרשון ש''ץ/שמחה הולצברג</Name>
+    <Longitude>30.92597653806488</Longitude>
+    <Lattitude>30.083019592837907</Lattitude>
+  </Station>
+  <Station>
+    <StationID>a7a02de3-4bfb-4a2d-8f73-8e2f476d0394</StationID>
+    <Code>37</Code>
+    <Name>הולצברג/שץ</Name>
+    <Longitude>30.825206027750486</Longitude>
+    <Lattitude>30.473829456825662</Lattitude>
+  </Station>
+  <Station>
+    <StationID>00679430-9661-45ee-8b94-361f309d6215</StationID>
+    <Code>38</Code>
+    <Name>אשכול/הרב שפירא</Name>
+    <Longitude>30.121199534796737</Longitude>
+    <Lattitude>30.99586995038943</Lattitude>
+  </Station>
+  <Station>
+    <StationID>fa9795b8-a3b6-43a7-bcf0-37fa4b405bde</StationID>
+    <Code>39</Code>
+    <Name>יהודה שטיין/קרן היסוד</Name>
+    <Longitude>30.69401225712803</Longitude>
+    <Lattitude>30.845925308692234</Lattitude>
+  </Station>
+  <Station>
+    <StationID>dd3da0ae-70af-46b7-a81a-c5220a46d8f0</StationID>
+    <Code>40</Code>
+    <Name>שמשון הגיבור/המסגד</Name>
+    <Longitude>30.054190147227697</Longitude>
+    <Lattitude>30.912204496987258</Lattitude>
+  </Station>
+  <Station>
+    <StationID>722ab653-5b9b-4c9f-b164-3104945194d5</StationID>
+    <Code>41</Code>
+    <Name>ביאליק/חניתה</Name>
+    <Longitude>30.202551674192097</Longitude>
+    <Lattitude>30.318400396648048</Lattitude>
+  </Station>
+  <Station>
+    <StationID>c525d393-c631-4279-9ed2-46c0747ed361</StationID>
+    <Code>42</Code>
+    <Name>ביאליק/ירמיהו</Name>
+    <Longitude>30.17931030000528</Longitude>
+    <Lattitude>30.744877420247011</Lattitude>
+  </Station>
+  <Station>
+    <StationID>36c827af-a572-4afc-9fa1-b1c87cc76cb6</StationID>
+    <Code>43</Code>
+    <Name>א.ס לוי/סעדיה מרדכי</Name>
+    <Longitude>30.680919723436666</Longitude>
+    <Lattitude>30.083599942309597</Lattitude>
+  </Station>
+  <Station>
+    <StationID>fb58f858-1c67-42e6-925e-762b076ff90d</StationID>
+    <Code>44</Code>
+    <Name>רזיאל/זכריה</Name>
+    <Longitude>30.237732642440932</Longitude>
+    <Lattitude>30.636301544791227</Lattitude>
+  </Station>
+  <Station>
+    <StationID>85b9c0e3-9f44-475a-a985-e564715e2401</StationID>
+    <Code>45</Code>
+    <Name>חרוד א</Name>
+    <Longitude>30.568169227134515</Longitude>
+    <Lattitude>30.030375751680868</Lattitude>
+  </Station>
+  <Station>
+    <StationID>dbb7cd6d-f358-43f2-889b-9513d3279bd5</StationID>
+    <Code>46</Code>
+    <Name>חרוד/הירדן</Name>
+    <Longitude>30.221672977889735</Longitude>
+    <Lattitude>30.241823608168318</Lattitude>
+  </Station>
+  <Station>
+    <StationID>d29a99f3-7759-4c5f-926c-bd794f4dcf7d</StationID>
+    <Code>47</Code>
+    <Name>הירדן/דן</Name>
+    <Longitude>30.601184034068687</Longitude>
+    <Lattitude>30.621727496209427</Lattitude>
+  </Station>
+  <Station>
+    <StationID>be5c4424-a800-4f3b-acc1-76c97510ab5d</StationID>
+    <Code>48</Code>
+    <Name>עוזי חיטמן/שושנה דמארי</Name>
+    <Longitude>30.585539771050932</Longitude>
+    <Lattitude>30.180674512023419</Lattitude>
+  </Station>
+  <Station>
+    <StationID>d3d70a14-9ff8-4629-b8c8-50e4e1243677</StationID>
+    <Code>49</Code>
+    <Name>עוזי חיטמן/דליה רביקוביץ</Name>
+    <Longitude>30.31368857310791</Longitude>
+    <Lattitude>30.682861518432787</Lattitude>
+  </Station>
+  <Station>
+    <StationID>afc971cb-bbdb-4306-ab94-47868805b6e4</StationID>
+    <Code>50</Code>
+    <Name>עוזי חיטמן/חנוך לוין</Name>
+    <Longitude>30.534899531647049</Longitude>
+    <Lattitude>30.349340534931674</Lattitude>
+  </Station>
+</ArrayOfStation>

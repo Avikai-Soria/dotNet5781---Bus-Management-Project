@@ -42,16 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DO\AdjacentStations.cs" />
-    <Compile Include="DO\BadAdjStationsException.cs" />
-    <Compile Include="DO\BadBusIdException.cs" />
-    <Compile Include="DO\BadLineIdException.cs" />
-    <Compile Include="DO\BadLineStationIdException.cs" />
-    <Compile Include="DO\BadStationIdException.cs" />
+    <Compile Include="DO\Exceptions\BadAdjStationsException.cs" />
+    <Compile Include="DO\Exceptions\BadBusIdException.cs" />
+    <Compile Include="DO\Exceptions\BadLineIdException.cs" />
+    <Compile Include="DO\Exceptions\BadLineStationIdException.cs" />
+    <Compile Include="DO\Exceptions\BadLineTripIdException.cs" />
+    <Compile Include="DO\Exceptions\BadStationIdException.cs" />
     <Compile Include="DO\Bus.cs" />
     <Compile Include="DO\BusOnTrip.cs" />
     <Compile Include="DalConfig.cs" />
     <Compile Include="DalFactory.cs" />
     <Compile Include="DO\GenerateSequenceNumber.cs" />
+    <Compile Include="DO\Exceptions\XMLFileLoadCreateException.cs" />
     <Compile Include="IDAL.cs" />
     <Compile Include="DO\Line.cs" />
     <Compile Include="DO\LineStation.cs" />

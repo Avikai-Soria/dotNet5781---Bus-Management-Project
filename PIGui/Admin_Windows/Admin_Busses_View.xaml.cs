@@ -36,7 +36,8 @@ namespace PIGui
                 m_buses.Add(bus);
             Busses_View.ItemsSource = m_buses;
 
-            Bus_Info.DataContext = m_buses[0];
+            if(m_buses.Any())
+                Bus_Info.DataContext = m_buses[0];
         }
         private void Busses_View_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

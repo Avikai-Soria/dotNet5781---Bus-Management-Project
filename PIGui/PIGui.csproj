@@ -89,6 +89,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Admin_Windows\Simulation_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -113,6 +117,9 @@
     </Compile>
     <Compile Include="Admin_Windows\Admin_Window.xaml.cs">
       <DependentUpon>Admin_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Windows\Simulation_Window.xaml.cs">
+      <DependentUpon>Simulation_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

@@ -16,6 +16,7 @@ namespace DS
         public static List<Line> s_lines;
         public static List<LineStation> s_lineStations;
         public static List<AdjacentStations> s_adjacentStations;
+        public static List<LineTrip> s_lineTrips;
         #region Station's names
         public static string[] stationsNames = // 50 different names of stations 
         {"קרית עקרון/כביש 411", "צומת חולדה/כביש 411","גרינשפן/יגאל אלון","השומר/האבות","משה שרת/יעקב קנר",
@@ -36,6 +37,7 @@ namespace DS
         {
             s_lineStations = new List<LineStation>();
             s_adjacentStations = new List<AdjacentStations>();
+            s_lineTrips = new List<LineTrip>();
             InitBusList();
             InitStationList();
             InitLinesList();
@@ -49,7 +51,7 @@ namespace DS
             for (int i = 0; i < 20; i++) 
             {
                 Bus bus = new Bus();
-                bus.LicenseNum = i;
+                bus.LicenseNum = i.ToString();
                 bus.FromDate = new DateTime(r.Next(1960, 2020), r.Next(1, 12), r.Next(1, 30));
                 bus.TotalTrip = 0;  // Assuming all busses haven't done any travels yet
                 bus.FuelRemain = 1200;  // Assuming all busses have full fuel.
@@ -84,7 +86,7 @@ namespace DS
                 line.LineNumber = i + 1;
                 line.Area = (Areas)r.Next(0, 7);
                 List<Station> randomStations = RandomizeStations();
-                #region LineStation Initializing
+                #region LineStation Initialization
                 List<LineStation> randomLineStations = new List<LineStation>(); // Initializing between 10-20 stations in this list
                 int index = 1;                                                  // This one will count which index we're at for each Line station
                 randomLineStations = (from station in randomStations            // Initializing only those 3 properties in linestation, the other 2 later
@@ -122,6 +124,14 @@ namespace DS
                         });
                     }
                 }
+                #endregion
+                #region LineTrip Initialization
+                for (int k = 0; k < 5; k++)
+                    s_lineTrips.Add(new LineTrip()
+                    {
+                        LineId = line.Id,
+                        StartAt = new TimeSpan(10 + i + 2 * k, r.Next(0, 59), 0)
+                    });
                 #endregion
                 line.FirstStation = randomStations.First().StationID;
                 line.LastStation = randomStations.Last().StationID;

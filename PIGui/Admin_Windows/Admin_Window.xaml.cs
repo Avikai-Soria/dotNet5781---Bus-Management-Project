@@ -1,4 +1,5 @@
 ﻿using AdonisUI.Controls;
+using BLApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,11 @@ namespace PIGui
     public partial class Admin_Window : AdonisWindow
     {
         MainWindow m_main;
+        readonly IBL bL = BLFactory.GetBI();
         public Admin_Window(MainWindow main)
         {
             InitializeComponent();
             m_main = main;
-
         }
         private void Busses_view_Click(object sender, RoutedEventArgs e)
         {
@@ -50,6 +51,12 @@ namespace PIGui
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+
+        private void Simulator_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Simulation_Window simulation = new Simulation_Window();
+            simulation.ShowDialog();
         }
     }
 }

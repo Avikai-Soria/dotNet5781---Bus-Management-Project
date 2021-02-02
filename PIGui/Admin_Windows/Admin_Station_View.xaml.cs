@@ -47,7 +47,8 @@ namespace PIGui
                 m_stations.Add(station);
             m_stations = new ObservableCollection<Station>(m_stations.OrderBy(o => o.Name));
             Stations_View.ItemsSource = m_stations;
-            Station_Info.DataContext = m_stations[0];
+            if(m_stations.Any())
+                Station_Info.DataContext = m_stations[0];
         }
 
         private void Add_Buttom_Click(object sender, RoutedEventArgs e)
