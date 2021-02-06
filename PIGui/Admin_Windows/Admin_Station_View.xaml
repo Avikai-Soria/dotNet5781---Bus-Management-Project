@@ -21,13 +21,13 @@
         <Grid Name="DownGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="1"
                 VerticalAlignment="Stretch" Width="auto" Margin="0,5,0,-5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="19*"/>
+                <ColumnDefinition Width="31*"/>
             </Grid.ColumnDefinitions >
             
-            <StackPanel Orientation="Vertical" Grid.Column="0">
-                <Label Name="Station_Info_title" Content="Station's detailed information" VerticalAlignment="Top" FontSize="24" HorizontalAlignment="Center"></Label>
-                <Label Name="Station_Info" Content="{Binding Print}" VerticalAlignment="Stretch" FontSize="18" HorizontalAlignment="Left"></Label>
+            <StackPanel Orientation="Vertical" Grid.Column="0" Margin="20,0,0,0">
+                <Label Name="Station_Info_title" Content="Station's detailed information" VerticalAlignment="Stretch" FontSize="24" HorizontalAlignment="Center"></Label>
+                <Label Name="Station_Info" Content="{Binding Print}" VerticalAlignment="Stretch" FontSize="18" HorizontalAlignment="Left" Margin="0,30,0,0"></Label>
             </StackPanel>
             <Button Name="Add_Buttom" Content="Add station" VerticalAlignment="Bottom" Width="140"
                              Grid.Column="0" Height="80" FontSize="24" Click="Add_Buttom_Click" Margin="0, 0, 0, 50" Background="Green"/>

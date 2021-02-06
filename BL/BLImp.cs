@@ -83,7 +83,7 @@ namespace BL
         }
         public void DeleteStation(Station station)
         {
-            foreach(Line line in station.Lines)
+            foreach(Line line in GetLinesByStation(station.StationID))
             {
                 List<Station> stations = LineStationsToStations(line.Stations);
                 Station to_remove = stations.FirstOrDefault(p => p.StationID == station.StationID);
@@ -106,11 +106,12 @@ namespace BL
         {
             Station stationBO = new Station();
             stationDO.CopyPropertiesTo(stationBO);
-            stationBO.Lines = GetLinesByStation(stationBO.StationID);
+            //stationBO.Lines = GetLinesByStation(stationBO.StationID);
             stationBO.Print = "Code: " + stationBO.Code + "\nName: " + stationBO.Name + "\nLongitude: " + stationBO.Longitude
-                + "\nLattitude: " + stationBO.Lattitude + "\nLines passing by: ";
+                + "\nLattitude: " + stationBO.Lattitude; 
+            /*    + "\nLines passing by: ";
             foreach (Line line in stationBO.Lines)
-                stationBO.Print += line.LineNumber + " ";
+                stationBO.Print += line.LineNumber + " ";*/
             return stationBO;
         }
         #endregion
@@ -339,7 +340,7 @@ namespace BL
         {
             SortedDictionary<TimeSpan, int> pairs = new SortedDictionary<TimeSpan, int>();
             
-            foreach (Line line in station.Lines)
+            foreach (Line line in GetLinesByStation(station.StationID))
             {
                 foreach (TimeSpan arriveTime in GetLinesByStationTimes(line, station))
                 {
@@ -360,6 +361,7 @@ namespace BL
                     where line.Stations.Find(p => p.Station == id) != null
                     select line).ToList();
         }
+
         private List<DO.LineStation> GetLineStationsByLine(Guid lineid)
         {
             List<DO.LineStation> lineStations = dl.GetLineStations().ToList();

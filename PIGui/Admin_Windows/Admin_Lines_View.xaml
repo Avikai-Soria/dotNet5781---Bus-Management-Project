@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PIGui"
         mc:Ignorable="d"
-        Title="Admin_Lines_View" Height="600" Width="1250">
+        Title="Admin_Lines_View" Height="700" Width="1250">
     <Window.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
     </Window.Style>
@@ -40,10 +40,10 @@
             </StackPanel>
 
             <StackPanel Name="Middle_Stack" Orientation="Vertical" Grid.Column="1" Margin="40,0,20,0">
-                <Label Name="Lines_Info_title" Content="Line's detailed information" VerticalAlignment="Top" FontSize="24" HorizontalAlignment="Left"></Label>
-                <Label Name="Lines_Info" Content="{Binding Print}" VerticalAlignment="Stretch" FontSize="18" HorizontalAlignment="Left"></Label>
-                <Label Name="LineStation_Info_title" Content="LineStation information" VerticalAlignment="Top" FontSize="24" HorizontalAlignment="Left"></Label>
-                <Label Name="LineStation_Info" Content="{Binding Print}" VerticalAlignment="Stretch" FontSize="18" HorizontalAlignment="Left"></Label>
+                <Label Name="Lines_Info_title" Content="Line's detailed information" VerticalAlignment="Top" FontSize="24" HorizontalAlignment="Center"></Label>
+                <Label Name="Lines_Info" Content="{Binding Print}" VerticalAlignment="Stretch" FontSize="18" HorizontalAlignment="Left" Margin="0,20,0,40"></Label>
+                <Label Name="LineStation_Info_title" Content="LineStation information" VerticalAlignment="Top" FontSize="24" HorizontalAlignment="Center"></Label>
+                <Label Name="LineStation_Info" Content="{Binding Print}" VerticalAlignment="Stretch" FontSize="18" HorizontalAlignment="Left" Margin="0,20,0,0" ></Label>
             </StackPanel>
 
             <ListView Name="LineStation_View" SelectionMode="Single" 
