@@ -35,6 +35,7 @@ namespace BLApi
         #region Simulation
         void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime);
         void StopSimulator();
+        IEnumerable<KeyValuePair<TimeSpan, int>> GetIncomingLines(Station station, TimeSpan currTime);
         #endregion
 
     }

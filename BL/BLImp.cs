@@ -65,7 +65,7 @@ namespace BL
         public IEnumerable<Station> GetStations()
         {
             return from stationDO in dl.GetStations()
-                   select stationDoBoAdapter(stationDO);
+                   select StationDoBoAdapter(stationDO);
         }
 
         public void UpdateStation(Station stationBO)
@@ -102,7 +102,7 @@ namespace BL
             }
         }
 
-        Station stationDoBoAdapter(DO.Station stationDO)
+        Station StationDoBoAdapter(DO.Station stationDO)
         {
             Station stationBO = new Station();
             stationDO.CopyPropertiesTo(stationBO);
@@ -262,8 +262,8 @@ namespace BL
         {
             Line lineBO = new Line();
             lineDO.CopyPropertiesTo(lineBO);
-            lineBO.Stations = getLineStations(lineBO.Id);
-            lineBO.StartAts = getStartTimes(lineBO.Id);
+            lineBO.Stations = GetLineStations(lineBO.Id);
+            lineBO.StartAts = GetLinesStartTimes(lineBO.Id);
             lineBO.OverallDistance = 0;
             lineBO.OverallDuration = new TimeSpan(0, 0, 0);
             for(int i=0; i<lineBO.Stations.Count-1; i++)
@@ -301,7 +301,7 @@ namespace BL
         /// </summary>
         /// <param name="lineId"> The line's id which we want to take linestations of </param>
         /// <returns></returns>
-        List<LineStation> getLineStations(Guid lineId)
+        List<LineStation> GetLineStations(Guid lineId)
         {
             return (from lineStation in dl.GetLineStations() // Every linestation exists
                     where lineStation.LineId == lineId
@@ -334,6 +334,22 @@ namespace BL
         public void StopSimulator()
         {
             MyStopwatch.Instance.StopCounting();
+        }
+        public IEnumerable<KeyValuePair<TimeSpan, int>> GetIncomingLines(Station station, TimeSpan currTime)
+        {
+            SortedDictionary<TimeSpan, int> pairs = new SortedDictionary<TimeSpan, int>();
+            
+            foreach (Line line in station.Lines)
+            {
+                foreach (TimeSpan arriveTime in GetLinesByStationTimes(line, station))
+                {
+                    if (arriveTime - currTime > new TimeSpan(0, -5, 0)) 
+                    {
+                        pairs[arriveTime - currTime] = line.LineNumber;
+                    }
+                }
+            }
+            return pairs.Take(5);
         }
         #endregion
         #region Tool methods
@@ -403,7 +419,7 @@ namespace BL
             foreach(LineStation lineStation in linestations)
             {
                 DO.Station stationDO = dl.GetStation(lineStation.Station);
-                Station stationBO = stationDoBoAdapter(stationDO);
+                Station stationBO = StationDoBoAdapter(stationDO);
                 stations.Add(stationBO);
             }
             return stations;
@@ -420,11 +436,22 @@ namespace BL
                 });
             return lineTrips;
         }
-        private List<TimeSpan> getStartTimes(Guid id)
+        private List<TimeSpan> GetLinesStartTimes(Guid id)
         {
             return (from linetrip in dl.GetLineTrips()
                     where linetrip.LineId == id
                     select linetrip.StartAt).ToList();
+        }
+        private List<TimeSpan> GetLinesByStationTimes(Line line, Station station)
+        {
+            TimeSpan? toAdd = new TimeSpan(0);
+            foreach (LineStation lineStation in line.Stations) // Calculating how much time do we need to add
+            {
+                if (lineStation.Station == station.StationID) break;
+                toAdd += lineStation.Duration;
+            }
+            return (from time in GetLinesStartTimes(line.Id)
+                    select time + (TimeSpan)toAdd).ToList();
         }
         #endregion
 

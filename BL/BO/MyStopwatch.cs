@@ -45,7 +45,7 @@ namespace BO
             while(m_flag)
             {
                 m_action?.Invoke(TimeSpan.FromMilliseconds(m_stopwatch.Elapsed.TotalMilliseconds * m_rate) + m_startTime);
-                Thread.Sleep(100);
+                Thread.Sleep(500);
             }
         }
         public void StopCounting()

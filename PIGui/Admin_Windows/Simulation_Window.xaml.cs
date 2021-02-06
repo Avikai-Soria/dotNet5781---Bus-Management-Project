@@ -1,5 +1,6 @@
 ﻿using AdonisUI.Controls;
 using BLApi;
+using BO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,6 +56,8 @@ namespace PIGui
             cbHours.SelectedIndex = m_currentTime.Hours;
             cbMinutes.SelectedIndex = m_currentTime.Minutes;
             cbSeconds.SelectedIndex = m_currentTime.Seconds;
+
+            Refresh_List();
         }
 
         private void StartStopButton_Click(object sender, RoutedEventArgs e)
@@ -115,6 +118,59 @@ namespace PIGui
             cbMinutes.SelectedIndex = 0;
             cbSeconds.SelectedIndex = 0;
             speedTextBox.Text = "20";
+            cbStation.ItemsSource=bL.GetStations().OrderBy(o => o.Name);
+            cbStation.SelectedIndex = 0;
+        }
+        private void Refresh_List()
+        {
+            ListViewItem item;
+            Station station = cbStation.SelectedItem as Station;
+            SolidColorBrush red = new SolidColorBrush(Color.FromRgb(130, 0, 30));
+            SolidColorBrush yellow = new SolidColorBrush(Color.FromRgb(184, 134, 11));
+            SolidColorBrush green = new SolidColorBrush(Color.FromRgb(0, 128, 0));
+
+
+
+            if (station == null)
+            {
+                IncomingLinesListView.Items.Clear();
+                return;
+            }
+
+            IncomingLinesListView.Items.Clear();
+            foreach (KeyValuePair<TimeSpan, int> pair in bL.GetIncomingLines(station, m_currentTime))
+            {
+                item = new ListViewItem();
+                if (pair.Key > new TimeSpan(0, 5, 0)) // Positive time
+                {
+                    item.Content = "Line " + pair.Value + " will arrive in " + (pair.Key).ToString(@"hh\:mm\:ss");
+                    item.FontSize = 20;
+                    item.Background = green;
+                }
+                else
+                {
+                    if(pair.Key > new TimeSpan(0, 0, 0))
+                    {
+                        item.Content = "Line " + pair.Value + " will arrive in " + (pair.Key).ToString(@"hh\:mm\:ss");
+                        item.FontSize = 20;
+                        item.Background = yellow;
+                    }
+                    else
+                    {
+                        item.Content = "Line " + pair.Value + " passed " + (new TimeSpan(0, 0, 0) - pair.Key).ToString(@"hh\:mm\:ss") + " ago";
+                        item.FontSize = 20;
+                        item.Background = red;
+                    }
+                }
+
+                IncomingLinesListView.Items.Add(item);
+            }
+
+        }
+
+        private void cbStation_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh_List();
         }
     }
 }
