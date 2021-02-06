@@ -68,9 +68,9 @@ namespace PIGui
             
             if (startStopButton.Content.ToString() == "Start simulation!")  // In this case, we start
             {
-                if (!Int32.TryParse(speedTextBox.Text, out int rate))
+                if (!Int32.TryParse(speedTextBox.Text, out int rate) || rate < 0)
                 {
-                    AdonisUI.Controls.MessageBox.Show("Speed must be an integer number", "Invalid value");
+                    AdonisUI.Controls.MessageBox.Show("Speed must be an integer positive number", "Invalid value");
                     return;
                 }
                 string timeString = cbHours.SelectedValue.ToString() + ":" + cbMinutes.SelectedValue.ToString() + ":" + cbSeconds.SelectedValue.ToString();
