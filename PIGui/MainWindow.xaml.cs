@@ -40,11 +40,6 @@ namespace PIGui
             add_window.Show();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ButtonColor_Click(object sender, RoutedEventArgs e)
         {
             if (ButtonColor.Content.ToString() == "Click here to switch to light theme")
@@ -58,5 +53,11 @@ namespace PIGui
                 ButtonColor.Content = "Click here to switch to light theme";
             }
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
