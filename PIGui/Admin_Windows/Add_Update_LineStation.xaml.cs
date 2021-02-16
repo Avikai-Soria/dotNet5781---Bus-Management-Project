@@ -23,7 +23,12 @@ namespace PIGui
     public partial class Add_Update_LineStation : AdonisWindow
     {
         readonly IBL bL = BLFactory.GetBI();
-        LineStation m_lineStation;
+        readonly LineStation m_lineStation;
+
+        /// <summary>
+        /// Ended up being only update linestation
+        /// </summary>
+        /// <param name="item"></param>
         public Add_Update_LineStation(LineStation item)
         {
             InitializeComponent();
@@ -32,6 +37,8 @@ namespace PIGui
             distanceTextBox.Text = m_lineStation.Distance.ToString();
             durationTextBox.Text = m_lineStation.Duration.ToString();
         }
+
+        // Functions
         private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (!Double.TryParse(distanceTextBox.Text, out double distance))
@@ -59,6 +66,7 @@ namespace PIGui
             this.Close();
         }
 
+
         private void AdonisWindow_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -72,6 +80,5 @@ namespace PIGui
             // lineStationViewSource.Source = [generic data source]
         }
 
-        
     }
 }

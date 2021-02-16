@@ -24,8 +24,13 @@ namespace PIGui
     public partial class Admin_Station_View : AdonisWindow
     {
         readonly IBL bL = BLFactory.GetBI();
-        Admin_Window m_main;
+        readonly Admin_Window m_main;
         ObservableCollection<Station> m_stations;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="main">Again, kinda useless</param>
         public Admin_Station_View(Admin_Window main)
         {
             InitializeComponent();
@@ -35,11 +40,14 @@ namespace PIGui
             Refresh_List();
         }
 
+        //Functions
+        
         private void Stations_View_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Station item = (sender as ListView).SelectedItem as Station;
             Station_Info.DataContext = item;
         }
+
         private void Refresh_List()
         {
             m_stations.Clear();
@@ -57,6 +65,7 @@ namespace PIGui
             add_Update_Station.ShowDialog();
             Refresh_List();
         }
+
         private void Button_Update_Click(object sender, RoutedEventArgs e)
         {
             var elem = sender as FrameworkElement;
@@ -65,6 +74,7 @@ namespace PIGui
             add_Update_Station.ShowDialog();
             Refresh_List();
         }
+
         private void Button_Remove_Click(object sender, RoutedEventArgs e)
         {
             AdonisUI.Controls.MessageBoxResult result = AdonisUI.Controls.MessageBox.Show("Are you sure you want to delete this station?", "Confirmation",
@@ -97,7 +107,6 @@ namespace PIGui
 
             }
         }
-        
-        
+
     }
 }

@@ -11,8 +11,9 @@ namespace BL
 {
     sealed internal class BLImp : IBL
     {
-        IDAL dl = DLFactory.GetDL();
+        readonly IDAL dl = DLFactory.GetDL();
         private static BLImp instance = null;
+
         #region Sinelton
         public static BLImp Instance
         {
@@ -24,6 +25,7 @@ namespace BL
             }
         }
         #endregion
+
         //CRUD Logic:
         // Create - add new instance
         // Request - ask for an instance or for a collection
@@ -31,7 +33,7 @@ namespace BL
         // Delete - delete an instance
 
         #region Bus
-        Bus busDoBoAdapter(DO.Bus busDO)
+        Bus BusDoBoAdapter(DO.Bus busDO)
         {
             Bus busBO = new Bus();
             busDO.CopyPropertiesTo(busBO);
@@ -39,11 +41,13 @@ namespace BL
                 + "\nFuel remained: " + busBO.FuelRemain + "\nBus's status: " + busBO.Status;
             return busBO;
         }
+
         public IEnumerable<Bus> GetBuses()
         {
             return from busDO in dl.GetBuses()
-                   select busDoBoAdapter(busDO);
+                   select BusDoBoAdapter(busDO);
         }
+
         #endregion
 
         #region Station
@@ -62,6 +66,7 @@ namespace BL
                 throw new BO.BadStationIdException(ex.code, ex.text);
             }
         }
+
         public IEnumerable<Station> GetStations()
         {
             return from stationDO in dl.GetStations()
@@ -81,6 +86,7 @@ namespace BL
                 throw new BO.BadStationIdException(ex.code, ex.text);
             }
         }
+
         public void DeleteStation(Station station)
         {
             foreach(Line line in GetLinesByStation(station.StationID))
@@ -102,21 +108,30 @@ namespace BL
             }
         }
 
+        /// <summary>
+        /// This function transfers between a DO object of station to BO object
+        /// </summary>
+        /// <param name="stationDO">DO object of station</param>
+        /// <returns>BO object of the station</returns>
         Station StationDoBoAdapter(DO.Station stationDO)
         {
             Station stationBO = new Station();
             stationDO.CopyPropertiesTo(stationBO);
             //stationBO.Lines = GetLinesByStation(stationBO.StationID);
+
             stationBO.Print = "Code: " + stationBO.Code + "\nName: " + stationBO.Name + "\nLongitude: " + stationBO.Longitude
                 + "\nLattitude: " + stationBO.Lattitude; 
             /*    + "\nLines passing by: ";
             foreach (Line line in stationBO.Lines)
                 stationBO.Print += line.LineNumber + " ";*/
+
             return stationBO;
         }
+
         #endregion
 
         #region Line
+
         /// <summary>
         /// First creating a simple DO line, then creating all the needed linestation objects and then creating adjstation for each couple
         /// </summary>
@@ -180,8 +195,9 @@ namespace BL
         public IEnumerable<Line> GetLines()
         {
             return from lineDO in dl.GetLines()
-                   select lineDoBoAdapter(lineDO);
+                   select LineDoBoAdapter(lineDO);
         }
+
         public void UpdateLine(Line lineBO, List<Station> stations)
         {
             lineBO.FirstStation = stations.First().StationID;
@@ -234,6 +250,7 @@ namespace BL
                 throw new BO.BadAdjStationsException(ex.currStation, ex.nextStation, ex.v);
             }
         }
+
         public void DeleteLine(Line line)
         {
             List<DO.LineStation> lineStations_to_remove = GetLineStationsByLine(line.Id);
@@ -259,7 +276,12 @@ namespace BL
             }
         }
 
-        Line lineDoBoAdapter(DO.Line lineDO)
+        /// <summary>
+        /// Transfare between a DO object of a line into BO object of it
+        /// </summary>
+        /// <param name="lineDO">A DO object of a line</param>
+        /// <returns>A BO object of a line</returns>
+        Line LineDoBoAdapter(DO.Line lineDO)
         {
             Line lineBO = new Line();
             lineDO.CopyPropertiesTo(lineBO);
@@ -280,9 +302,11 @@ namespace BL
             }
             return lineBO;
         }
+
         #endregion
 
         #region LineStations
+
         public void UpdateLineStation(LineStation lineStation)
         {
             DO.AdjacentStations adjStations = dl.GetAdjStation(lineStation.Station, lineStation.NextStation);
@@ -302,6 +326,7 @@ namespace BL
         /// </summary>
         /// <param name="lineId"> The line's id which we want to take linestations of </param>
         /// <returns></returns>
+        /// 
         List<LineStation> GetLineStations(Guid lineId)
         {
             return (from lineStation in dl.GetLineStations() // Every linestation exists
@@ -324,8 +349,11 @@ namespace BL
                     }
                     ).ToList();
         }
+
         #endregion
+
         #region Simulation
+
         public void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime)
         {
             MyStopwatch.Instance.m_action += updateTime;
@@ -336,6 +364,7 @@ namespace BL
         {
             MyStopwatch.Instance.StopCounting();
         }
+
         public IEnumerable<KeyValuePair<TimeSpan, int>> GetIncomingLines(Station station, TimeSpan currTime)
         {
             SortedDictionary<TimeSpan, int> pairs = new SortedDictionary<TimeSpan, int>();
@@ -352,8 +381,15 @@ namespace BL
             }
             return pairs.Take(5);
         }
+
         #endregion
+
         #region Tool methods
+        /// <summary>
+        /// Gets all the lines that are coming through a station
+        /// </summary>
+        /// <param name="id">The id of the station</param>
+        /// <returns>A list of the incoming lines</returns>
         private List<Line> GetLinesByStation(Guid id)
         {
             List<Line> lines = GetLines().ToList();
@@ -362,6 +398,11 @@ namespace BL
                     select line).ToList();
         }
 
+        /// <summary>
+        /// Gets all the LineStation that exists in a line
+        /// </summary>
+        /// <param name="lineid">The id of the line</param>
+        /// <returns>A lsit of all the linestation that are passing by the line</returns>
         private List<DO.LineStation> GetLineStationsByLine(Guid lineid)
         {
             List<DO.LineStation> lineStations = dl.GetLineStations().ToList();
@@ -369,6 +410,13 @@ namespace BL
                     where linestation.LineId == lineid
                     select linestation).ToList();
         }
+
+        /// <summary>
+        /// Generates a list of DO linestations by a line and a list of the stations
+        /// </summary>
+        /// <param name="lineBO">The line in which the linestation exists</param>
+        /// <param name="stations">The stations we want to create linestation of, sorted by the order they will be added</param>
+        /// <returns></returns>
         private List<DO.LineStation> GenerateLineStations(Line lineBO, List<Station> stations)
         {
             int index = 1;
@@ -392,6 +440,12 @@ namespace BL
             }
             return lineStations;
         }
+
+        /// <summary>
+        /// Generates adj station between each station in the recived list, in case they didn't exist before
+        /// </summary>
+        /// <param name="stations">The stations we want to get their adj objects</param>
+        /// <returns>A list that include all the adj object between the recived stations</returns>
         private List<DO.AdjacentStations> GenerateAdjStations(List<Station> stations)
         {
             List<DO.AdjacentStations> adjacentStations = new List<DO.AdjacentStations>();
@@ -415,6 +469,12 @@ namespace BL
             return adjacentStations;
 
         }
+
+        /// <summary>
+        /// Transfers between linestation objects into station object, for easier work
+        /// </summary>
+        /// <param name="linestations">A list of the linestations we want to transfer</param>
+        /// <returns>The transfered stations</returns>
         private List<Station> LineStationsToStations(List<LineStation> linestations)
         {
             List<Station> stations = new List<Station>();
@@ -426,6 +486,12 @@ namespace BL
             }
             return stations;
         }
+
+        /// <summary>
+        /// Generates random linetrips for a line
+        /// </summary>
+        /// <param name="id">The id of the line we want to generate linetrips for</param>
+        /// <returns>A list of the generated linetrips</returns>
         private List<DO.LineTrip> GenerateLineTrips(Guid id)
         {
             Random r = new Random();
@@ -438,12 +504,25 @@ namespace BL
                 });
             return lineTrips;
         }
+
+        /// <summary>
+        /// Gets all the linetrips from DO by a line ID
+        /// </summary>
+        /// <param name="id">The line's ID</param>
+        /// <returns>List of timespans in which the line takes off</returns>
         private List<TimeSpan> GetLinesStartTimes(Guid id)
         {
             return (from linetrip in dl.GetLineTrips()
                     where linetrip.LineId == id
                     select linetrip.StartAt).ToList();
         }
+
+        /// <summary>
+        /// Gets the times which the line will arrive a specific station
+        /// </summary>
+        /// <param name="line">The line passing by</param>
+        /// <param name="station">The station passed by</param>
+        /// <returns>List of the times the line will pass the station</returns>
         private List<TimeSpan> GetLinesByStationTimes(Line line, Station station)
         {
             TimeSpan? toAdd = new TimeSpan(0);

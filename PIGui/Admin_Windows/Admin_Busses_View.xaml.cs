@@ -24,8 +24,12 @@ namespace PIGui
     public partial class Admin_Busses_View : AdonisWindow
     {
         readonly IBL bL = BLFactory.GetBI();
-        Admin_Window m_main;
+        readonly Admin_Window m_main;
         ObservableCollection<Bus> m_buses;
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="main">The main window (kinda useless)</param>
         public Admin_Busses_View(Admin_Window main)
         {
             InitializeComponent();
@@ -39,6 +43,8 @@ namespace PIGui
             if(m_buses.Any())
                 Bus_Info.DataContext = m_buses[0];
         }
+
+        // Functions
         private void Busses_View_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Bus item = (sender as ListView).SelectedItem as Bus;

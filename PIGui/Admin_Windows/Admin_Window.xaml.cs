@@ -21,13 +21,21 @@ namespace PIGui
     /// </summary>
     public partial class Admin_Window : AdonisWindow
     {
-        MainWindow m_main;
+        readonly MainWindow m_main;
         readonly IBL bL = BLFactory.GetBI();
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="main">Useless</param>
         public Admin_Window(MainWindow main)
         {
             InitializeComponent();
             m_main = main;
         }
+
+        //Functions
+
         private void Busses_view_Click(object sender, RoutedEventArgs e)
         {
             Admin_Busses_View admin_Busses_View = new Admin_Busses_View(this);
@@ -58,5 +66,6 @@ namespace PIGui
             Simulation_Window simulation = new Simulation_Window();
             simulation.ShowDialog();
         }
+
     }
 }

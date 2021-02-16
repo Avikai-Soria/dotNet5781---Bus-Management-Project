@@ -23,9 +23,13 @@ namespace PIGui
     public partial class Add_Update_Line : AdonisWindow
     {
         readonly IBL bL = BLFactory.GetBI();
-        Line m_line;
+        readonly Line m_line;
         ObservableCollection<Station> m_sourceStations;
         ObservableCollection<Station> m_destinationStations;
+
+        /// <summary>
+        /// Add line constructor
+        /// </summary>
         public Add_Update_Line()
         {
             InitializeComponent();
@@ -41,6 +45,11 @@ namespace PIGui
             }
             RefreshLists();
         }
+
+        /// <summary>
+        /// Update line constructor
+        /// </summary>
+        /// <param name="line">The line to update</param>
         public Add_Update_Line(Line line)
         {
             InitializeComponent();
@@ -65,6 +74,8 @@ namespace PIGui
             }
             RefreshLists();
         }
+
+        // Functions
         private void ButtonAddStation_Click(object sender, RoutedEventArgs e)
         {
             Station station = SourceListView.SelectedItem as Station;
@@ -78,6 +89,7 @@ namespace PIGui
                 AdonisUI.Controls.MessageBox.Show("You must select a station to add from the list to your left.", "ERROR");
             }    
         }
+
         private void SourceListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Station station = SourceListView.SelectedItem as Station;
@@ -91,6 +103,7 @@ namespace PIGui
                 AdonisUI.Controls.MessageBox.Show("You must select a station to add from the list to your left.", "ERROR");
             }
         }
+
         private void ButtonRemoveStation_Click(object sender, RoutedEventArgs e)
         {
             Station station = DestinationListView.SelectedItem as Station;
@@ -105,6 +118,7 @@ namespace PIGui
                 AdonisUI.Controls.MessageBox.Show("You must select a station to remove from the list to your right.", "ERROR");
             }
         }
+
         private void DestinationListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Station station = DestinationListView.SelectedItem as Station;
@@ -213,6 +227,7 @@ namespace PIGui
             SourceListView.ItemsSource = m_sourceStations;
             DestinationListView.ItemsSource = m_destinationStations;
         }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 

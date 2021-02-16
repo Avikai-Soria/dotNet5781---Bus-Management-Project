@@ -27,6 +27,10 @@ namespace PIGui
         private TimeSpan m_currentTime;
         private BackgroundWorker m_worker;
         private bool m_update;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Simulation_Window()
         {
             InitializeComponent();
@@ -38,7 +42,7 @@ namespace PIGui
             m_worker.RunWorkerAsync();
         }
 
-        
+        // Functions of worker
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -51,6 +55,7 @@ namespace PIGui
                 }
             }
         }
+
         private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             cbHours.SelectedIndex = m_currentTime.Hours;
@@ -60,6 +65,13 @@ namespace PIGui
             Refresh_List();
         }
 
+        private void UpdateTime(TimeSpan span)
+        {
+            m_currentTime = span;
+            m_update = true;
+        }
+
+        // General functions
         private void StartStopButton_Click(object sender, RoutedEventArgs e)
         {
             SolidColorBrush red = new SolidColorBrush(Color.FromRgb(130, 0, 30));
@@ -90,11 +102,7 @@ namespace PIGui
                 bL.StopSimulator();
             }
         }
-        private void UpdateTime(TimeSpan span)
-        {
-            m_currentTime = span;
-            m_update = true;
-        }
+
         private void InitializeIntro()
         {
             for(int i=0; i<10; i++)
@@ -121,6 +129,7 @@ namespace PIGui
             cbStation.ItemsSource=bL.GetStations().OrderBy(o => o.Name);
             cbStation.SelectedIndex = 0;
         }
+
         private void Refresh_List()
         {
             ListViewItem item;

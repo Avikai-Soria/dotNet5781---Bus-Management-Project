@@ -22,13 +22,21 @@ namespace Dal
         #endregion
 
         //Implement IDL methods, CRUD
+        //CRUD Logic:
+        // Create - add new instance
+        // Request - ask for an instance or for a collection
+        // Update - update properties of an instance
+        // Delete - delete an instance
+
         #region Bus CRUD implementations
+
         public void AddBus(Bus bus)
         {
             if (DataSource.s_buses.FirstOrDefault(p => p.LicenseNum == bus.LicenseNum) != null)
                 throw new DO.BadBusIdException(bus.LicenseNum, "Duplicate bus License Number");
             DataSource.s_buses.Add(bus.Clone());
         }
+
         public Bus GetBus(string licensenum)
         {
             Bus bus = DataSource.s_buses.Find(p => p.LicenseNum == licensenum);
@@ -38,6 +46,7 @@ namespace Dal
             else
                 throw new DO.BadBusIdException(licensenum, $"bad bus id: {licensenum}");
         }
+
         public IEnumerable<Bus> GetBuses()
         {
             return from bus in DataSource.s_buses
@@ -48,6 +57,7 @@ namespace Dal
         {
             throw new NotImplementedException();
         }
+
         public void DeleteBus(string licensenum)
         {
             Bus bus = DataSource.s_buses.FirstOrDefault(p => p.LicenseNum == licensenum);
@@ -55,9 +65,11 @@ namespace Dal
                 throw new DO.BadBusIdException(licensenum, "Bus License Number doesn't exist");
             DataSource.s_buses.Remove(bus); // Need to change bus state later to "removed" if I have time.
         }
+
         #endregion
 
         #region Station CRUD implementations
+
         public void AddStation(Station station)
         {
             if (DataSource.s_stations.FirstOrDefault(p => p.StationID == station.StationID) != null)
@@ -109,11 +121,13 @@ namespace Dal
                 throw new DO.BadLineIdException(lineDO.Id, "Duplicate line ID number");
             DataSource.s_lines.Add(lineDO.Clone());
         }
+
         public IEnumerable<Line> GetLines()
         {
             return from line in DataSource.s_lines
                    select line.Clone();
         }
+
         public void UpdateLine(Line lineDO)
         {
             Line line = DataSource.s_lines.Find(p => p.Id == lineDO.Id);
@@ -124,12 +138,14 @@ namespace Dal
             line.FirstStation = lineDO.FirstStation;
             line.LastStation = lineDO.LastStation;
         }
+
         //public IEnumerable<Line> GetLinesByStation(int code)
         //{
         //    return from line in DataSource.s_lines
         //           where line.
         //           select line.Clone();
         //}
+
         public void DeleteLine(Guid id)
         {
             Line line = DataSource.s_lines.FirstOrDefault(p => p.Id == id);
@@ -137,20 +153,24 @@ namespace Dal
                 throw new DO.BadStationIdException(id, "Line ID number doesn't exist");
             DataSource.s_lines.Remove(line);
         }
+
         #endregion
 
         #region LineStation CRUD implementations
+
         public void AddLineStation(LineStation linestation)
         {
             if (DataSource.s_lineStations.FirstOrDefault(p => p.LineId == linestation.LineId && p.Station == linestation.Station) != null)
                 throw new DO.BadLineStationIdException(linestation.LineId, linestation.Station, "Duplicate combination of line ID and station ID number");
             DataSource.s_lineStations.Add(linestation.Clone());
         }
+
         public IEnumerable<LineStation> GetLineStations()
         {
             return from lineStations in DataSource.s_lineStations
                    select lineStations.Clone();
         }
+
         public void DeleteLineStation(LineStation lineStation)
         {
             LineStation lineStation1 = DataSource.s_lineStations.FirstOrDefault(p => p.LineId == lineStation.LineId && p.Station == lineStation.Station);
@@ -162,6 +182,7 @@ namespace Dal
         #endregion
 
         #region AdjacentStations CRUD implementations
+
         public void AddAdjStations(AdjacentStations adjacentStations)
         {
             if (DataSource.s_adjacentStations.FirstOrDefault(p => p.Station1 == adjacentStations.Station1 && p.Station2 == adjacentStations.Station2) != null)
@@ -169,6 +190,7 @@ namespace Dal
                     "AdjacentStation already exists between the stations");
             DataSource.s_adjacentStations.Add(adjacentStations.Clone());
         }
+
         public AdjacentStations GetAdjStation(Guid? currStation, Guid? nextStation)
         {
             if (currStation == null || nextStation == null) 
@@ -201,13 +223,15 @@ namespace Dal
             adjacent.Time = adjStations.Time;
         }
 
-
         #endregion
+
         #region TripLine CRUD implementations
+
         public void AddLineTrip(LineTrip lineTrip)
         {
             DataSource.s_lineTrips.Add(lineTrip.Clone());
         }
+
         public IEnumerable<LineTrip> GetLineTrips()
         {
             return from lineTrip in DataSource.s_lineTrips
@@ -218,6 +242,7 @@ namespace Dal
         {
             DataSource.s_lineTrips.RemoveAll(i => i.LineId == code);
         }
+
         #endregion
     }
 }

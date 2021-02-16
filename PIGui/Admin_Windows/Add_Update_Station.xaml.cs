@@ -23,12 +23,19 @@ namespace PIGui
     public partial class Add_Update_Station : AdonisWindow
     {
         readonly IBL bL = BLFactory.GetBI();
-        Station m_station;
+        readonly Station m_station;
+        /// <summary>
+        /// Add station constructor
+        /// </summary>
         public Add_Update_Station()
         {
             InitializeComponent();
             ButtonUpdate.Visibility = Visibility.Hidden;
         }
+        /// <summary>
+        /// Update station constructor
+        /// </summary>
+        /// <param name="item">The item to update</param>
         public Add_Update_Station(Station item)
         {
             InitializeComponent();
@@ -40,19 +47,7 @@ namespace PIGui
             lattitudeTextBox.Text = m_station.Lattitude.ToString();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource stationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // stationViewSource.Source = [generic data source]
-        }
-
+        // Functions
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             if (nameTextBox.Text == "")
@@ -136,6 +131,19 @@ namespace PIGui
             }
             AdonisUI.Controls.MessageBox.Show("The station was edited successfully!", "Success");
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource stationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // stationViewSource.Source = [generic data source]
         }
     }
 }

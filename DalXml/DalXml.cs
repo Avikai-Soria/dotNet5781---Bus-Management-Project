@@ -28,8 +28,16 @@ namespace Dal
         readonly string adjacentsPath = @"AdjacentsXml.xml"; //XElement
         readonly string lineTripsPath = @"LineTripsXml.xml"; //XElement
         #endregion
+
         //Implement IDL methods, CRUD
+        //CRUD Logic:
+        // Create - add new instance
+        // Request - ask for an instance or for a collection
+        // Update - update properties of an instance
+        // Delete - delete an instance
+
         #region Bus
+
         public void AddBus(Bus bus)
         {
             List<Bus> ListBuses = XMLTools.LoadListFromXMLSerializer<Bus>(busesPath);
@@ -97,7 +105,9 @@ namespace Dal
 
             XMLTools.SaveListToXMLSerializer(ListBuses, busesPath);
         }
+
         #endregion
+
         #region Station
         public void AddStation(Station station)
         {
@@ -165,7 +175,9 @@ namespace Dal
 
             XMLTools.SaveListToXMLSerializer(ListStations, stationsPath);
         }
+
         #endregion
+
         #region Line
         public void AddLine(Line line)
         {
@@ -222,7 +234,9 @@ namespace Dal
 
             XMLTools.SaveListToXMLSerializer(ListLines, linesPath);
         }
+
         #endregion
+
         #region LineStation
         public void AddLineStation(LineStation linestation)
         {
@@ -260,8 +274,11 @@ namespace Dal
 
             XMLTools.SaveListToXMLSerializer(ListLineStations, lineStationsPath);
         }
+
         #endregion
+
         #region AdjacentStations
+
         public void AddAdjStations(AdjacentStations adjacentStations)
         {
             XElement adjstationsRootElem = XMLTools.LoadListFromXMLElement(adjacentsPath, "ArrayOfAdjacentStations");
@@ -355,7 +372,9 @@ namespace Dal
                     $"No such adj exists between: {adjStations.Station1} and {adjStations.Station2}");
             }
         }
+
         #endregion
+
         #region LineTrip
         public void AddLineTrip(LineTrip lineTrip)
         {
@@ -402,6 +421,7 @@ namespace Dal
                             select lt).FirstOrDefault();
             }
         }
+
         #endregion
 
     }

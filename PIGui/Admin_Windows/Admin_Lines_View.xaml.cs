@@ -24,7 +24,11 @@ namespace PIGui
     {
         readonly IBL bL = BLFactory.GetBI();
         Admin_Window m_main;
-        ObservableCollection<Line> m_lines;
+        readonly ObservableCollection<Line> m_lines;
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="main">The main window (kinda useless)</param>
         public Admin_Lines_View(Admin_Window main)
         {
             InitializeComponent();
@@ -33,6 +37,9 @@ namespace PIGui
             Refresh_lines();
 
         }
+
+        // Functions
+
         private void cbLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(m_lines.Count()!=0)
@@ -42,17 +49,20 @@ namespace PIGui
                 LineStation_View.ItemsSource = item.Stations;
             }   
         }
+
         private void LineStation_Changed(object sender, SelectionChangedEventArgs e)
         {
             LineStation item = (sender as ListView).SelectedItem as LineStation;
             LineStation_Info.DataContext = item;
         }
+
         private void Add_Buttom_Click(object sender, RoutedEventArgs e)
         {
             Add_Update_Line add_Line = new Add_Update_Line();
             add_Line.ShowDialog();
             Refresh_lines();
         }
+
         private void Edit_Buttom_Click(object sender, RoutedEventArgs e)
         {
             Line item = cbLines.SelectedValue as Line;
@@ -60,6 +70,7 @@ namespace PIGui
             update_Line.ShowDialog();
             Refresh_lines();
         }
+
         private void Remove_Buttom_Click(object sender, RoutedEventArgs e)
         {
             AdonisUI.Controls.MessageBoxResult result = AdonisUI.Controls.MessageBox.Show("Are you sure you want to delete this station?", "Confirmation",
@@ -90,6 +101,7 @@ namespace PIGui
                 Refresh_lines();
             }
         }
+
         private void Button_Linestation_Edit_Click(object sender, RoutedEventArgs e)
         {
             var elem = sender as FrameworkElement;
@@ -111,6 +123,7 @@ namespace PIGui
             }
             
         }
+
         private void Refresh_lines()
         {
             m_lines.Clear();
@@ -128,5 +141,6 @@ namespace PIGui
             }
 
         }
+
     }
 }
